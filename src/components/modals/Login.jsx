@@ -1,10 +1,9 @@
 /* eslint-disable react/no-children-prop */
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-
+/* eslint-disable react/prop-types */
 import Button from "../button";
 import Input from "../input";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "./Modal";
 export default function Login({ showModal, handleClose, onLoggedIn }) {
@@ -27,35 +26,37 @@ export default function Login({ showModal, handleClose, onLoggedIn }) {
       console.log(error);
     }
   };
-
+  useEffect(() => {
+    handleLogin();
+  }, []);
   return (
     <Modal isModalOpen={showModal} onClose={handleClose}>
-        <div className="flex justify-center flex-col gap-4">
-          <h2 className="text-center text-2xl font-bold">ავტორიზაცია</h2>
-          <div className="flex gap-4 flex-col items-center">
-            <Input
-              type="email"
-              id="emailInput"
-              placeholder="ელ.ფოსტა"
-              value={email}
-              onChange={(e) => setEmail(e)}
-            />
-            <Input
-              type="password"
-              placeholder="პაროლი"
-              id="passwordInput"
-              value={password}
-              onChange={(e) => setPassword(e)}
-            />
-          </div>
-          <div className="flex justify-center">
-            <Button
-              onClick={handleLogin}
-              children="შესვლა"
-              className="bg-primary text-white w-full"
-            />
-          </div>
+      <div className="flex justify-center flex-col gap-4">
+        <h2 className="text-center text-2xl font-bold">ავტორიზაცია</h2>
+        <div className="flex gap-4 flex-col items-center">
+          <Input
+            type="email"
+            id="emailInput"
+            placeholder="ელ.ფოსტა"
+            value={email}
+            onChange={(e) => setEmail(e)}
+          />
+          <Input
+            type="password"
+            placeholder="პაროლი"
+            id="passwordInput"
+            value={password}
+            onChange={(e) => setPassword(e)}
+          />
         </div>
-      </Modal>
+        <div className="flex justify-center">
+          <Button
+            onClick={handleLogin}
+            children="შესვლა"
+            className="bg-primary text-white w-full"
+          />
+        </div>
+      </div>
+    </Modal>
   );
 }
