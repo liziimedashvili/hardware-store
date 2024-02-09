@@ -6,6 +6,7 @@ import Header from "./layouts/Header";
 import HomePage from "./pages/HomePage";
 import Headline from "./layouts/Headline";
 import ProfilePage from "./pages/ProfilePage";
+import Footer from "./layouts/Footer";
 export default function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ export default function App() {
       <Route path="/" element={<HomePage />} /> 
       <Route path="/profile" element={<ProfilePage />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }

@@ -20,7 +20,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <div className="mt-[50px] ">
+    <div className="mt-[50px] mb-11 ">
     <div className="flex flex-col custom-container items-start ">
     <div className=" bg-white relative shadow-md rounded-lg w-[240px]  ">
       {categories.length === 0 ? (

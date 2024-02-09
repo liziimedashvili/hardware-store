@@ -18,6 +18,7 @@ export default function Login({ showModal, handleClose, onLoggedIn }) {
           password,
         }
       );
+      console.log(response.data);
       onLoggedIn(true);
       handleClose(true);
       setEmail("");
@@ -25,6 +26,7 @@ export default function Login({ showModal, handleClose, onLoggedIn }) {
     } catch (error) {
       console.log(error);
     }
+    
   };
   useEffect(() => {
     handleLogin();
