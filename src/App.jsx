@@ -7,6 +7,11 @@ import HomePage from "./pages/HomePage";
 import Headline from "./layouts/Headline";
 import ProfilePage from "./pages/ProfilePage";
 import Footer from "./layouts/Footer";
+import TradePolicy from "./pages/informativePage/TradePolicy";
+import Branches from "./pages/informativePage/Branches";
+import Installment from "./pages/informativePage/Installment";
+import Career from "./pages/informativePage/Career";
+import TradeIn from "./pages/informativePage/TradeIn";
 export default function App() {
   return (
     <Router>
@@ -15,6 +20,11 @@ export default function App() {
       <Routes>
       <Route path="/" element={<HomePage />} /> 
       <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/tradepolicy" element={<TradePolicy/>} />
+      <Route path="/branches" element={<Branches/>} />
+      <Route path="/installment" element={<Installment/>} />
+      <Route path="/career" element={<Career/>} />
+      <Route path="/tradein" element={<TradeIn/>} />
       </Routes>
       <Footer/>
     </Router>
