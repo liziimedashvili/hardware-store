@@ -8,28 +8,43 @@ import Phone from "../assets/header-phone.svg";
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (
-    <div className="bg-[#f2f2f2]">
+    <div className="bg-[#f2f2f2] mt-14">
       <div className="custom-container relative py-5 px-0 flex justify-between">
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">
             ნავიგაცია
           </span>
-
-          <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
+          <Link
+            to="/tradepolicy"
+            className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
+          >
             სავაჭრო პოლიტიკა
-          </span>
-          <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
+          </Link>
+
+          <Link
+            to="/installment"
+            className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
+          >
             განვადება
-          </span>
-          <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
+          </Link>
+          <Link
+            to="/career"
+            className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
+          >
             კარიერა
-          </span>
-          <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
+          </Link>
+          <Link
+            to="/tradein"
+            className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
+          >
             Trade In
-          </span>
-          <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
+          </Link>
+          <Link
+            to="/branches"
+            className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
+          >
             ფილიალები
-          </span>
+          </Link>
         </div>
 
         <div className="flex flex-col  gap-5">
@@ -99,9 +114,12 @@ export default function Footer() {
             </span>
           </div>
 
-          <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
+          <Link
+            to="/branches"
+            className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
+          >
             ფილიალები
-          </span>
+          </Link>
         </div>
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">

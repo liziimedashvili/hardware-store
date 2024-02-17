@@ -1,45 +1,50 @@
-/* eslint-disable react/no-children-prop */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import Button from "../button";
-import Input from "../input";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-children-prop */
+import React, { useState } from "react";
 import Modal from "./Modal";
-export default function Login({ showModal, handleClose, onLoggedIn }) {
+import Input from "../input";
+import Button from "../button";
+import axios from "axios";
+import Registration from "./Registration";
+
+const Login = ({ showModal, handleClose, onLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showRegistration, setShowRegistration] = useState(false);
+
   const handleLogin = async () => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_API_BASE_URL}auth/login`,
         {
-          email,
-          password,
+          email: email,
+          password: password,
         }
       );
-      console.log(response.data);
+
       onLoggedIn(true);
       handleClose(true);
       setEmail("");
       setPassword("");
     } catch (error) {
-      console.log(error);
+      console.error("Login Error:", error);
     }
-    
   };
-  useEffect(() => {
-    handleLogin();
-  }, []);
+
+  const handleToggleRegistration = () => {
+    setShowRegistration(!showRegistration);
+  };
+
   return (
     <Modal isModalOpen={showModal} onClose={handleClose}>
       <div className="flex justify-center flex-col gap-4">
-        <h2 className="text-center text-2xl font-bold">ავტორიზაცია</h2>
+        <h2 className="text-center text-2xl font-medium">ავტორიზაცია</h2>
         <div className="flex gap-4 flex-col items-center">
           <Input
             type="email"
             id="emailInput"
-            placeholder="ელ.ფოსტა"
+            placeholder="ელ-ფოსტა"
             value={email}
             onChange={(e) => setEmail(e)}
           />
@@ -51,14 +56,25 @@ export default function Login({ showModal, handleClose, onLoggedIn }) {
             onChange={(e) => setPassword(e)}
           />
         </div>
-        <div className="flex justify-center">
-          <Button
-            onClick={handleLogin}
-            children="შესვლა"
-            className="bg-primary text-white w-full"
-          />
-        </div>
+
+        {!showRegistration && (
+          <div className="flex justify-end">
+            <Button onClick={handleToggleRegistration} children="რეგისტრაცია" />
+          </div>
+        )}
+        
+        {showRegistration && (
+          <Registration showModal={showModal} handleClose={handleClose} />
+        )}
+
+        {!showRegistration && (
+          <div className="flex justify-center">
+            <Button onClick={handleLogin} children="შესვლა" className="bg-orange-600 text-white w-full rounded-[12px] p-2" />
+          </div>
+        )}
       </div>
     </Modal>
   );
-}
+};
+
+export default Login;

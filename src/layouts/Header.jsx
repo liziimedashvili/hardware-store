@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-children-prop */
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MainLogo from "../assets/main-logo.svg";
 import Dots from "../assets/dots-logo.svg";
 import SearchIcon from "../assets/search-icon.svg";
@@ -11,15 +11,25 @@ import Button from "../components/button";
 import Login from "../components/modals/Login";
 import Success from "../components/modals/Success";
 export default function Header() {
+  const navigate = useNavigate();
+
   const [showModal, setShowModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState();
+
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
   const handleLogin = () => {
     setIsLoggedIn(true);
     setShowSuccessModal(true);
   };
+
+  const handleProfilePage = () => {
+    navigate("/profile");
+  };
+
   return (
     <header className=" bg-[#F2F0F0]">
       <div className="custom-container h-[70px] flex flex-row items-center justify-between">
@@ -48,26 +58,27 @@ export default function Header() {
           {isLoggedIn ? (
             <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
               <img src={UserIcon} />
-              <Button children="პროფილი" />
+              <Button children="პროფილი" onClick={handleProfilePage} />
             </div>
           ) : (
             <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
               <img src={UserIcon} />
-              <Button onClick={handleShow} children="შესვლა" />
+              <Button  onClick={handleShow} children="შესვლა" />
             </div>
-          )}
-          <Login
-            showModal={showModal}
-            handleClose={handleClose}
-            onLoggedIn={handleLogin}
-          />
-          <Success
-            title="წარმატებული ავტორიზაცია"
-            showModal={showSuccessModal}
-            handleClose={() => setShowSuccessModal(false)}
-          />
-        </div>
+          )} </div>
       </div>
+          <Login
+                showModal={showModal}
+                handleClose={handleClose}
+                onLoggedIn={handleLogin}
+              />
+
+              <Success
+                title="წარმატებული ავტორიზაცია"
+                showModal={showSuccessModal}
+                handleClose={() => setShowSuccessModal(false)}
+              />
+       
     </header>
   );
 }
