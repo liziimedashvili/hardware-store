@@ -21,13 +21,14 @@ const Categories = () => {
 
   return (
     <div className="mt-[50px] mb-11 ">
-    <div className="flex flex-col custom-container items-start ">
-    <div className=" bg-white relative shadow-md rounded-lg w-[240px]  ">
+    <div className="flex flex-col ">
+    <div className=" bg-white relative shadow-xl rounded-lg w-[240px]  ">
       {categories.length === 0 ? (
         <p className="font-bold text-center">Loading categories...</p>
       ) : (
-        categories.map((categoryName, index) => (
-          <Category key={index} category={categoryName} />
+        categories.map((category) => (
+          <Category key={category} 
+          category={category} />
         ))
       )}</div>
     </div></div>
