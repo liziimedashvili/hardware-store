@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import Input from "../input";
 import Button from "../button";
-import axios from "axios";
+import { registration } from "../../services/services";
 
 const Registration = ({ onSuccess, showModal, handleClose }) => {
   const [firstName, setFirstName] = useState("");
@@ -13,27 +13,26 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+
   const [error, setError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegistration = async () => {
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
     try {
-      if (password !== confirmPassword) {
-        setError("Passwords do not match");
-        return;
-      }
+      const response = await registration({
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: password,
+        phone_number: phoneNumber,
+      });
 
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}auth/register`,
-        {
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          password: password,
-          phone_number: phoneNumber,
-        }
-      );
-
+      console.log(response);
       onSuccess(true);
 
       handleClose();

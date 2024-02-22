@@ -10,6 +10,10 @@ import UserIcon from "../assets/user-icon.svg";
 import Button from "../components/button";
 import Login from "../components/modals/Login";
 import Success from "../components/modals/Success";
+
+// in milliseconds
+const SUCCESS_MODAL_HIDE_TIME = 3000;
+
 export default function Header() {
   const navigate = useNavigate();
 
@@ -24,10 +28,35 @@ export default function Header() {
   const handleLogin = () => {
     setIsLoggedIn(true);
     setShowSuccessModal(true);
+
+    // setTimeout for closing modal after "SUCCESS_MODAL_HIDE_TIME" milliseconds
+    setTimeout(() => {
+      setShowSuccessModal(false);
+    }, SUCCESS_MODAL_HIDE_TIME);
   };
 
   const handleProfilePage = () => {
     navigate("/profile");
+  };
+
+  const showProfileOrLogin = () => {
+    const isLogged = isLoggedIn || localStorage.getItem("accessToken");
+
+    if (isLogged) {
+      return (
+        <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
+          <img src={UserIcon} />
+          <Button children="პროფილი" onClick={handleProfilePage} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
+          <img src={UserIcon} />
+          <Button onClick={handleShow} children="შესვლა" />
+        </div>
+      );
+    }
   };
 
   return (
@@ -51,34 +80,27 @@ export default function Header() {
               className="outline-none w-[400px] h-[17px]  text-sm font-medium text-gray-600"
             />
           </div>
-          <div className=" bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
-            <img src={CartIcon} />
-            <Button children="კალათა" />
+          <div className=" bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center  p-2 cursor-pointer shadow-md">
+            <Button
+              children="კალათა"
+              className="gap-[10px]"
+              icon={<img src={CartIcon} />}
+            />
           </div>
-          {isLoggedIn ? (
-            <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
-              <img src={UserIcon} />
-              <Button children="პროფილი" onClick={handleProfilePage} />
-            </div>
-          ) : (
-            <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
-              <img src={UserIcon} />
-              <Button  onClick={handleShow} children="შესვლა" />
-            </div>
-          )} </div>
+          {showProfileOrLogin()}
+        </div>
       </div>
-          <Login
-                showModal={showModal}
-                handleClose={handleClose}
-                onLoggedIn={handleLogin}
-              />
+      <Login
+        showModal={showModal}
+        handleClose={handleClose}
+        onLoggedIn={handleLogin}
+      />
 
-              <Success
-                title="წარმატებული ავტორიზაცია"
-                showModal={showSuccessModal}
-                handleClose={() => setShowSuccessModal(false)}
-              />
-       
+      <Success
+        title="წარმატებული ავტორიზაცია"
+        showModal={showSuccessModal}
+        handleClose={() => setShowSuccessModal(false)}
+      />
     </header>
   );
 }

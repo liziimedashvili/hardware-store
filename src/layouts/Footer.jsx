@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <div className="bg-[#f2f2f2] mt-14">
-      <div className="custom-container relative py-5 px-0 flex justify-between">
+      <div className="custom-container py-5 px-0 flex justify-between">
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">
             ნავიგაცია
@@ -38,12 +38,6 @@ export default function Footer() {
             className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
           >
             Trade In
-          </Link>
-          <Link
-            to="/branches"
-            className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
-          >
-            ფილიალები
           </Link>
         </div>
 
@@ -109,9 +103,13 @@ export default function Footer() {
 
           <div className="flex flex-row items-center gap-2">
             <img src={Phone} />
-            <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
-              +995 (32) 2 60 30 60
-            </span>
+
+            <a
+              href="tel:+995322603060"
+              className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100"
+            >
+              *7007 / +995 (32) 2 60 30 60
+            </a>
           </div>
 
           <Link
