@@ -5,30 +5,37 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import Input from "../input";
 import Button from "../button";
-import axios from "axios";
 import Registration from "./Registration";
+import { login } from "../../services/services";
 
 const Login = ({ showModal, handleClose, onLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showRegistration, setShowRegistration] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
-    try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}auth/login`,
-        {
+    if (!email || !password) {
+      setError("გთხოვთ შეავსოთ ყველა ველი");
+      return;
+    } else {
+      try {
+        const response = await login({
           email: email,
           password: password,
-        }
-      );
+        });
 
-      onLoggedIn(true);
-      handleClose(true);
-      setEmail("");
-      setPassword("");
-    } catch (error) {
-      console.error("Login Error:", error);
+        console.log(response);
+
+        const { access_token, refresh_token } = response.data;
+        localStorage.setItem("accessToken", access_token);
+        onLoggedIn(true);
+        handleClose(true);
+        setEmail("");
+        setPassword("");
+      } catch (error) {
+        console.error("Login Error:", error);
+      }
     }
   };
 
@@ -55,6 +62,7 @@ const Login = ({ showModal, handleClose, onLoggedIn }) => {
             value={password}
             onChange={(e) => setPassword(e)}
           />
+          {error && <p className="text-red-500">{error}</p>}
         </div>
 
         {!showRegistration && (
@@ -62,14 +70,18 @@ const Login = ({ showModal, handleClose, onLoggedIn }) => {
             <Button onClick={handleToggleRegistration} children="რეგისტრაცია" />
           </div>
         )}
-        
+
         {showRegistration && (
           <Registration showModal={showModal} handleClose={handleClose} />
         )}
 
         {!showRegistration && (
           <div className="flex justify-center">
-            <Button onClick={handleLogin} children="შესვლა" className="bg-orange-600 text-white w-full rounded-[12px] p-2" />
+            <Button
+              onClick={handleLogin}
+              children="შესვლა"
+              className="bg-orange-600 text-white w-full rounded-[12px] p-2"
+            />
           </div>
         )}
       </div>
