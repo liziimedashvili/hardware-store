@@ -13,7 +13,9 @@ export const registration = (data) => {
 export const getProducts = (data) => {
   return api.get(`${baseURL}/product`, { ...data });
 };
-
+export const getProduct = (productId, data) => {
+  return api.get(`${baseURL}/product/${productId}`, { ...data });
+};
 export const getCategories = (data) => {
   return api.get(`${baseURL}/product-category`, { ...data });
 };

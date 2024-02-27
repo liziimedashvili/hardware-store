@@ -111,13 +111,6 @@ export default function Footer() {
               *7007 / +995 (32) 2 60 30 60
             </a>
           </div>
-
-          <Link
-            to="/branches"
-            className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
-          >
-            ფილიალები
-          </Link>
         </div>
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">

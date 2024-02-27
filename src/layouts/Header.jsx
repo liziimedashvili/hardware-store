@@ -7,7 +7,7 @@ import Dots from "../assets/dots-logo.svg";
 import SearchIcon from "../assets/search-icon.svg";
 import CartIcon from "../assets/header-cart.svg";
 import UserIcon from "../assets/user-icon.svg";
-import Button from "../components/button";
+import Button from "../components/button/index";
 import Login from "../components/modals/Login";
 import Success from "../components/modals/Success";
 
@@ -80,13 +80,15 @@ export default function Header() {
               className="outline-none w-[400px] h-[17px]  text-sm font-medium text-gray-600"
             />
           </div>
-          <div className=" bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center  p-2 cursor-pointer shadow-md">
-            <Button
-              children="კალათა"
-              className="gap-[10px]"
-              icon={<img src={CartIcon} />}
-            />
-          </div>
+          <Link to="/cart">
+            <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center p-2.5 cursor-pointer shadow-md">
+              <Button
+                children="კალათა"
+                className="gap-[10px]"
+                icon={<img src={CartIcon} alt="Cart Icon" />}
+              />
+            </div>
+          </Link>
           {showProfileOrLogin()}
         </div>
       </div>

@@ -27,7 +27,7 @@ const Products = () => {
     <div className="flex gap-[20px] mt-[100px]">
       {products &&
         products.map((product) => (
-          <Product key={product.id} product={product} />
+          <Product key={product.id} product={product} showDescription={false} />
         ))}
     </div>
   );

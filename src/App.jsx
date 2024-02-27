@@ -10,20 +10,27 @@ import TradePolicy from "./pages/informativePage/TradePolicy";
 import Installment from "./pages/informativePage/Installment";
 import Career from "./pages/informativePage/Career";
 import TradeIn from "./pages/informativePage/TradeIn";
+import Cart from "./pages/Cart";
+import { ShoppingCartProvider } from "./components/context/Context";
+import SingleProductPage from "./pages/SingleProductPage";
 export default function App() {
   return (
-    <Router>
-      <Headline />
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/tradepolicy" element={<TradePolicy />} />
-        <Route path="/installment" element={<Installment />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/tradein" element={<TradeIn />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <ShoppingCartProvider>
+      <Router>
+        <Headline />
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/tradepolicy" element={<TradePolicy />} />
+          <Route path="/installment" element={<Installment />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/tradein" element={<TradeIn />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:productId" element={<SingleProductPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </ShoppingCartProvider>
   );
 }
