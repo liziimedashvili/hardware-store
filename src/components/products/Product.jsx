@@ -16,7 +16,7 @@ const Product = ({ product, showDescription }) => {
   };
 
   return (
-    <div className="flex flex-col gap-2 max-w-40 cursor-pointer rounded-md h-[303px] justify-between bg-white">
+    <div className="flex flex-col gap-2 max-w-40 cursor-pointer rounded-md h-[303px] justify-around bg-white">
       <div onClick={handleProductClick}>
         <div className="rounded-lg bg-white overflow-hidden">
           <img
@@ -26,8 +26,19 @@ const Product = ({ product, showDescription }) => {
           />
         </div>
         <div className="flex flex-col items-start w-full min-h-20">
-          <p className="font-bold text-[17px] ">₾{product.price}</p>
-          <h3>{product.title}</h3>
+          <p className="text-black mt-2 text-lg font-bold ">
+            {product.salePrice ? (
+              <>
+                <span className="line-through mr-2 text-sm text-orange-600">
+                  ₾{product.price}
+                </span>{" "}
+                ₾{product.salePrice}
+              </>
+            ) : (
+              `₾${product.price}`
+            )}
+          </p>
+          <h3 className="text-sm text-gray-700">{product.title}</h3>
           {showDescription && (
             <p className="text-black opacity-80 font-medium text-xs leading-4 overflow-hidden">
               {product.description}

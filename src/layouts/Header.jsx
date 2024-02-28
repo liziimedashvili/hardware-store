@@ -60,7 +60,7 @@ export default function Header() {
   };
 
   return (
-    <header className=" bg-[#F2F0F0]">
+    <header className=" bg-[#F2F0F0] mb-10">
       <div className="custom-container h-[70px] flex flex-row items-center justify-between">
         <div>
           <Link to="/">
