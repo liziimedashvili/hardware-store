@@ -1,35 +1,31 @@
-import { Category } from "./Category";
-import { useState, useEffect } from "react";
-import { getCategories } from "../../services/services";
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 
+import React, { useState, useEffect } from "react";
+import { getCategories } from "../../services/services";
+import { Category } from "./Category";
 const Categories = () => {
   const [categories, setCategories] = useState([]);
 
+  const fetchData = async () => {
+    try {
+      const response = await getCategories();
+      setCategories(response.data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getCategories();
-        const categoryNames = response.data.map((category) => category.name);
-        setCategories(categoryNames);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
-    };
-
     fetchData();
   }, []);
 
   return (
-    <div className="mt-[50px] mb-11 ">
-      <div className="flex flex-col ">
-        <div className=" bg-white  shadow-xl rounded-lg w-[240px]  ">
-          {categories.length === 0 ? (
-            <p className="font-bold text-center">Loading categories...</p>
-          ) : (
-            categories.map((category) => (
-              <Category key={category} category={category} />
-            ))
-          )}
+    <div className="mt-[50px] mb-11">
+      <div className="flex flex-col">
+        <div className="bg-white shadow-xl rounded-lg w-[240px]">
+          {categories.map((category) => (
+            <Category key={category.id} category={category} />
+          ))}
         </div>
       </div>
     </div>
