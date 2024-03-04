@@ -6,29 +6,30 @@ import "slick-carousel/slick/slick-theme.css";
 import Product from "./Product";
 import { getProducts } from "../../services/services";
 import leftSliderImg from "../../assets/slider-left-btn.svg";
-
 import rightSliderImg from "../../assets/slider-right-btn.svg";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await getProducts();
-        if (response.data.products) {
-          setProducts(response.data.products);
-        }
-      } catch (error) {
-        console.error(error);
+  const fetchProducts = async () => {
+    try {
+      const response = await getProducts();
+      if (response.data.products) {
+        setProducts(response.data.products);
       }
-    };
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
     fetchProducts();
   }, []);
 
   const sliderRef = useRef(null);
   const saleSliderRef = useRef(null);
-
+  const smartphoneSliderRef = useRef(null);
+  const tabSliderRef = useRef(null);
+  const audioSliderRef = useRef(null);
   const sliderSettings = {
     dots: false,
     infinite: true,
@@ -58,6 +59,15 @@ const Products = () => {
   };
 
   const saleProducts = products.filter((product) => product.salePrice);
+  const smartphoneProducts = products.filter(
+    (product) => product.category_name === "სმარტფონები"
+  );
+  const tabProducts = products.filter(
+    (product) => product.category_name === "ტაბები"
+  );
+  const audioProducts = products.filter(
+    (product) => product.category_name === "აუდიო"
+  );
 
   return (
     <div className="mt-[100px]">
@@ -124,6 +134,85 @@ const Products = () => {
           </div>
         </section>
       )}
+
+      <section className="mt-24">
+        <h1 className="font-bold text-xl text-orange-600 mb-4">სმარტფონები</h1>
+        <div className="relative ">
+          <div className="flex justify-end mb-3">
+            <button
+              className="relative shadow-lg rounded-full"
+              onClick={() => smartphoneSliderRef.current.slickPrev()}
+            >
+              <img src={leftSliderImg} alt="Previous" />
+            </button>
+            <button
+              className="relative shadow-lg rounded-full"
+              onClick={() => smartphoneSliderRef.current.slickNext()}
+            >
+              <img src={rightSliderImg} alt="Next" />
+            </button>
+          </div>
+          <div>
+            <Slider ref={smartphoneSliderRef} {...sliderSettings}>
+              {smartphoneProducts.map((product) => (
+                <Product key={product.id} product={product} />
+              ))}
+            </Slider>
+          </div>
+        </div>
+      </section>
+      <section className="mt-24">
+        <h1 className="font-bold text-xl text-orange-600 mb-4">ტაბები</h1>
+        <div className="relative ">
+          <div className="flex justify-end mb-3">
+            <button
+              className="relative shadow-lg rounded-full"
+              onClick={() => tabSliderRef.current.slickPrev()}
+            >
+              <img src={leftSliderImg} alt="Previous" />
+            </button>
+            <button
+              className="relative shadow-lg rounded-full"
+              onClick={() => tabSliderRef.current.slickNext()}
+            >
+              <img src={rightSliderImg} alt="Next" />
+            </button>
+          </div>
+          <div>
+            <Slider ref={tabSliderRef} {...sliderSettings}>
+              {tabProducts.map((product) => (
+                <Product key={product.id} product={product} />
+              ))}
+            </Slider>
+          </div>
+        </div>
+      </section>
+      <section className="mt-24">
+        <h1 className="font-bold text-xl text-orange-600 mb-4">აუდიო</h1>
+        <div className="relative ">
+          <div className="flex justify-end mb-3">
+            <button
+              className="relative shadow-lg rounded-full"
+              onClick={() => audioSliderRef.current.slickPrev()}
+            >
+              <img src={leftSliderImg} alt="Previous" />
+            </button>
+            <button
+              className="relative shadow-lg rounded-full"
+              onClick={() => audioSliderRef.current.slickNext()}
+            >
+              <img src={rightSliderImg} alt="Next" />
+            </button>
+          </div>
+          <div>
+            <Slider ref={audioSliderRef} {...sliderSettings}>
+              {audioProducts.map((product) => (
+                <Product key={product.id} product={product} />
+              ))}
+            </Slider>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

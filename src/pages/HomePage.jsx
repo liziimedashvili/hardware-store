@@ -6,13 +6,13 @@ import Products from "../components/products/Products";
 
 export default function HomePage() {
   return (
-    <div className="custom-container flex flex-col">
-      <div className="flex flex-row justify-between">
+    <div className=" flex flex-col">
+      <div className="flex flex-row justify-between custom-container">
         <Categories />
         <SimpleSlider />
       </div>
 
-      <div>
+      <div className="custom-container">
         <Products />
       </div>
     </div>

@@ -9,9 +9,12 @@ export const login = (data) => {
 export const registration = (data) => {
   return api.post(`${baseURL}/auth/register`, { ...data });
 };
-
-export const getProducts = (data) => {
-  return api.get(`${baseURL}/product`, { ...data });
+export const getProducts = (query) => {
+  return api.get(`${baseURL}/product`, {
+    params: {
+      search: query,
+    },
+  });
 };
 export const getProduct = (productId, data) => {
   return api.get(`${baseURL}/product/${productId}`, { ...data });
@@ -19,8 +22,11 @@ export const getProduct = (productId, data) => {
 export const getCategories = (data) => {
   return api.get(`${baseURL}/product-category`, { ...data });
 };
+export const getCategory = (categoryId, data) => {
+  return api.get(`${baseURL}/product-category/${categoryId}`, { ...data });
+};
 
-export const addToCart = (data) => {
+export const addProductToCart = (data) => {
   return api.post(`${baseURL}/cart`, { ...data });
 };
 

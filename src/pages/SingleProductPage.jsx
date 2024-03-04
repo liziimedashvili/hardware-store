@@ -1,28 +1,28 @@
-/* eslint-disable react/no-children-prop */
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProduct } from "../services/services";
 import compereIcon from "../assets/compare-card.svg";
 import Button from "../components/button/index";
 import CartIcon from "../assets/header-cart.svg";
+import { useCart } from "../context/CartContext";
+import { addProductToCart } from "../services/services";
 
 export default function SingleProductPage() {
   const { productId } = useParams();
   const [productData, setProductData] = useState(null);
-  const [error, setError] = useState(null);
+  const { addToCart, cartProducts } = useCart();
 
+  const fetchData = async (productId) => {
+    try {
+      const response = await getProduct(productId);
+      setProductData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async (productId) => {
-      try {
-        const response = await getProduct(productId);
-        setProductData(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setError("An error occurred while fetching data.");
-      }
-    };
-
     fetchData(productId);
   }, [productId]);
 
@@ -35,6 +35,19 @@ export default function SingleProductPage() {
     },
     { label: productData?.title || "Product title" },
   ];
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+
+    const { id } = productData;
+
+    try {
+      addProductToCart({ product_id: id });
+      addToCart(productData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="custom-container">
@@ -60,7 +73,6 @@ export default function SingleProductPage() {
             </div>
             <div className="flex flex-col items-start">
               <h2 className="font-bold text-2xl ">{productData.title}</h2>
-
               <p className="text-sm text-gray-700 mt-2 ">
                 {productData.description}
               </p>
@@ -81,7 +93,6 @@ export default function SingleProductPage() {
                 )}
               </p>
             </div>
-
             <div className="flex flex-col gap-[10px]">
               <div>
                 <Button
@@ -105,6 +116,7 @@ export default function SingleProductPage() {
                       alt="Cart Icon"
                     />
                   }
+                  onClick={(e) => handleAddToCart(e)}
                 />
               </div>
             </div>
