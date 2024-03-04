@@ -11,11 +11,13 @@ import Installment from "./pages/informativePage/Installment";
 import Career from "./pages/informativePage/Career";
 import TradeIn from "./pages/informativePage/TradeIn";
 import Cart from "./pages/Cart";
-import { ShoppingCartProvider } from "./components/context/Context";
+import Navigation from "./pages/Navigation";
 import SingleProductPage from "./pages/SingleProductPage";
+import { CartProvider } from "./context/CartContext";
+import SingleCategoryPage from "./pages/SingleCategoryPage";
 export default function App() {
   return (
-    <ShoppingCartProvider>
+    <CartProvider>
       <Router>
         <Headline />
         <Header />
@@ -28,9 +30,14 @@ export default function App() {
           <Route path="/tradein" element={<TradeIn />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:productId" element={<SingleProductPage />} />
+          <Route
+            path="/category/:categoryId"
+            element={<SingleCategoryPage />}
+          />
+          <Route path="/navigation" element={<Navigation />} />
         </Routes>
         <Footer />
       </Router>
-    </ShoppingCartProvider>
+    </CartProvider>
   );
 }

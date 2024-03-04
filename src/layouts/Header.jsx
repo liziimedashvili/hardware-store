@@ -4,19 +4,19 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import MainLogo from "../assets/main-logo.svg";
 import Dots from "../assets/dots-logo.svg";
-import SearchIcon from "../assets/search-icon.svg";
 import CartIcon from "../assets/header-cart.svg";
 import UserIcon from "../assets/user-icon.svg";
 import Button from "../components/button/index";
 import Login from "../components/modals/Login";
 import Success from "../components/modals/Success";
-
+import { useCart } from "../context/CartContext";
+import SearchBar from "../components/search/SearchBar";
 // in milliseconds
 const SUCCESS_MODAL_HIDE_TIME = 3000;
 
 export default function Header() {
   const navigate = useNavigate();
-
+  const { cartProducts } = useCart();
   const [showModal, setShowModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState();
 
@@ -68,18 +68,14 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex flex-row gap-5 ">
-          <div className="flex flex-row items-center bg-[#EC5E2A] w-[130px]  rounded-[12px] gap-[10px] p-[10px] cursor-pointer ">
-            <img src={Dots} />
-            <span className="font-medium text-sm text-[#fff]">ნავიგაცია</span>
-          </div>
-          <div className=" flex-row items-center border border-orange-500 border-opacity-50 rounded-lg shadow-sm p-3 cursor-pointer flex gap-4 w-[440px] h-[44px] bg-[#fff]">
-            <img src={SearchIcon} />
-            <input
-              placeholder="ძიება"
-              type="text"
-              className="outline-none w-[400px] h-[17px]  text-sm font-medium text-gray-600"
-            />
-          </div>
+          <Link to="/navigation">
+            <div className="flex flex-row items-center bg-[#EC5E2A] w-[130px]  rounded-[12px] gap-[10px] p-[10px] cursor-pointer ">
+              <img src={Dots} />
+              <span className="font-medium text-sm text-[#fff]">ნავიგაცია</span>
+            </div>
+          </Link>
+
+          <SearchBar />
           <Link to="/cart">
             <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center p-2.5 cursor-pointer shadow-md">
               <Button
@@ -87,6 +83,9 @@ export default function Header() {
                 className="gap-[10px]"
                 icon={<img src={CartIcon} alt="Cart Icon" />}
               />
+              <span className=" text-white rounded-full text-sm absolute top-[43px] bg-orange-600 right-[395px] w-5 h-5 flex items-center justify-center">
+                {cartProducts.length}
+              </span>
             </div>
           </Link>
           {showProfileOrLogin()}
