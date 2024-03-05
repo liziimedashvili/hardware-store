@@ -6,11 +6,12 @@ import EmptyCartIcon from "../assets/emptybag.svg";
 import TrashIcon from "../assets/bin.svg";
 import { getFromCart, deleteFromCart } from "../services/services";
 import { useCart } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const [data, setData] = useState([]);
   const { removeFromCart } = useCart();
-
+  const navigate = useNavigate();
   const fetchCart = async () => {
     try {
       const response = await getFromCart();
@@ -66,6 +67,9 @@ export default function Cart() {
     } catch (error) {
       console.error(error);
     }
+  };
+  const handlePaymentClick = () => {
+    navigate(`/payment`);
   };
 
   return (
@@ -139,6 +143,7 @@ export default function Cart() {
             <Button
               children="ყიდვა"
               className="w-full bg-orange-600 text-white px-[10px] py-2 rounded-[4px] font-bold text-sm leading-5"
+              onClick={handlePaymentClick}
             />
           </div>
         </div>

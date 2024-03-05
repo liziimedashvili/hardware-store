@@ -37,3 +37,10 @@ export const deleteFromCart = (data) => {
 export const getFromCart = (data) => {
   return api.get(`${baseURL}/cart`, { ...data });
 };
+
+export const getFromPurchases = (data) => {
+  return api.get(`${baseURL}/purchases`, { ...data });
+};
+export const addPurchases = (data) => {
+  return api.post(`${baseURL}/purchases`, { ...data });
+};

@@ -15,6 +15,7 @@ import Navigation from "./pages/Navigation";
 import SingleProductPage from "./pages/SingleProductPage";
 import { CartProvider } from "./context/CartContext";
 import SingleCategoryPage from "./pages/SingleCategoryPage";
+import PaymentPage from "./pages/PaymentPage";
 export default function App() {
   return (
     <CartProvider>
@@ -35,6 +36,7 @@ export default function App() {
             element={<SingleCategoryPage />}
           />
           <Route path="/navigation" element={<Navigation />} />
+          <Route path="/payment" element={<PaymentPage />} />
         </Routes>
         <Footer />
       </Router>

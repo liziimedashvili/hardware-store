@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { getProduct } from "../services/services";
 import compereIcon from "../assets/compare-card.svg";
 import Button from "../components/button/index";
@@ -13,6 +13,7 @@ export default function SingleProductPage() {
   const { productId } = useParams();
   const [productData, setProductData] = useState(null);
   const { addToCart, cartProducts } = useCart();
+  const navigate = useNavigate();
 
   const fetchData = async (productId) => {
     try {
@@ -47,6 +48,9 @@ export default function SingleProductPage() {
     } catch (error) {
       console.error(error);
     }
+  };
+  const handlePaymentClick = () => {
+    navigate(`/payment`);
   };
 
   return (
@@ -98,6 +102,7 @@ export default function SingleProductPage() {
                 <Button
                   children="ყიდვა"
                   className="w-full bg-orange-600 text-white px-[10px] py-2 rounded-[4px] font-bold text-sm leading-5"
+                  onClick={handlePaymentClick}
                 />
               </div>
               <div className="flex flex-row  gap-[10px]">
