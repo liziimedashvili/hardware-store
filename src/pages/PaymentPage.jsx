@@ -2,161 +2,238 @@
 import React, { useState } from "react";
 import Button from "../components/button";
 
-const CardSimulation = () => {
-  const [cardInfo, setCardInfo] = useState({
-    number: "",
-    name: "",
-    expiry: "",
-    cvc: "",
-  });
+export default function PaymentPage() {
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardHolder, setCardHolder] = useState("");
+  const [expiryMonth, setExpiryMonth] = useState("");
+  const [expiryYear, setExpiryYear] = useState("");
+  const [cvc, setCvc] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const [errors, setErrors] = useState({
-    number: "",
-    expiry: "",
-    cvc: "",
-  });
+  const [cardNumberError, setCardNumberError] = useState("");
+  const [cardHolderError, setCardHolderError] = useState("");
+  const [expiryMonthError, setExpiryMonthError] = useState("");
+  const [expiryYearError, setExpiryYearError] = useState("");
+  const [cvcError, setCvcError] = useState("");
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    let newValue = value;
-
-    if (name === "number") {
-      newValue = value.replace(/\D/g, "").slice(0, 16);
-      if (!/^\d{16}$/.test(newValue)) {
-        setErrors({ ...errors, [name]: "Invalid card number" });
-      } else {
-        setErrors({ ...errors, [name]: "" });
-      }
-    } else if (name === "cvc") {
-      newValue = value.replace(/\D/g, "").slice(0, 3);
-      if (!/^\d{3}$/.test(newValue)) {
-        setErrors({ ...errors, [name]: "Invalid CVC" });
-      } else {
-        setErrors({ ...errors, [name]: "" });
-      }
-    } else if (name === "expiry") {
-      newValue = validateExpiry(value);
-      if (!/^\d{2}\/\d{2}$/.test(newValue)) {
-        setErrors({ ...errors, [name]: "Invalid expiry date" });
-      } else {
-        setErrors({ ...errors, [name]: "" });
-      }
+  const handleCardNumberChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 16) {
+      setCardNumber(value);
+      setCardNumberError(
+        value.length !== 16 ? "Card number must be 16 digits" : ""
+      );
     }
-
-    setCardInfo({ ...cardInfo, [name]: newValue });
   };
 
-  function validateExpiry(value) {
-    let newValue = value.replace(/[^\d/]/g, "").slice(0, 5);
+  const handleCardHolderChange = (e) => {
+    setCardHolder(e.target.value);
+    setCardHolderError(
+      e.target.value.trim() === "" ? "Cardholder name is required" : ""
+    );
+  };
 
-    const parts = newValue.split("/");
-    if (parts[0]) {
-      if (parseInt(parts[0], 10) > 12) {
-        parts[0] = "12";
-      }
+  const handleExpiryMonthChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 2) {
+      const month = Math.min(parseInt(value, 10), 12)
+        .toString()
+        .padStart(2, "0");
+      setExpiryMonth(month);
+      setExpiryMonthError(
+        value.length !== 2 || parseInt(value, 10) > 12
+          ? "Expiry month must be between 01 and 12"
+          : ""
+      );
     }
-    if (parts.length === 2) {
-      parts[1] = parts[1].slice(0, 2);
+  };
+
+  const handleExpiryYearChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 2) {
+      setExpiryYear(value);
+      setExpiryYearError(
+        value.length !== 2 ? "Expiry year must be 2 digits" : ""
+      );
+    }
+  };
+
+  const handleCvcChange = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    if (value.length <= 3) {
+      setCvc(value);
+      setCvcError(value.length !== 3 ? "CVC must be 3 digits" : "");
+    }
+  };
+
+  const handleSubmit = () => {
+    if (cardNumber.length !== 16) {
+      setCardNumberError("Card number must be 16 digits");
+      return;
+    }
+    if (cardHolder.trim() === "") {
+      setCardHolderError("Cardholder name is required");
+      return;
+    }
+    if (expiryMonth.length !== 2 || parseInt(expiryMonth, 10) > 12) {
+      setExpiryMonthError("Expiry month must be between 01 and 12");
+      return;
+    }
+    if (expiryYear.length !== 2) {
+      setExpiryYearError("Expiry year must be 2 digits");
+      return;
+    }
+    if (cvc.length !== 3) {
+      setCvcError("CVC must be 3 digits");
+      return;
     }
 
-    return parts.join("/").slice(0, 5);
-  }
+    setCardNumber("");
+    setCardHolder("");
+    setExpiryMonth("");
+    setExpiryYear("");
+    setCvc("");
+
+    setCardNumberError("");
+    setCardHolderError("");
+    setExpiryMonthError("");
+    setExpiryYearError("");
+    setCvcError("");
+
+    setSuccessMessage("You bought successfully!");
+
+    setTimeout(() => {
+      setSuccessMessage("");
+    }, 3000);
+  };
 
   return (
-    <div className="custom-container">
-      <div>
-        <h1 className="text-orange-600 font-bold text-2xl border-b border-gray-200 p-2">
-          გადაიხადე აქ
-        </h1>
-      </div>
-      <div className="max-w-sm mx-auto mt-10 p-4 bg-black rounded shadow-md">
-        <div className="mb-8">
+    <div className="custom-container mx-auto mt-8">
+      <h1 className="text-2xl font-bold text-orange-600 border-b border-gray-200 pb-2 mb-4">
+        გადაიხადე აქ
+      </h1>
+      <div className="max-w-md mx-auto bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div className="text-center">
+          <span className="text-white font-serif font-bold text-xl">VISA</span>
+        </div>
+        <div className="mb-4">
           <label
             className="block text-white text-sm font-bold mb-2"
-            htmlFor="number"
+            htmlFor="cardNumber"
           >
             Card Number
           </label>
           <input
-            className="shadow appearance-none bg-[#131313] rounded w-full py-2 px-3 text-[#606060] leading-tight focus:outline-none focus:shadow-outline"
-            id="number"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
+              cardNumberError ? "border-red-500" : ""
+            }`}
+            id="cardNumber"
             type="text"
-            name="number"
-            value={cardInfo.number}
             placeholder="XXXX XXXX XXXX XXXX"
-            onChange={handleInputChange}
+            value={cardNumber}
+            onChange={handleCardNumberChange}
           />
-          {errors.number && (
-            <p className="text-red-500 text-xs italic">{errors.number}</p>
+          {cardNumberError && (
+            <p className="text-red-500 text-xs italic">{cardNumberError}</p>
           )}
         </div>
-        <div className="mb-8">
+        <div className="mb-4">
           <label
             className="block text-white text-sm font-bold mb-2"
-            htmlFor="name"
+            htmlFor="cardHolder"
           >
             Cardholder Name
           </label>
           <input
-            className="shadow appearance-none bg-[#131313] rounded w-full py-2 px-3 text-[#606060] leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
+              cardHolderError ? "border-red-500" : ""
+            }`}
+            id="cardHolder"
             type="text"
-            name="name"
-            value={cardInfo.name}
             placeholder="Full Name"
-            onChange={handleInputChange}
+            value={cardHolder}
+            onChange={handleCardHolderChange}
           />
+          {cardHolderError && (
+            <p className="text-red-500 text-xs italic">{cardHolderError}</p>
+          )}
         </div>
         <div className="flex">
           <div className="w-1/2 mr-2">
             <label
               className="block text-white text-sm font-bold mb-2"
-              htmlFor="expiry"
+              htmlFor="expiryMonth"
             >
-              Expiry Date
+              Expiry Month
             </label>
             <input
-              className="shadow appearance-none bg-[#131313] rounded w-full py-2 px-3 text-[#606060] leading-tight focus:outline-none focus:shadow-outline"
-              id="expiry"
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
+                expiryMonthError ? "border-red-500" : ""
+              }`}
+              id="expiryMonth"
               type="text"
-              name="expiry"
-              value={cardInfo.expiry}
               placeholder="MM"
-              onChange={handleInputChange}
+              value={expiryMonth}
+              onChange={handleExpiryMonthChange}
             />
-            {errors.expiry && (
-              <p className="text-red-500 text-xs italic">{errors.expiry}</p>
+            {expiryMonthError && (
+              <p className="text-red-500 text-xs italic">{expiryMonthError}</p>
             )}
           </div>
           <div className="w-1/2 ml-2">
             <label
               className="block text-white text-sm font-bold mb-2"
-              htmlFor="cvc"
+              htmlFor="expiryYear"
             >
-              CVC
+              Expiry Year
             </label>
             <input
-              className="shadow appearance-none bg-[#131313] rounded w-full py-2 px-3 text-[#606060] leading-tight focus:outline-none focus:shadow-outline"
-              id="cvc"
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
+                expiryYearError ? "border-red-500" : ""
+              }`}
+              id="expiryYear"
               type="text"
-              name="cvc"
-              value={cardInfo.cvc}
-              placeholder="XXX"
-              onChange={handleInputChange}
+              placeholder="YY"
+              value={expiryYear}
+              onChange={handleExpiryYearChange}
             />
-            {errors.cvc && (
-              <p className="text-red-500 text-xs italic">{errors.cvc}</p>
+            {expiryYearError && (
+              <p className="text-red-500 text-xs italic">{expiryYearError}</p>
             )}
           </div>
         </div>
-        <div>
-          <Button className="w-full rounded text-white mt-8 p-3 bg-[#131313]">
-            გადახდა
-          </Button>
+        <div className="mb-4 mt-4">
+          <label
+            className="block text-white text-sm font-bold mb-2"
+            htmlFor="cvc"
+          >
+            CVC
+          </label>
+          <input
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
+              cvcError ? "border-red-500" : ""
+            }`}
+            id="cvc"
+            type="text"
+            placeholder="XXX"
+            value={cvc}
+            onChange={handleCvcChange}
+          />
+          {cvcError && (
+            <p className="text-red-500 text-xs italic">{cvcError}</p>
+          )}
         </div>
+        {successMessage && (
+          <p className="text-green-500 text-sm font-bold">{successMessage}</p>
+        )}
+        <Button
+          className="bg-[#1f2028] hover:bg-gray-700 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          onClick={handleSubmit}
+        >
+          გადახდა
+        </Button>
       </div>
     </div>
   );
-};
-
-export default CardSimulation;
+}
