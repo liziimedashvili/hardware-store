@@ -16,6 +16,7 @@ import SingleProductPage from "./pages/SingleProductPage";
 import { CartProvider } from "./context/CartContext";
 import SingleCategoryPage from "./pages/SingleCategoryPage";
 import PaymentPage from "./pages/PaymentPage";
+
 export default function App() {
   return (
     <CartProvider>
