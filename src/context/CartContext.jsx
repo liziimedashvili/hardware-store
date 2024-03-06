@@ -7,6 +7,7 @@ import {
   addProductToCart,
   deleteFromCart,
 } from "../services/services";
+import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
@@ -15,58 +16,81 @@ export const CartProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchCartItems = async () => {
+  const fetchCartItems = () => {
     setLoading(true);
-    try {
-      const response = await getFromCart();
-      setCartProducts(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching cart items:", error);
-      setError(error);
-      setLoading(false);
-    }
+
+    getFromCart()
+      .then((response) => {
+        setCartProducts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching cart items:", error);
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
     fetchCartItems();
   }, []);
 
-  const addToCart = async (product) => {
+  const addToCart = (product) => {
     setLoading(true);
-    try {
-      const response = await addProductToCart({
-        productId: product.id,
-        quantity: 1,
+
+    addProductToCart({ product_id: product.id })
+      .then(() => {
+        toast.success("პროდუქტი დაემატა კალათაში", {
+          position: "top-right",
+        });
+        fetchCartItems();
+      })
+      .catch((error) => {
+        setError(error);
+        toast.error("მოხდა შეცდომა", {
+          position: "top-right",
+        });
+      })
+      .finally(() => {
+        setLoading(false);
       });
-      console.log("Response after adding product to cart:", response.data);
-      setCartProducts(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Failed to add product to cart:", error);
-      setError(error);
-      setLoading(false);
-    }
   };
 
-  const removeFromCart = async (productId) => {
+  const removeFromCart = (productId, removeAll) => {
     setLoading(true);
-    try {
-      await deleteFromCart(productId);
-      setCartProducts((prevProducts) =>
-        prevProducts.filter((product) => product.id !== productId)
-      );
-      setLoading(false);
-    } catch (error) {
-      console.error("Failed to remove product from cart:", error);
-      setError(error);
-      setLoading(false);
-    }
+
+    deleteFromCart(productId, removeAll)
+      .then(() => {
+        setCartProducts((prevProducts) =>
+          prevProducts.filter((product) => product.id !== productId)
+        );
+        toast.success("პროდუქტი წარმატებით წაიშალა", {
+          position: "top-right",
+        });
+      })
+      .catch((error) => {
+        toast.error("მოხდა შეცდომა", {
+          position: "top-right",
+        });
+        setError(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
     <CartContext.Provider
-      value={{ cartProducts, addToCart, removeFromCart, loading, error }}
+      value={{
+        cartProducts,
+        setCartProducts,
+        fetchCartItems,
+        addToCart,
+        removeFromCart,
+        loading,
+        error,
+      }}
     >
       {children}
     </CartContext.Provider>

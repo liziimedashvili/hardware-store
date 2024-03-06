@@ -7,24 +7,10 @@ import CartIcon from "../../assets/header-cart.svg";
 import compereIcon from "../../assets/compare-card.svg";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
-import { addProductToCart } from "../../services/services";
 
 const Product = ({ product, showDescription }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
-
-  const handleAddToCart = (e) => {
-    e.preventDefault();
-
-    const { id } = product;
-
-    try {
-      addProductToCart({ product_id: id });
-      addToCart(product);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const handleProductClick = () => {
     navigate(`/product/${product.id}`);
@@ -70,7 +56,7 @@ const Product = ({ product, showDescription }) => {
         <Button
           className="bg-[#f4855d] text-black px-[10px] py-2 rounded-[4px] font-bold text-sm leading-5 gap-1 "
           icon={<img src={CartIcon} width={14} height={14} alt="Cart Icon" />}
-          onClick={(e) => handleAddToCart(e)}
+          onClick={() => addToCart(product)}
         >
           დამატება
         </Button>

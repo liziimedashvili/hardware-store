@@ -30,8 +30,8 @@ export const addProductToCart = (data) => {
   return api.post(`${baseURL}/cart`, { ...data });
 };
 
-export const deleteFromCart = (data) => {
-  return api.delete(`${baseURL}/cart`, { ...data });
+export const deleteFromCart = (productId, removeAll) => {
+  return api.delete(`${baseURL}/cart/${productId}?removeAll=${removeAll}`);
 };
 
 export const getFromCart = (data) => {

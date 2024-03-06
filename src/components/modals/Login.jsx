@@ -76,9 +76,8 @@ const Login = ({ showModal, handleClose, onLoggedIn }) => {
         )}
 
         {!showRegistration && (
-          <div className="flex justify-center">
+          <div onClick={handleLogin} className="flex justify-center">
             <Button
-              onClick={handleLogin}
               children="შესვლა"
               className="bg-orange-600 text-white w-full rounded-[12px] p-2"
             />

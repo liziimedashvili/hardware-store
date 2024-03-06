@@ -1,89 +1,88 @@
-/* eslint-disable react/no-children-prop */
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
 import Button from "../components/button/index";
 import EmptyCartIcon from "../assets/emptybag.svg";
 import TrashIcon from "../assets/bin.svg";
-import { getFromCart, deleteFromCart } from "../services/services";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
-
+import { addProductToCart, deleteFromCart } from "../services/services";
 export default function Cart() {
-  const [data, setData] = useState([]);
-  const { removeFromCart } = useCart();
-  const navigate = useNavigate();
-  const fetchCart = async () => {
-    try {
-      const response = await getFromCart();
-      const { data } = response;
-      setData(data.map((item) => ({ ...item, quantity: item.count })));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { cartProducts, setCartProducts, removeFromCart } = useCart();
 
-  useEffect(() => {
-    fetchCart();
-  }, []);
+  const navigate = useNavigate();
 
   const calculateTotalPrice = () => {
-    return data.reduce(
-      (total, product) => total + product.cartProduct.price * product.quantity,
+    return cartProducts.reduce(
+      (total, product) => total + product.cartProduct.price * product.count,
       0
     );
   };
 
-  const increaseQuantity = async (productId) => {
-    try {
-      const updatedData = data.map((item) =>
-        item.cartProduct.id === productId
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-      setData(updatedData);
-    } catch (error) {
-      console.error(error);
-    }
+  const increaseCount = async (productId) => {
+    addProductToCart({ product_id: productId })
+      .then(() => {
+        const updatedData = cartProducts.map((item) =>
+          item.cartProduct.id === productId
+            ? { ...item, count: item.count + 1 }
+            : item
+        );
+        setCartProducts(updatedData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const decreaseQuantity = async (productId) => {
-    try {
-      const updatedData = data.map((item) =>
-        item.cartProduct.id === productId
-          ? { ...item, quantity: Math.max(1, item.quantity - 1) }
-          : item
-      );
-      setData(updatedData);
-    } catch (error) {
-      console.error(error);
-    }
+    deleteFromCart(productId, false)
+      .then(() => {
+        const updatedData = cartProducts.map((item) =>
+          item.id === productId
+            ? { ...item, count: item.count > 1 ? item.count - 1 : 1 }
+            : item
+        );
+
+        setCartProducts(updatedData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
-  const handleRemoveFromCart = async (productId) => {
-    try {
-      await deleteFromCart(productId);
-      removeFromCart(productId);
-      setData((prevData) => prevData.filter((item) => item.id !== productId));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const handlePaymentClick = () => {
-    navigate(`/payment`);
+  const productItemActions = (product) => {
+    return (
+      <div className="flex gap-3 items-center">
+        <div className="bg-orange-600 text-white flex justify-around items-center text-[12px] font-bold w-[100px] h-[30px] rounded-[30px]">
+          <button
+            onClick={() => decreaseQuantity(product.id)}
+            disabled={product.count <= 1}
+            className={`${product.count <= 1 && "opacity-50"}`}
+          >
+            -
+          </button>
+
+          <span>{product.count}</span>
+          <button onClick={() => increaseCount(product.cartProduct.id)}>
+            +
+          </button>
+        </div>
+        <button onClick={() => removeFromCart(product.id, true)}>
+          <img src={TrashIcon} alt="trashIcon" />
+        </button>
+      </div>
+    );
   };
 
   return (
     <div className="custom-container  ">
       <div className="pb-5 border-b-2 ">
         <p className="font-bold text-[28px] leading-7">
-          შენს კალათაში {data.reduce((total, item) => total + item.quantity, 0)}{" "}
-          ნივთია
+          შენს კალათაში{" "}
+          {cartProducts.reduce((total, item) => total + item.count, 0)} ნივთია
         </p>
       </div>
       <div className="flex justify-between mt-[30px]">
         <div className="flex flex-col gap-5">
-          {data.length > 0 ? (
-            data.map((product) => (
+          {cartProducts.length > 0 ? (
+            cartProducts.map((product) => (
               <div
                 key={product?.cartProduct.id}
                 className=" h-[100px] p-[12px] rounded-[12px] justify-between bg-[#f2f2f2] flex items-center w-[700px]"
@@ -106,24 +105,7 @@ export default function Cart() {
                     </span>
                   </div>
                 </div>
-                <div className="flex gap-3 items-center">
-                  <div className="bg-orange-600 text-white flex justify-around items-center text-[12px] font-bold w-[100px] h-[30px] rounded-[30px]">
-                    <button
-                      onClick={() => decreaseQuantity(product.cartProduct.id)}
-                    >
-                      -
-                    </button>
-                    <span>{product.quantity}</span>
-                    <button
-                      onClick={() => increaseQuantity(product.cartProduct.id)}
-                    >
-                      +
-                    </button>
-                  </div>
-                  <button onClick={() => handleRemoveFromCart(product.id)}>
-                    <img src={TrashIcon} alt="trashIcon" />
-                  </button>
-                </div>
+                {productItemActions(product)}
               </div>
             ))
           ) : (
@@ -141,10 +123,11 @@ export default function Cart() {
           </div>
           <div>
             <Button
-              children="ყიდვა"
               className="w-full bg-orange-600 text-white px-[10px] py-2 rounded-[4px] font-bold text-sm leading-5"
-              onClick={handlePaymentClick}
-            />
+              onClick={() => navigate(`/payment`)}
+            >
+              ყიდვა
+            </Button>
           </div>
         </div>
       </div>

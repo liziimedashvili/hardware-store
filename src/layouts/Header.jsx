@@ -10,13 +10,17 @@ import Button from "../components/button/index";
 import Login from "../components/modals/Login";
 import Success from "../components/modals/Success";
 import { useCart } from "../context/CartContext";
-import SearchBar from "../components/search/SearchBar";
+import SearchBar from "../components/search";
+import useScrollDirection from "../hooks/useScrollDirection";
+
 // in milliseconds
 const SUCCESS_MODAL_HIDE_TIME = 3000;
 
 export default function Header() {
   const navigate = useNavigate();
   const { cartProducts } = useCart();
+  const scrollDirection = useScrollDirection();
+
   const [showModal, setShowModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState();
 
@@ -51,16 +55,23 @@ export default function Header() {
       );
     } else {
       return (
-        <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
+        <div
+          onClick={handleShow}
+          className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md"
+        >
           <img src={UserIcon} />
-          <Button onClick={handleShow} children="შესვლა" />
+          <Button children="შესვლა" />
         </div>
       );
     }
   };
 
   return (
-    <header className=" bg-[#F2F0F0] mb-10">
+    <header
+      className={`sticky ${
+        scrollDirection === "down" ? "-top-24" : "top-0"
+      } transition-all duration-500 bg-[#F2F0F0] z-50`}
+    >
       <div className="custom-container h-[70px] flex flex-row items-center justify-between">
         <div>
           <Link to="/">
