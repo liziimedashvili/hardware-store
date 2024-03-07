@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import CareerLogo from "../../assets/zoommercarrerlogo.png";
-import CareerPhoto from "../../assets/zoommerccareer.png";
+import CareerLogo from "../../assets/images/zoommercarrerlogo.png";
+import CareerPhoto from "../../assets/images/zoommerccareer.png";
 import { Link } from "react-router-dom";
 export default function Career() {
   return (

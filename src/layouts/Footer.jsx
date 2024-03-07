@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import facebook from "../assets/fb.svg";
-import instagram from "../assets/instagram.svg";
-import youtube from "../assets/youtube.svg";
-import tiktok from "../assets/tiktok.svg";
-import Phone from "../assets/header-phone.svg";
+import facebook from "../assets/icons/fb.svg";
+import instagram from "../assets/icons/instagram.svg";
+import youtube from "../assets/icons/youtube.svg";
+import tiktok from "../assets/icons/tiktok.svg";
+import Phone from "../assets/icons/header-phone.svg";
 import { Link } from "react-router-dom";
 export default function Footer() {
   return (

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import PhoneIcon from "../assets/header-phone.svg";
+import PhoneIcon from "../assets/icons/header-phone.svg";
 import { Link } from "react-router-dom";
 export default function Headline() {
   return (

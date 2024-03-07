@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import searchIcon from "../../assets/search-icon.svg";
+import searchIcon from "../../assets/icons/search-icon.svg";
 import { getProducts } from "../../services/services";
 
 export default function SearchBar() {

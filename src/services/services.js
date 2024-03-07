@@ -44,3 +44,11 @@ export const getFromPurchases = (data) => {
 export const addPurchases = (data) => {
   return api.post(`${baseURL}/purchases`, { ...data });
 };
+
+export const getUserinfo = () => {
+  return api.get(`${baseURL}/user/current-user`);
+};
+
+export const updateUserinfo = (userData) => {
+  return api.put(`${baseURL}/user`, userData);
+};

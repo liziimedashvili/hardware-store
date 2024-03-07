@@ -2,10 +2,10 @@
 /* eslint-disable react/no-children-prop */
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import MainLogo from "../assets/main-logo.svg";
-import Dots from "../assets/dots-logo.svg";
-import CartIcon from "../assets/header-cart.svg";
-import UserIcon from "../assets/user-icon.svg";
+import MainLogo from "../assets/icons/main-logo.svg";
+import Dots from "../assets/icons/dots-logo.svg";
+import CartIcon from "../assets/icons/header-cart.svg";
+import UserIcon from "../assets/icons/user-icon.svg";
 import Button from "../components/button/index";
 import Login from "../components/modals/Login";
 import Success from "../components/modals/Success";

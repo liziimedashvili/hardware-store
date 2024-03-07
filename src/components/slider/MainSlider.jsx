@@ -3,13 +3,13 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import main1 from "../../assets/main-logo1.webp";
-import main2 from "../../assets/main-logo2.webp";
-import main3 from "../../assets/main-logo3.webp";
-import main4 from "../../assets/main-logo4.webp";
-import main5 from "../../assets/main-logo5.webp";
-import leftSlider from "../../assets/slider-left-btn.svg";
-import rightSlider from "../../assets/slider-right-btn.svg";
+import main1 from "../../assets/images/main-logo1.webp";
+import main2 from "../../assets/images/main-logo2.webp";
+import main3 from "../../assets/images/main-logo3.webp";
+import main4 from "../../assets/images/main-logo4.webp";
+import main5 from "../../assets/images/main-logo5.webp";
+import leftSlider from "../../assets/icons/slider-left-btn.svg";
+import rightSlider from "../../assets/icons/slider-right-btn.svg";
 
 const SimpleSlider = () => {
   const sliderRef = useRef(null);

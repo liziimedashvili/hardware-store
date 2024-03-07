@@ -3,8 +3,8 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import Button from "../button/index";
-import CartIcon from "../../assets/header-cart.svg";
-import compereIcon from "../../assets/compare-card.svg";
+import CartIcon from "../../assets/icons/header-cart.svg";
+import compereIcon from "../../assets/icons/compare-card.svg";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 

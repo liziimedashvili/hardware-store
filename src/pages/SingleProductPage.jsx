@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { getProduct } from "../services/services";
-import compereIcon from "../assets/compare-card.svg";
+import compereIcon from "../assets/icons/compare-card.svg";
 import Button from "../components/button/index";
-import CartIcon from "../assets/header-cart.svg";
+import CartIcon from "../assets/icons/header-cart.svg";
 import { useCart } from "../context/CartContext";
 import { addProductToCart } from "../services/services";
 

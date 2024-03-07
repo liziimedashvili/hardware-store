@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import React from "react";
-import buy1 from "../../assets/1buy.png";
-import buy2 from "../../assets/2buy.png";
-import buy3 from "../../assets/3buy.png";
-import buy4 from "../../assets/4buy.png";
+import buy1 from "../../assets/images/1buy.png";
+import buy2 from "../../assets/images/2buy.png";
+import buy3 from "../../assets/images/3buy.png";
+import buy4 from "../../assets/images/4buy.png";
 
 export default function Installment() {
   return (

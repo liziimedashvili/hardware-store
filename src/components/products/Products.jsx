@@ -5,8 +5,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Product from "./Product";
 import { getProducts } from "../../services/services";
-import leftSliderImg from "../../assets/slider-left-btn.svg";
-import rightSliderImg from "../../assets/slider-right-btn.svg";
+import leftSliderImg from "../../assets/icons/slider-left-btn.svg";
+import rightSliderImg from "../../assets/icons/slider-right-btn.svg";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
