@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getFromPurchases } from "../services/services";
-import Partner from "../assets/images/partner.png";
-import Button from "../components/button";
+import { getFromPurchases } from "../../services/services";
+import Partner from "../../assets/images/partner.png";
+import Button from "../button";
 import { useNavigate } from "react-router-dom";
 export default function Purchase() {
   const [purchases, setPurchases] = useState([]);

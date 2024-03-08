@@ -22,9 +22,6 @@ export const getProduct = (productId, data) => {
 export const getCategories = (data) => {
   return api.get(`${baseURL}/product-category`, { ...data });
 };
-export const getCategory = (categoryId, data) => {
-  return api.get(`${baseURL}/product-category/${categoryId}`, { ...data });
-};
 
 export const addProductToCart = (data) => {
   return api.post(`${baseURL}/cart`, { ...data });
@@ -51,4 +48,11 @@ export const getUserinfo = () => {
 
 export const updateUserinfo = (userData) => {
   return api.put(`${baseURL}/user`, userData);
+};
+export const purchaseProducts = (data) => {
+  return api.post(`${baseURL}/purchases`, { ...data });
+};
+
+export const getPurchases = (data) => {
+  return api.get(`${baseURL}/purchases`, { ...data });
 };

@@ -14,7 +14,7 @@ import Cart from "./pages/Cart";
 import Navigation from "./pages/Navigation";
 import SingleProductPage from "./pages/SingleProductPage";
 import { CartProvider } from "./context/CartContext";
-import SingleCategoryPage from "./pages/SingleCategoryPage";
+import ProductsPage from "./pages/ProductsPage";
 import PaymentPage from "./pages/PaymentPage";
 
 export default function App() {
@@ -32,10 +32,7 @@ export default function App() {
           <Route path="/tradein" element={<TradeIn />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:productId" element={<SingleProductPage />} />
-          <Route
-            path="/category/:categoryId"
-            element={<SingleCategoryPage />}
-          />
+          <Route path="/products" element={<ProductsPage />} />
           <Route path="/navigation" element={<Navigation />} />
           <Route path="/payment" element={<PaymentPage />} />
         </Routes>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ProfileIcon from "../assets/icons/profile.svg";
 import ProfileSidebar from "../components/profileSidebar";
-import Profile from "./Profile";
-import Purchase from "./Purchase";
+import Profile from "../components/userInfo/Profile";
+import Purchase from "../components/userInfo/Purchase";
 import Logout from "./Logout";
 export default function ProfilePage() {
   const [selectedPage, setSelectedPage] = useState(null);

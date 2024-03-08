@@ -31,6 +31,7 @@ const Products = () => {
   const tabSliderRef = useRef(null);
   const audioSliderRef = useRef(null);
   const sliderSettings = {
+    arrows: false,
     dots: false,
     infinite: true,
     speed: 500,
@@ -44,7 +45,7 @@ const Products = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          dots: false,
         },
       },
       {
@@ -53,6 +54,7 @@ const Products = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           initialSlide: 1,
+          dots: false,
         },
       },
     ],
@@ -78,13 +80,13 @@ const Products = () => {
         <div className="relative">
           <div className="flex justify-end mb-3">
             <button
-              className="relative shadow-lg rounded-full"
+              className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-md"
               onClick={() => sliderRef.current.slickPrev()}
             >
               <img src={leftSliderImg} alt="Previous" />
             </button>
             <button
-              className="relative shadow-lg rounded-full"
+              className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-md"
               onClick={() => sliderRef.current.slickNext()}
             >
               <img src={rightSliderImg} alt="Next" />
@@ -108,13 +110,13 @@ const Products = () => {
           <div className="relative ">
             <div className="flex justify-end mb-3">
               <button
-                className="relative shadow-lg rounded-full"
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
                 onClick={() => saleSliderRef.current.slickPrev()}
               >
                 <img src={leftSliderImg} alt="Previous" />
               </button>
               <button
-                className="relative shadow-lg rounded-full"
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
                 onClick={() => saleSliderRef.current.slickNext()}
               >
                 <img src={rightSliderImg} alt="Next" />
@@ -140,13 +142,13 @@ const Products = () => {
         <div className="relative ">
           <div className="flex justify-end mb-3">
             <button
-              className="relative shadow-lg rounded-full"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
               onClick={() => smartphoneSliderRef.current.slickPrev()}
             >
               <img src={leftSliderImg} alt="Previous" />
             </button>
             <button
-              className="relative shadow-lg rounded-full"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
               onClick={() => smartphoneSliderRef.current.slickNext()}
             >
               <img src={rightSliderImg} alt="Next" />
@@ -161,18 +163,19 @@ const Products = () => {
           </div>
         </div>
       </section>
+
       <section className="mt-24">
         <h1 className="font-bold text-xl text-orange-600 mb-4">ტაბები</h1>
         <div className="relative ">
           <div className="flex justify-end mb-3">
             <button
-              className="relative shadow-lg rounded-full"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
               onClick={() => tabSliderRef.current.slickPrev()}
             >
               <img src={leftSliderImg} alt="Previous" />
             </button>
             <button
-              className="relative shadow-lg rounded-full"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
               onClick={() => tabSliderRef.current.slickNext()}
             >
               <img src={rightSliderImg} alt="Next" />
@@ -192,13 +195,13 @@ const Products = () => {
         <div className="relative ">
           <div className="flex justify-end mb-3">
             <button
-              className="relative shadow-lg rounded-full"
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
               onClick={() => audioSliderRef.current.slickPrev()}
             >
               <img src={leftSliderImg} alt="Previous" />
             </button>
             <button
-              className="relative shadow-lg rounded-full"
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
               onClick={() => audioSliderRef.current.slickNext()}
             >
               <img src={rightSliderImg} alt="Next" />

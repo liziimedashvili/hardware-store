@@ -1,9 +1,14 @@
+/* eslint-disable no-unused-vars */
 import Button from "../components/button/index";
 import EmptyCartIcon from "../assets/icons/emptybag.svg";
 import TrashIcon from "../assets/icons/bin.svg";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
-import { addProductToCart, deleteFromCart } from "../services/services";
+import {
+  addProductToCart,
+  deleteFromCart,
+  purchaseProducts,
+} from "../services/services";
 export default function Cart() {
   const { cartProducts, setCartProducts, removeFromCart } = useCart();
 
@@ -29,6 +34,18 @@ export default function Cart() {
       .catch((error) => {
         console.error(error);
       });
+  };
+  const handlePurchase = async () => {
+    try {
+      const response = await purchaseProducts({
+        totalPrice: calculateTotalPrice(),
+        totalItems: cartProducts.reduce((total, item) => total + item.count, 0),
+      });
+
+      navigate("/payment");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const decreaseQuantity = async (productId) => {
@@ -125,7 +142,7 @@ export default function Cart() {
             <div>
               <Button
                 className="w-full bg-orange-600 text-white px-[10px] py-2 rounded-[4px] font-bold text-sm leading-5"
-                onClick={() => navigate(`/payment`)}
+                onClick={handlePurchase}
               >
                 ყიდვა
               </Button>

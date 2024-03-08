@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import Button from "../components/button";
+import { getPurchases } from "../services/services";
 
 export default function PaymentPage() {
   const [cardNumber, setCardNumber] = useState("");
@@ -67,7 +68,7 @@ export default function PaymentPage() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (cardNumber.length !== 16) {
       setCardNumberError("Card number must be 16 digits");
       return;
@@ -89,150 +90,167 @@ export default function PaymentPage() {
       return;
     }
 
-    setCardNumber("");
-    setCardHolder("");
-    setExpiryMonth("");
-    setExpiryYear("");
-    setCvc("");
-
     setCardNumberError("");
     setCardHolderError("");
     setExpiryMonthError("");
     setExpiryYearError("");
     setCvcError("");
+    try {
+      const response = await getPurchases();
 
-    setSuccessMessage("You bought successfully!");
+      console.log("Purchase data:", response.data);
 
+      setSuccessMessage("You bought successfully!");
+
+      // Clear form fields
+      setCardNumber("");
+      setCardHolder("");
+      setExpiryMonth("");
+      setExpiryYear("");
+      setCvc("");
+      setSuccessMessage("You bought successfully!");
+    } catch (error) {
+      console.error("Error processing payment:", error);
+      // Handle error scenario
+      setErrorMessage(
+        "An error occurred while processing your payment. Please try again later."
+      );
+    }
     setTimeout(() => {
       setSuccessMessage("");
     }, 3000);
   };
-
   return (
-    <div className="custom-container mx-auto mt-8">
-      <h1 className="text-2xl font-bold text-orange-600 border-b border-gray-200 pb-2 mb-4">
-        გადაიხადე აქ
-      </h1>
-      <div className="max-w-md mx-auto bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div className="text-center">
-          <span className="text-white font-serif font-bold text-xl">VISA</span>
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-white text-sm font-bold mb-2"
-            htmlFor="cardNumber"
-          >
-            Card Number
-          </label>
-          <input
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
-              cardNumberError ? "border-red-500" : ""
-            }`}
-            id="cardNumber"
-            type="text"
-            placeholder="XXXX XXXX XXXX XXXX"
-            value={cardNumber}
-            onChange={handleCardNumberChange}
-          />
-          {cardNumberError && (
-            <p className="text-red-500 text-xs italic">{cardNumberError}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-white text-sm font-bold mb-2"
-            htmlFor="cardHolder"
-          >
-            Cardholder Name
-          </label>
-          <input
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
-              cardHolderError ? "border-red-500" : ""
-            }`}
-            id="cardHolder"
-            type="text"
-            placeholder="Full Name"
-            value={cardHolder}
-            onChange={handleCardHolderChange}
-          />
-          {cardHolderError && (
-            <p className="text-red-500 text-xs italic">{cardHolderError}</p>
-          )}
-        </div>
-        <div className="flex">
-          <div className="w-1/2 mr-2">
+    <div className="custom-container">
+      <div className="mt-10">
+        <h1 className="text-2xl font-bold text-orange-600 border-b border-gray-200 pb-2 mb-4">
+          გადაიხადე აქ
+        </h1>
+        <div className="max-w-md mx-auto bg-black shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div className="text-center">
+            <span className="text-white font-serif font-bold text-xl">
+              VISA
+            </span>
+          </div>
+          <div className="mb-4">
             <label
               className="block text-white text-sm font-bold mb-2"
-              htmlFor="expiryMonth"
+              htmlFor="cardNumber"
             >
-              Expiry Month
+              Card Number
             </label>
             <input
               className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
-                expiryMonthError ? "border-red-500" : ""
+                cardNumberError ? "border-red-500" : ""
               }`}
-              id="expiryMonth"
+              id="cardNumber"
               type="text"
-              placeholder="MM"
-              value={expiryMonth}
-              onChange={handleExpiryMonthChange}
+              placeholder="XXXX XXXX XXXX XXXX"
+              value={cardNumber}
+              onChange={handleCardNumberChange}
             />
-            {expiryMonthError && (
-              <p className="text-red-500 text-xs italic">{expiryMonthError}</p>
+            {cardNumberError && (
+              <p className="text-red-500 text-xs italic">{cardNumberError}</p>
             )}
           </div>
-          <div className="w-1/2 ml-2">
+          <div className="mb-4">
             <label
               className="block text-white text-sm font-bold mb-2"
-              htmlFor="expiryYear"
+              htmlFor="cardHolder"
             >
-              Expiry Year
+              Cardholder Name
             </label>
             <input
               className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
-                expiryYearError ? "border-red-500" : ""
+                cardHolderError ? "border-red-500" : ""
               }`}
-              id="expiryYear"
+              id="cardHolder"
               type="text"
-              placeholder="YY"
-              value={expiryYear}
-              onChange={handleExpiryYearChange}
+              placeholder="Full Name"
+              value={cardHolder}
+              onChange={handleCardHolderChange}
             />
-            {expiryYearError && (
-              <p className="text-red-500 text-xs italic">{expiryYearError}</p>
+            {cardHolderError && (
+              <p className="text-red-500 text-xs italic">{cardHolderError}</p>
             )}
           </div>
-        </div>
-        <div className="mb-4 mt-4">
-          <label
-            className="block text-white text-sm font-bold mb-2"
-            htmlFor="cvc"
-          >
-            CVC
-          </label>
-          <input
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
-              cvcError ? "border-red-500" : ""
-            }`}
-            id="cvc"
-            type="text"
-            placeholder="XXX"
-            value={cvc}
-            onChange={handleCvcChange}
-          />
-          {cvcError && (
-            <p className="text-red-500 text-xs italic">{cvcError}</p>
+          <div className="flex">
+            <div className="w-1/2 mr-2">
+              <label
+                className="block text-white text-sm font-bold mb-2"
+                htmlFor="expiryMonth"
+              >
+                Expiry Month
+              </label>
+              <input
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
+                  expiryMonthError ? "border-red-500" : ""
+                }`}
+                id="expiryMonth"
+                type="text"
+                placeholder="MM"
+                value={expiryMonth}
+                onChange={handleExpiryMonthChange}
+              />
+              {expiryMonthError && (
+                <p className="text-red-500 text-xs italic">
+                  {expiryMonthError}
+                </p>
+              )}
+            </div>
+            <div className="w-1/2 ml-2">
+              <label
+                className="block text-white text-sm font-bold mb-2"
+                htmlFor="expiryYear"
+              >
+                Expiry Year
+              </label>
+              <input
+                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
+                  expiryYearError ? "border-red-500" : ""
+                }`}
+                id="expiryYear"
+                type="text"
+                placeholder="YY"
+                value={expiryYear}
+                onChange={handleExpiryYearChange}
+              />
+              {expiryYearError && (
+                <p className="text-red-500 text-xs italic">{expiryYearError}</p>
+              )}
+            </div>
+          </div>
+          <div className="mb-4 mt-4">
+            <label
+              className="block text-white text-sm font-bold mb-2"
+              htmlFor="cvc"
+            >
+              CVC
+            </label>
+            <input
+              className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline ${
+                cvcError ? "border-red-500" : ""
+              }`}
+              id="cvc"
+              type="text"
+              placeholder="XXX"
+              value={cvc}
+              onChange={handleCvcChange}
+            />
+            {cvcError && (
+              <p className="text-red-500 text-xs italic">{cvcError}</p>
+            )}
+          </div>
+          {successMessage && (
+            <p className="text-green-500 text-sm font-bold">{successMessage}</p>
           )}
+          <Button
+            className="bg-[#1f2028] hover:bg-gray-700 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={handleSubmit}
+          >
+            გადახდა
+          </Button>
         </div>
-        {successMessage && (
-          <p className="text-green-500 text-sm font-bold">{successMessage}</p>
-        )}
-        <Button
-          className="bg-[#1f2028] hover:bg-gray-700 w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          onClick={handleSubmit}
-        >
-          გადახდა
-        </Button>
       </div>
     </div>
   );
