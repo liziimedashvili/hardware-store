@@ -3,7 +3,7 @@
 import { getUserinfo, updateUserinfo } from "../../services/services";
 import { useState, useEffect } from "react";
 import Button from "../button";
-
+import ProfilePhoto from "../../assets/images/partner.png";
 export default function Profile() {
   const [userInfo, setUserInfo] = useState({
     first_name: "",
@@ -83,6 +83,9 @@ export default function Profile() {
             className="text-white bg-orange-600 w-full p-[13px] rounded-[13px]"
           />
         </form>
+      </div>
+      <div>
+        <img src={ProfilePhoto} width={350} />
       </div>
     </div>
   );

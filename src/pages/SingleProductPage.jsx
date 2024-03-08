@@ -2,12 +2,11 @@
 /* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { getProduct } from "../services/services";
+import { getProduct, purchaseProducts } from "../services/services";
 import compereIcon from "../assets/icons/compare-card.svg";
 import Button from "../components/button/index";
 import CartIcon from "../assets/icons/header-cart.svg";
 import { useCart } from "../context/CartContext";
-import { addProductToCart } from "../services/services";
 
 export default function SingleProductPage() {
   const { productId } = useParams();
@@ -23,6 +22,7 @@ export default function SingleProductPage() {
       console.error("Error fetching data:", error);
     }
   };
+
   useEffect(() => {
     fetchData(productId);
   }, [productId]);
@@ -43,14 +43,25 @@ export default function SingleProductPage() {
     const { id } = productData;
 
     try {
-      addProductToCart({ product_id: id });
       addToCart(productData);
     } catch (error) {
       console.error(error);
     }
   };
-  const handlePaymentClick = () => {
-    navigate(`/payment`);
+
+  const handlePurchase = async () => {
+    try {
+      await purchaseProducts({
+        totalPrice: productData.salePrice
+          ? productData.salePrice
+          : productData.price,
+        totalItems: 1,
+      });
+
+      navigate("/payment");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -103,7 +114,7 @@ export default function SingleProductPage() {
                   <Button
                     children="ყიდვა"
                     className="w-full bg-orange-600 text-white px-[10px] py-2 rounded-[4px] font-bold text-sm leading-5"
-                    onClick={handlePaymentClick}
+                    onClick={handlePurchase}
                   />
                 </div>
                 <div className="flex flex-row  gap-[10px]">

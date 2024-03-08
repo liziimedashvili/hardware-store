@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProfileIcon from "../assets/icons/profile.svg";
 import ProfileSidebar from "../components/profileSidebar";
 import Profile from "../components/userInfo/Profile";
 import Purchase from "../components/userInfo/Purchase";
 import Logout from "./Logout";
 export default function ProfilePage() {
-  const [selectedPage, setSelectedPage] = useState(null);
+  const [selectedPage, setSelectedPage] = useState(
+    localStorage.getItem("selectedPage") || null
+  );
 
+  useEffect(() => {
+    localStorage.setItem("selectedPage", selectedPage);
+  }, [selectedPage]);
   return (
     <div className="custom-container">
       <div className="mt-10 flex flex-col">

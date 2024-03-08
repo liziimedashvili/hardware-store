@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getFromPurchases } from "../../services/services";
-import Partner from "../../assets/images/partner.png";
 import Button from "../button";
 import { useNavigate } from "react-router-dom";
 export default function Purchase() {
@@ -28,11 +27,8 @@ export default function Purchase() {
         მიმდინარე შეკვეთები
       </h2>
 
-      <div className="flex items-center gap-24">
-        <div>
-          <img src={Partner} className="w-72 h-72" />
-        </div>
-        <div className="flex flex-col gap-[40px]">
+      <div className="flex items-center  gap-4 mt-5">
+        <div className="flex flex-wrap gap-[40px]">
           {purchases.map((purchase) => (
             <div key={purchase.id} className="bg-white font-bold text-lg ">
               <p>
