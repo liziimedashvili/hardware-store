@@ -11,7 +11,7 @@ import { useCart } from "../context/CartContext";
 export default function SingleProductPage() {
   const { productId } = useParams();
   const [productData, setProductData] = useState(null);
-  const { addToCart, cartProducts } = useCart();
+  const { addToCart } = useCart();
   const navigate = useNavigate();
 
   const fetchData = async (productId) => {
@@ -36,18 +36,6 @@ export default function SingleProductPage() {
     },
     { label: productData?.title || "Product title" },
   ];
-
-  const handleAddToCart = (e) => {
-    e.preventDefault();
-
-    const { id } = productData;
-
-    try {
-      addToCart(productData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const handlePurchase = async () => {
     try {
@@ -133,7 +121,7 @@ export default function SingleProductPage() {
                         alt="Cart Icon"
                       />
                     }
-                    onClick={(e) => handleAddToCart(e)}
+                    onClick={() => addToCart(productData)}
                   />
                 </div>
               </div>
