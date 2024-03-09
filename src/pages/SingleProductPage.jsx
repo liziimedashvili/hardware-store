@@ -2,22 +2,37 @@
 /* eslint-disable react/no-children-prop */
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { getProduct, purchaseProducts } from "../services/services";
+import {
+  getProduct,
+  purchaseProducts,
+  getProductsByCategory,
+} from "../services/services";
 import compereIcon from "../assets/icons/compare-card.svg";
 import Button from "../components/button/index";
 import CartIcon from "../assets/icons/header-cart.svg";
 import { useCart } from "../context/CartContext";
+import SimilarProductsSlider from "../components/slider/SimilarProductsSlider";
 
 export default function SingleProductPage() {
   const { productId } = useParams();
   const [productData, setProductData] = useState(null);
   const { addToCart } = useCart();
   const navigate = useNavigate();
+  const [similarProducts, setSimilarProducts] = useState([]);
 
   const fetchData = async (productId) => {
     try {
       const response = await getProduct(productId);
       setProductData(response.data);
+      const similarResponse = await getProductsByCategory({
+        categoryName: response.data.category_name,
+        data: {},
+      });
+
+      const filteredSimilarProducts = similarResponse.data.products.filter(
+        (product) => product.id !== productId
+      );
+      setSimilarProducts(filteredSimilarProducts);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -33,6 +48,7 @@ export default function SingleProductPage() {
       label: productData?.category_name
         ? productData.category_name + " >"
         : "product category",
+      path: "/products",
     },
     { label: productData?.title || "Product title" },
   ];
@@ -87,7 +103,7 @@ export default function SingleProductPage() {
                 <p className="text-black mt-2 text-lg font-bold ">
                   {productData.salePrice ? (
                     <>
-                      <span className="line-through mr-2">
+                      <span className="line-through mr-2 text-orange-500">
                         ₾{productData.price}
                       </span>{" "}
                       ₾{productData.salePrice}
@@ -131,6 +147,16 @@ export default function SingleProductPage() {
           <div>Loading...</div>
         )}
       </div>
+      {similarProducts.length > 0 && (
+        <div className="mt-10">
+          <h3 className=" text-xl text-orange-600 font-bold">
+            მსგავსი პროდუქტები{" "}
+          </h3>
+          <div className="similar-products">
+            <SimilarProductsSlider similarProducts={similarProducts} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
