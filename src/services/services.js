@@ -53,6 +53,11 @@ export const getUserinfo = () => {
 export const updateUserinfo = (userData) => {
   return api.put(`${baseURL}/user`, userData);
 };
+
+// export const refreshAccessToken = (userData) => {
+//   return api.post(`${baseURL}/auth/update-tokens`, userData);
+// };
+
 export const purchaseProducts = (data) => {
   return api.post(`${baseURL}/purchases`, { ...data });
 };

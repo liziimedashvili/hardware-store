@@ -94,8 +94,8 @@ export default function Header() {
                 className="gap-[10px]"
                 icon={<img src={CartIcon} alt="Cart Icon" />}
               />
-              <span className=" text-white rounded-full text-sm absolute top-[43px] bg-orange-600 right-[395px] w-5 h-5 flex items-center justify-center">
-                {cartProducts.length}
+              <span className=" text-white rounded-full text-sm absolute top-[10px] bg-orange-600 right-[395px] w-[22px] h-5 flex items-center justify-center">
+                {cartProducts.reduce((total, item) => total + item.count, 0)}
               </span>
             </div>
           </Link>

@@ -1,9 +1,10 @@
 /* eslint-disable react/no-children-prop */
 /* eslint-disable no-unused-vars */
-import { getUserinfo, updateUserinfo } from "../../services/services";
 import { useState, useEffect } from "react";
 import Button from "../button";
 import ProfilePhoto from "../../assets/images/partner.png";
+import { getUserinfo, updateUserinfo } from "../../services/services";
+
 export default function Profile() {
   const [userInfo, setUserInfo] = useState({
     first_name: "",

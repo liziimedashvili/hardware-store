@@ -2,5 +2,9 @@
 import React from "react";
 
 export default function ProductsPage() {
-  return <div>Page</div>;
+  return (
+    <div className="custom-container">
+      <h1>lika debilia</h1>
+    </div>
+  );
 }

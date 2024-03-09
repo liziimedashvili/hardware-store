@@ -27,7 +27,7 @@ export default function SearchBar() {
 
   const fetchData = async (query) => {
     try {
-      const response = await getProducts({ search: query });
+      const response = await getProducts({ search: query }, false);
       setSearchResults(response.data.products);
 
       const filteredResults = response.data.products.filter((product) =>
