@@ -9,13 +9,12 @@ export const login = (data) => {
 export const registration = (data) => {
   return api.post(`${baseURL}/auth/register`, { ...data });
 };
-export const getProducts = (query) => {
-  return api.get(`${baseURL}/product`, {
-    params: {
-      search: query,
-    },
+export const getProducts = (data, onlySales) => {
+  return api.get(`${baseURL}/product?onlySales=${onlySales}`, {
+    ...data,
   });
 };
+
 export const getProduct = (productId, data) => {
   return api.get(`${baseURL}/product/${productId}`, { ...data });
 };

@@ -27,7 +27,9 @@ export default function SearchBar() {
 
   const fetchData = async (query) => {
     try {
-      const response = await getProducts();
+      const response = await getProducts({ search: query });
+      setSearchResults(response.data.products);
+
       const filteredResults = response.data.products.filter((product) =>
         product.title.toLowerCase().includes(query.toLowerCase())
       );
