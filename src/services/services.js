@@ -15,7 +15,7 @@ export const getProducts = (data, onlySales) => {
   });
 };
 
-export const getProductsByCategory = ({ categoryName, data }) => {
+export const getProductsByCategory = (categoryName, data) => {
   return api.get(`${baseURL}/product?categoryName=${categoryName}`, data);
 };
 
@@ -54,9 +54,9 @@ export const updateUserinfo = (userData) => {
   return api.put(`${baseURL}/user`, userData);
 };
 
-// export const refreshAccessToken = (userData) => {
-//   return api.post(`${baseURL}/auth/update-tokens`, userData);
-// };
+export const refreshAccessToken = (data) => {
+  return api.post(`${baseURL}/auth/update-tokens`, { ...data });
+};
 
 export const purchaseProducts = (data) => {
   return api.post(`${baseURL}/purchases`, { ...data });

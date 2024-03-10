@@ -1,23 +1,10 @@
 import axios from "axios";
+import { refreshAccessToken } from "../services/services";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
-const refreshAccessToken = async () => {
-  try {
-    const response = await axios.post("/auth/update-tokens", {
-      refreshToken: localStorage.getItem("refreshToken"),
-    });
-
-    localStorage.setItem("accessToken", response.data.accessToken);
-
-    return response.data.accessToken;
-  } catch (error) {
-    console.error("Token refresh failed", error);
-    throw error;
-  }
-};
 api.interceptors.request.use(
   async (config) => {
     const accessToken = localStorage.getItem("accessToken");
@@ -25,7 +12,6 @@ api.interceptors.request.use(
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
-
     return config;
   },
   (error) => {
@@ -36,18 +22,22 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalRequest = error.config;
-
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (error.response && error.response.status === 401) {
       try {
-        const accessToken = await refreshAccessToken();
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+        const newAccessToken = await refreshAccessToken({
+          refresh_token: refreshToken,
+        });
+        const { access_token, refresh_token } = newAccessToken.data;
 
-        return axios(originalRequest);
-      } catch (error) {
-        return Promise.reject(error);
+        localStorage.setItem("accessToken", access_token);
+        localStorage.setItem("refreshToken", refresh_token);
+
+        error.config.headers["Authorization"] = `Bearer ${access_token}`;
+
+        return api(error.config);
+      } catch (refreshError) {
+        console.error(refreshError);
       }
     }
     return Promise.reject(error);
