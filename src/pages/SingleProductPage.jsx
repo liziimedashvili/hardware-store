@@ -7,13 +7,13 @@ import {
   purchaseProducts,
   getProducts,
 } from "../services/services";
-import compereIcon from "../assets/icons/compare-card.svg";
 import Button from "../components/button/index";
 import CartIcon from "../assets/icons/header-cart.svg";
 import { useCart } from "../context/CartContext";
 import LoginModal from "../components/modals/Login";
 import SimilarProductsSlider from "../components/slider/SimilarProductsSlider";
-
+import { useWishlist } from "../context/LikedProductsContext";
+import LikeIcon from "../components/icons/LikeIcon";
 export default function SingleProductPage() {
   const { productId } = useParams();
   const [productData, setProductData] = useState(null);
@@ -23,6 +23,10 @@ export default function SingleProductPage() {
   const [categoryName, setCategoryName] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
   const isAuthenticated = localStorage.getItem("accessToken");
+  const { addToWishlist, likedProducts, removeLikedProduct } = useWishlist();
+  const isLiked =
+    productData && likedProducts.some((item) => item.id === productData.id);
+
   const fetchData = async (productId) => {
     try {
       const response = await getProduct(productId);
@@ -68,6 +72,13 @@ export default function SingleProductPage() {
       console.error(error);
     }
   };
+  const handleLikeClick = () => {
+    if (isLiked) {
+      removeLikedProduct(productData.likedProducts.id);
+    } else {
+      addToWishlist(productData);
+    }
+  };
 
   return (
     <div className="custom-container">
@@ -83,8 +94,12 @@ export default function SingleProductPage() {
         </nav>
 
         {productData ? (
-          <div className="flex flex-row justify-between p-6">
+          <div className="flex flex-row justify-between p-6 items-center">
             <div className=" flex flex-col gap-2 w-[400px] cursor-pointer rounded-md h-[400px] items-start justify-between bg-white mr">
+              <div className="relative m-2" style={{ left: 250, top: 70 }}>
+                <LikeIcon filled={isLiked} />
+              </div>
+
               <div className="rounded-lg bg-white overflow-hidden mt-16  flex items-center">
                 <img
                   src={productData.image}
@@ -122,25 +137,20 @@ export default function SingleProductPage() {
                     onClick={handlePurchase}
                   />
                 </div>
-                <div className="flex flex-row  gap-[10px]">
-                  <div className="bg-[#f2f2f2] h-11 p-[14px] rounded-[4px] w-full flex flex-row items-center justify-around text-gray-600">
-                    <img src={compereIcon} alt="Compare Icon" />
-                    <p>შედარება</p>
-                  </div>
-                  <Button
-                    children="დამატება"
-                    className="bg-[#f4855d] text-black px-[10px] py-2 rounded-[4px] w-full font-bold text-sm leading-5 gap-1 "
-                    icon={
-                      <img
-                        src={CartIcon}
-                        width={14}
-                        height={14}
-                        alt="Cart Icon"
-                      />
-                    }
-                    onClick={() => addToCart(productData)}
-                  />
-                </div>
+
+                <Button
+                  children="დამატება"
+                  className="bg-[#f4855d] text-black px-[10px] py-3 rounded-[4px] w-full font-bold text-sm leading-5 gap-1 "
+                  icon={
+                    <img
+                      src={CartIcon}
+                      width={14}
+                      height={14}
+                      alt="Cart Icon"
+                    />
+                  }
+                  onClick={() => addToCart(productData)}
+                />
               </div>
             </div>
           </div>

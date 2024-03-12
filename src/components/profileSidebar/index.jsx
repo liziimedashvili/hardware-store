@@ -27,6 +27,14 @@ const ProfileSidebar = ({ onItemClick }) => {
           შეკვეთები
         </li>
         <li
+          onClick={() => handleItemClick("Wishlist")}
+          style={{
+            fontWeight: selectedItem === "Wishlist" ? "bold" : "normal",
+          }}
+        >
+          ვიშლისტი
+        </li>
+        <li
           onClick={() => handleItemClick("Logout")}
           style={{ fontWeight: selectedItem === "Logout" ? "bold" : "normal" }}
         >

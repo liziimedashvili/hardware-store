@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-// CartContext.jsx
+
 import React, { createContext, useContext, useEffect, useState } from "react";
 import {
   getFromCart,
@@ -55,7 +55,7 @@ export const CartProvider = ({ children }) => {
       })
       .catch((error) => {
         setError(error);
-        toast.error("გაიარეთ რეგისტრაცია, ან ავტორიზაცია", {
+        toast.error("მოხდა შეცდომა", {
           position: "top-right",
         });
       })

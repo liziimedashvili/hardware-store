@@ -4,6 +4,7 @@ import ProfileSidebar from "../components/profileSidebar";
 import Profile from "../components/userInfo/Profile";
 import Purchase from "../components/userInfo/Purchase";
 import Logout from "./Logout";
+import WishList from "../components/userInfo/WishList";
 export default function ProfilePage() {
   const [selectedPage, setSelectedPage] = useState(
     localStorage.getItem("selectedPage") || null
@@ -26,6 +27,7 @@ export default function ProfilePage() {
           <div className="w-full h-full">
             {selectedPage === "Profile" && <Profile />}
             {selectedPage === "Purchase" && <Purchase />}
+            {selectedPage === "Wishlist" && <WishList />}
             {selectedPage === "Logout" && <Logout />}
           </div>
         </div>
