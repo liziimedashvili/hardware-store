@@ -5,12 +5,13 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   getProduct,
   purchaseProducts,
-  getProductsByCategory,
+  getProducts,
 } from "../services/services";
 import compereIcon from "../assets/icons/compare-card.svg";
 import Button from "../components/button/index";
 import CartIcon from "../assets/icons/header-cart.svg";
 import { useCart } from "../context/CartContext";
+import LoginModal from "../components/modals/Login";
 import SimilarProductsSlider from "../components/slider/SimilarProductsSlider";
 
 export default function SingleProductPage() {
@@ -19,12 +20,15 @@ export default function SingleProductPage() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
   const [similarProducts, setSimilarProducts] = useState([]);
-
+  const [categoryName, setCategoryName] = useState("");
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const isAuthenticated = localStorage.getItem("accessToken");
   const fetchData = async (productId) => {
     try {
       const response = await getProduct(productId);
       setProductData(response.data);
-      const similarResponse = await getProductsByCategory({
+      setCategoryName(response.data.category_name);
+      const similarResponse = await getProducts({
         categoryName: response.data.category_name,
         data: {},
       });
@@ -45,24 +49,21 @@ export default function SingleProductPage() {
   const breadcrumbs = [
     { label: "მთავარი >", path: "/" },
     {
-      label: productData?.category_name
-        ? productData.category_name + " >"
-        : "product category",
-      path: "/products",
+      label: categoryName ? categoryName : "product category",
+      path: `/products?categoryName=${categoryName}`,
     },
     { label: productData?.title || "Product title" },
   ];
 
   const handlePurchase = async () => {
     try {
-      await purchaseProducts({
-        totalPrice: productData.salePrice
-          ? productData.salePrice
-          : productData.price,
-        totalItems: 1,
-      });
+      if (!isAuthenticated) {
+        setShowLoginModal(true);
 
-      navigate("/payment");
+        return;
+      }
+
+      navigate(`/payment`, { state: { productData } });
     } catch (error) {
       console.error(error);
     }
@@ -91,7 +92,7 @@ export default function SingleProductPage() {
                   alt={productData.title}
                 />
               </div>
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-start ">
                 <h2 className="font-bold text-2xl ">{productData.title}</h2>
                 <p className="text-sm text-gray-700 mt-2 ">
                   {productData.description}
@@ -100,7 +101,7 @@ export default function SingleProductPage() {
             </div>
             <div className="flex flex-col w-[350px] p-6">
               <div>
-                <p className="text-black mt-2 text-lg font-bold ">
+                <p className="text-black  mt-2 text-lg font-bold ">
                   {productData.salePrice ? (
                     <>
                       <span className="line-through mr-2 text-orange-500">
@@ -156,6 +157,12 @@ export default function SingleProductPage() {
             <SimilarProductsSlider similarProducts={similarProducts} />
           </div>
         </div>
+      )}
+      {showLoginModal && (
+        <LoginModal
+          showModal={showLoginModal}
+          handleClose={() => setShowLoginModal(false)}
+        />
       )}
     </div>
   );
