@@ -18,11 +18,11 @@ export default function Categories() {
     fetchCategories();
   }, []);
   const handleSelectCategory = async (categoryName) => {
-    navigate(`/products?category=${categoryName}`);
+    navigate(`/products?categoryName=${categoryName}`);
   };
   return (
     <div className="mt-[50px] mb-11">
-      <div className="flex flex-col bg-white shadow-xl rounded-lg w-[240px]">
+      <div className="flex flex-col bg-white shadow-xl rounded-lg w-[240px] ">
         {categories.map((category) => (
           <Category
             key={category.id}

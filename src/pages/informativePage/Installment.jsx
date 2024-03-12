@@ -18,7 +18,7 @@ export default function Installment() {
         როგორ შევიძინოთ ტექნიკა ონლაინ განვადებით ზუმერში?
       </h3>
       <div className="flex items-center flex-col justify-between gap-4">
-        <span className="font-bold text-sm">
+        <span className="font-bold text-sm ">
           ზუმერის ქსელში შეგიძლიათ ისარგებლოთ თიბისი ბანკის, საქართველოს ბანკის,
           კრედო ბანკისა და სფეის QR-ის ონლაინ განვადებით.
         </span>

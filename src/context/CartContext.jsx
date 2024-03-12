@@ -19,17 +19,24 @@ export const CartProvider = ({ children }) => {
   const fetchCartItems = () => {
     setLoading(true);
 
-    getFromCart()
-      .then((response) => {
-        setCartProducts(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching cart items:", error);
-        setError(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const isAuthorized = localStorage.getItem("accessToken");
+    if (isAuthorized) {
+      getFromCart()
+        .then((response) => {
+          setCartProducts(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching cart items:", error);
+          setError(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+      console.log("User is unauthorized");
+      setCartProducts([]);
+    }
   };
 
   useEffect(() => {
@@ -48,7 +55,7 @@ export const CartProvider = ({ children }) => {
       })
       .catch((error) => {
         setError(error);
-        toast.error("მოხდა შეცდომა", {
+        toast.error("გაიარეთ რეგისტრაცია, ან ავტორიზაცია", {
           position: "top-right",
         });
       })

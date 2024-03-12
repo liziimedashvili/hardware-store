@@ -9,14 +9,8 @@ export const login = (data) => {
 export const registration = (data) => {
   return api.post(`${baseURL}/auth/register`, { ...data });
 };
-export const getProducts = (data, onlySales) => {
-  return api.get(`${baseURL}/product?onlySales=${onlySales}`, {
-    ...data,
-  });
-};
-
-export const getProductsByCategory = (categoryName, data) => {
-  return api.get(`${baseURL}/product?categoryName=${categoryName}`, data);
+export const getProducts = (params) => {
+  return api.get("/product", { params });
 };
 
 export const getProduct = (productId, data) => {
@@ -64,4 +58,15 @@ export const purchaseProducts = (data) => {
 
 export const getPurchases = (data) => {
   return api.get(`${baseURL}/purchases`, { ...data });
+};
+export const getLikedProducts = (data) => {
+  return api.get(`${baseURL}/liked-products`, { ...data });
+};
+
+export const addProductToLiked = (data) => {
+  return api.post(`${baseURL}/liked-products`, { ...data });
+};
+
+export const removeProductFromLiked = (productId, data) => {
+  return api.delete(`${baseURL}/liked-products/${productId}`, { ...data });
 };

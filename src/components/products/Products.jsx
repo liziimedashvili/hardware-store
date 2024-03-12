@@ -7,29 +7,42 @@ import Product from "./Product";
 import { getProducts } from "../../services/services";
 import leftSliderImg from "../../assets/icons/slider-left-btn.svg";
 import rightSliderImg from "../../assets/icons/slider-right-btn.svg";
+import SaleProducts from "../slider/SaledProducts";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [smartphoneProducts, setSmartphoneProducts] = useState([]);
+  const [audioProducts, setAudioProducts] = useState([]);
+  const [tabletProducts, setTabletProducts] = useState([]);
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (categoryName) => {
     try {
-      const response = await getProducts();
+      const response = await getProducts({ categoryName });
       if (response.data.products) {
-        setProducts(response.data.products);
+        switch (categoryName) {
+          case "სმარტფონები":
+            setSmartphoneProducts(response.data.products);
+            break;
+          case "აუდიო":
+            setAudioProducts(response.data.products);
+            break;
+          case "ტაბები":
+            setTabletProducts(response.data.products);
+            break;
+          default:
+            break;
+        }
       }
     } catch (error) {
       console.error(error);
     }
   };
+
   useEffect(() => {
-    fetchProducts();
+    fetchProducts("სმარტფონები");
+    fetchProducts("აუდიო");
+    fetchProducts("ტაბები");
   }, []);
 
-  const sliderRef = useRef(null);
-  const saleSliderRef = useRef(null);
-  const smartphoneSliderRef = useRef(null);
-  const tabSliderRef = useRef(null);
-  const audioSliderRef = useRef(null);
   const sliderSettings = {
     arrows: false,
     dots: false,
@@ -60,160 +73,94 @@ const Products = () => {
     ],
   };
 
-  const saleProducts = products.filter((product) => product.salePrice);
-  const smartphoneProducts = products.filter(
-    (product) => product.category_name === "სმარტფონები"
-  );
-  const tabProducts = products.filter(
-    (product) => product.category_name === "ტაბები"
-  );
-  const audioProducts = products.filter(
-    (product) => product.category_name === "აუდიო"
-  );
+  const sliderRef = useRef(null);
+  const audioSliderRef = useRef(null);
+  const tabletSliderRef = useRef(null);
+
+  const handlePrevious = (sliderRef) => {
+    sliderRef.current.slickPrev();
+  };
+
+  const handleNext = (sliderRef) => {
+    sliderRef.current.slickNext();
+  };
 
   return (
     <div className="mt-[100px]">
-      <section>
-        <h1 className="font-bold text-xl text-orange-600 mb-4">
-          ყველა პროდუქტი
-        </h1>
-        <div className="relative">
-          <div className="flex justify-end mb-3">
-            <button
-              className="absolute top-1/2 left-0 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-md"
-              onClick={() => sliderRef.current.slickPrev()}
-            >
-              <img src={leftSliderImg} alt="Previous" />
-            </button>
-            <button
-              className="absolute top-1/2 right-0 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-md"
-              onClick={() => sliderRef.current.slickNext()}
-            >
-              <img src={rightSliderImg} alt="Next" />
-            </button>
-          </div>
-          <div>
-            <Slider ref={sliderRef} {...sliderSettings}>
-              {products.map((product) => (
-                <Product key={product.id} product={product} />
-              ))}
-            </Slider>
-          </div>
-        </div>
-      </section>
-
-      {saleProducts.length > 0 && (
-        <section className="mt-24">
-          <h1 className="font-bold text-xl text-orange-600 mb-4">
-            ფასდაკლებული პროდუქტები
-          </h1>
-          <div className="relative ">
-            <div className="flex justify-end mb-3">
-              <button
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
-                onClick={() => saleSliderRef.current.slickPrev()}
-              >
-                <img src={leftSliderImg} alt="Previous" />
-              </button>
-              <button
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
-                onClick={() => saleSliderRef.current.slickNext()}
-              >
-                <img src={rightSliderImg} alt="Next" />
-              </button>
-            </div>
-            <div>
-              <Slider ref={saleSliderRef} {...sliderSettings}>
-                {saleProducts.map((product) => (
-                  <Product
-                    key={product.id}
-                    product={product}
-                    showDescription={false}
-                  />
-                ))}
-              </Slider>
-            </div>
-          </div>
-        </section>
-      )}
+      <SaleProducts onlySales={true} />
 
       <section className="mt-24">
         <h1 className="font-bold text-xl text-orange-600 mb-4">სმარტფონები</h1>
-        <div className="relative ">
+        <div className="relative">
           <div className="flex justify-end mb-3">
             <button
               className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
-              onClick={() => smartphoneSliderRef.current.slickPrev()}
+              onClick={() => handlePrevious(sliderRef)}
             >
               <img src={leftSliderImg} alt="Previous" />
             </button>
             <button
               className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
-              onClick={() => smartphoneSliderRef.current.slickNext()}
+              onClick={() => handleNext(sliderRef)}
             >
               <img src={rightSliderImg} alt="Next" />
             </button>
           </div>
-          <div>
-            <Slider ref={smartphoneSliderRef} {...sliderSettings}>
-              {smartphoneProducts.map((product) => (
-                <Product key={product.id} product={product} />
-              ))}
-            </Slider>
+          <Slider ref={sliderRef} {...sliderSettings}>
+            {smartphoneProducts.map((product) => (
+              <Product key={product.id} product={product} />
+            ))}
+          </Slider>
+        </div>
+      </section>
+
+      <section className="mt-24">
+        <h1 className="font-bold text-xl text-orange-600 mb-4">აუდიო</h1>
+        <div className="relative">
+          <div className="flex justify-end mb-3">
+            <button
+              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
+              onClick={() => handlePrevious(audioSliderRef)}
+            >
+              <img src={leftSliderImg} alt="Previous" />
+            </button>
+            <button
+              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
+              onClick={() => handleNext(audioSliderRef)}
+            >
+              <img src={rightSliderImg} alt="Next" />
+            </button>
           </div>
+          <Slider ref={audioSliderRef} {...sliderSettings}>
+            {audioProducts.map((product) => (
+              <Product key={product.id} product={product} />
+            ))}
+          </Slider>
         </div>
       </section>
 
       <section className="mt-24">
         <h1 className="font-bold text-xl text-orange-600 mb-4">ტაბები</h1>
-        <div className="relative ">
+        <div className="relative">
           <div className="flex justify-end mb-3">
             <button
               className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
-              onClick={() => tabSliderRef.current.slickPrev()}
+              onClick={() => handlePrevious(tabletSliderRef)}
             >
               <img src={leftSliderImg} alt="Previous" />
             </button>
             <button
               className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
-              onClick={() => tabSliderRef.current.slickNext()}
+              onClick={() => handleNext(tabletSliderRef)}
             >
               <img src={rightSliderImg} alt="Next" />
             </button>
           </div>
-          <div>
-            <Slider ref={tabSliderRef} {...sliderSettings}>
-              {tabProducts.map((product) => (
-                <Product key={product.id} product={product} />
-              ))}
-            </Slider>
-          </div>
-        </div>
-      </section>
-      <section className="mt-24">
-        <h1 className="font-bold text-xl text-orange-600 mb-4">აუდიო</h1>
-        <div className="relative ">
-          <div className="flex justify-end mb-3">
-            <button
-              className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
-              onClick={() => audioSliderRef.current.slickPrev()}
-            >
-              <img src={leftSliderImg} alt="Previous" />
-            </button>
-            <button
-              className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 flex justify-center items-center cursor-pointer rounded-full shadow-lg"
-              onClick={() => audioSliderRef.current.slickNext()}
-            >
-              <img src={rightSliderImg} alt="Next" />
-            </button>
-          </div>
-          <div>
-            <Slider ref={audioSliderRef} {...sliderSettings}>
-              {audioProducts.map((product) => (
-                <Product key={product.id} product={product} />
-              ))}
-            </Slider>
-          </div>
+          <Slider ref={tabletSliderRef} {...sliderSettings}>
+            {tabletProducts.map((product) => (
+              <Product key={product.id} product={product} />
+            ))}
+          </Slider>
         </div>
       </section>
     </div>
