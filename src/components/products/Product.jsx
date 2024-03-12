@@ -13,7 +13,8 @@ const Product = ({ product, showDescription }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
-  const { addToWishlist, likedProducts, removeFromWishList } = useWishlist();
+  const { addToWishlist, likedProducts, removeFromWishlist } = useWishlist();
+
   const isProductLiked = likedProducts.some(
     (likedProduct) => likedProduct.likedProduct.id === product.id
   );
@@ -29,7 +30,7 @@ const Product = ({ product, showDescription }) => {
         className="absolute top-0 right-0 m-2"
         onClick={() =>
           isProductLiked
-            ? removeFromWishList(product.id)
+            ? removeFromWishlist(likedProducts[0].id)
             : addToWishlist(product)
         }
       >

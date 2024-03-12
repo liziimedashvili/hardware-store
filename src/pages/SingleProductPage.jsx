@@ -23,9 +23,7 @@ export default function SingleProductPage() {
   const [categoryName, setCategoryName] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
   const isAuthenticated = localStorage.getItem("accessToken");
-  const { addToWishlist, likedProducts, removeLikedProduct } = useWishlist();
-  const isLiked =
-    productData && likedProducts.some((item) => item.id === productData.id);
+  const { addToWishlist, likedProducts, removeFromWishlist } = useWishlist();
 
   const fetchData = async (productId) => {
     try {
@@ -72,13 +70,9 @@ export default function SingleProductPage() {
       console.error(error);
     }
   };
-  const handleLikeClick = () => {
-    if (isLiked) {
-      removeLikedProduct(productData.likedProducts.id);
-    } else {
-      addToWishlist(productData);
-    }
-  };
+  const isProductLiked = likedProducts.some(
+    (likedProduct) => likedProduct.likedProduct.id === productId
+  );
 
   return (
     <div className="custom-container">
@@ -96,8 +90,16 @@ export default function SingleProductPage() {
         {productData ? (
           <div className="flex flex-row justify-between p-6 items-center">
             <div className=" flex flex-col gap-2 w-[400px] cursor-pointer rounded-md h-[400px] items-start justify-between bg-white mr">
-              <div className="relative m-2" style={{ left: 250, top: 70 }}>
-                <LikeIcon filled={isLiked} />
+              <div
+                className="relative m-2"
+                style={{ left: 250, top: 70 }}
+                onClick={() =>
+                  isProductLiked
+                    ? removeFromWishlist(likedProducts[0].id)
+                    : addToWishlist(productData)
+                }
+              >
+                <LikeIcon color={isProductLiked ? "red" : "grey"} />
               </div>
 
               <div className="rounded-lg bg-white overflow-hidden mt-16  flex items-center">

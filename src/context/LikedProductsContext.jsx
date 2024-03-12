@@ -25,8 +25,8 @@ export const LikedProductsProvider = ({ children }) => {
           setLikedProducts(response.data);
         })
         .catch((error) => {
-          console.error("Error fetching cart items:", error);
-          setError("Error fetching cart items. Please try again later.");
+          console.error("Error fetching wishlist items:", error);
+          setError("Error fetching wishlist items. Please try again later.");
         })
         .finally(() => {
           setLoading(false);
@@ -69,7 +69,6 @@ export const LikedProductsProvider = ({ children }) => {
 
   const removeFromWishlist = (productId) => {
     setLoading(true);
-    console.log("Attempting to remove product with ID:", productId);
     removeLikedProduct(productId)
       .then(() => {
         setLikedProducts((prevProducts) =>
@@ -83,9 +82,7 @@ export const LikedProductsProvider = ({ children }) => {
         });
       })
       .catch((error) => {
-        setError(
-          "Failed to remove product from wishlist. Please try again later."
-        );
+        setError("Failed to remove product  wishlist. Please try again later.");
         toast.error("პროდუქტი ვერ წაიშალა ვიშლისტიდან", {
           position: "top-right",
         });
