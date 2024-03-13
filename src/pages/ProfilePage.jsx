@@ -5,11 +5,12 @@ import Profile from "../components/userInfo/Profile";
 import Purchase from "../components/userInfo/Purchase";
 import Logout from "./Logout";
 import WishList from "../components/userInfo/WishList";
+import { useTranslation } from "react-i18next";
 export default function ProfilePage() {
   const [selectedPage, setSelectedPage] = useState(
     localStorage.getItem("selectedPage") || null
   );
-
+  const { t } = useTranslation("global");
   useEffect(() => {
     localStorage.setItem("selectedPage", selectedPage);
   }, [selectedPage]);
@@ -18,7 +19,10 @@ export default function ProfilePage() {
       <div className="mt-10 flex flex-col">
         <div className="flex flex-row items-center gap-1 border-b border-gray-200 pb-4">
           <img src={ProfileIcon} alt="profile photo" />
-          <h1 className="text-black font-bold text-2xl ">გამარჯობა </h1>
+          <h1 className="text-black font-bold text-2xl ">
+            {" "}
+            {t("modals.hello")}{" "}
+          </h1>
         </div>
         <div className="flex flex-row justify-between">
           <div>

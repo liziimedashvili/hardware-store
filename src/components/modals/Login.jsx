@@ -7,13 +7,13 @@ import Input from "../input";
 import Button from "../button";
 import Registration from "./Registration";
 import { login } from "../../services/services";
-
+import { useTranslation } from "react-i18next";
 const Login = ({ showModal, handleClose, onLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showRegistration, setShowRegistration] = useState(false);
   const [error, setError] = useState("");
-
+  const { t } = useTranslation("global");
   const handleLogin = async () => {
     if (!email || !password) {
       setError("გთხოვთ შეავსოთ ყველა ველი");
@@ -46,18 +46,21 @@ const Login = ({ showModal, handleClose, onLoggedIn }) => {
   return (
     <Modal isModalOpen={showModal} onClose={handleClose}>
       <div className="flex justify-center flex-col gap-4">
-        <h2 className="text-center text-2xl font-medium">ავტორიზაცია</h2>
+        <h2 className="text-center text-2xl font-medium">
+          {" "}
+          {t("modals.autheticationn")}
+        </h2>
         <div className="flex gap-4 flex-col items-center">
           <Input
             type="email"
             id="emailInput"
-            placeholder="ელ-ფოსტა"
+            placeholder={t("modals.email")}
             value={email}
             onChange={(e) => setEmail(e)}
           />
           <Input
             type="password"
-            placeholder="პაროლი"
+            placeholder={t("modals.password")}
             id="passwordInput"
             value={password}
             onChange={(e) => setPassword(e)}
@@ -67,7 +70,10 @@ const Login = ({ showModal, handleClose, onLoggedIn }) => {
 
         {!showRegistration && (
           <div className="flex justify-end">
-            <Button onClick={handleToggleRegistration} children="რეგისტრაცია" />
+            <Button
+              onClick={handleToggleRegistration}
+              children={t("modals.registration")}
+            />
           </div>
         )}
 
@@ -78,7 +84,7 @@ const Login = ({ showModal, handleClose, onLoggedIn }) => {
         {!showRegistration && (
           <div onClick={handleLogin} className="flex justify-center">
             <Button
-              children="შესვლა"
+              children={t("header.enter")}
               className="bg-orange-600 text-white w-full rounded-[12px] p-2"
             />
           </div>

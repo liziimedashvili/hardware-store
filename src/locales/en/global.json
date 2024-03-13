@@ -1,0 +1,158 @@
+{
+  "headline": {
+    "tradepolicy": "Trade Policy",
+    "career": "Career",
+    "installment": "Installment",
+    "tradein": "Trade In"
+  },
+  "header": {
+    "navigation": "Navigation",
+    "profile": "Profile",
+    "enter": "Enter",
+    "cart": "Cart",
+    "search": "Search"
+  },
+  "modals": {
+    "success": "Successful authentication",
+    "authentication": " Authentication",
+    "email": " Email",
+    "password": " Password",
+    "registration": " Registration",
+    "name": " name",
+    "surname": " Surname",
+    "repeatPassword": " Repeat Password",
+    "phoneNumber": " Phone Number",
+    "okey": " Okey",
+    "hello": "Hello"
+  },
+  "footer": {
+    "follow": " Follow us",
+    "contact": " Contact",
+    "about": " About Us"
+  },
+  "sliderNames": {
+    "smartphones": " Smartphones",
+    "audio": " Audio",
+    "tabs": " Tabs ",
+    "saleProduct": "Sale Products",
+    "similarProducts": "Similar Products"
+  },
+  "navigation": {
+    "findHere": " Maybe you can find it here too?"
+  },
+  "product": {
+    "main": "Main",
+    "buy": "Buy",
+    "addToCart": "Add to Cart",
+    "filteredProductNotFound": "The filtered product could not be found"
+  },
+  "input": {
+    "fillInput": "Hello, please enter the address field!",
+    "submit": "Submit",
+    "successfulPayment": "Successful Payment!"
+  },
+  "profile": {
+    "purchases": "  Purchases",
+    "wishlist": " Wishlist",
+    "exit": "  exit",
+    "update": "  Update",
+    "profileUpdate": "Edit profile",
+    "whantExit": " whant to exit?"
+  },
+  "purchases": {
+    "currentOrders": "Current Orders",
+    "toalPrice": "Total Price",
+    "totalItems": "Total Items რაოდენობა",
+    "startSearching": "Start Searching"
+  },
+  "cart": {
+    "inYourCart": "In Your Cart",
+    "item": "Item",
+    "toBePaid": "Amount to be paid"
+  },
+  "career": {
+    "text1": "Career",
+    "text2": "Career at Zoommer",
+    "text3": "Our Development History:",
+    "text4": "The history of Zoommer started with the only branch in 2009. Back then, Zoommer had only a wholesale direction, high hopes and bigger plans.",
+    "text5": "Today, we have 18 branches across Georgia and the largest B2C platform. We believe in the bright side of technological progress, the power of curiosity and drive.",
+    "text6": "We have been tinkering with technology for 14 years, interacting with new gadgets and exploring the most untapped spaces of technology.",
+    "text7": "The mission remains the same - we want to help people get up to speed with innovations and domesticate technology. .",
+    "text8": "Your Development History:",
+    "text9": "Do people create technology and the limitless possibilities of technology? Therefore, first of all, we believe in people and their abilities. We value and encourage all ideas, initiatives and opinions that lead us to positive change.",
+    "text10": "Striving for development, speed and agility, immediate implementation of ideas characterizes you - we had a lot in common.",
+    "text11": "We promise you, we will take care of your professional and personal development - it comes to trainings, internal team activities, daily activities and relationships.",
+    "text12": "It is here that you will find the stable, varied and interesting work environment that you are so earnestly looking for.",
+    "text13": "Active vacancies in Zoommer",
+    "text14": "Frequently Asked Questions:",
+    "text15": "What is the salary in Zoommer?",
+    "text16": "Salary depends on a variety of factors, including the content of the position and the candidate's qualifications. However, I will tell you that we have quite attractive conditions in the Georgian market.",
+    "text17": "How flexible is the company for students?",
+    "text18": "We have a lot of students on the team, so you will make a lot of new friends by becoming a Zoommer. We constantly try to make their first job a memorable and pleasant experience.",
+    "text19": "In what ways does the company take care of employee development?",
+    "text20": "Co-financing of career development: if you want, for example, to take a course in graphic design, you will have the opportunity, as a Zoomer employee, to benefit from a special discount. Informative trainings about technology: to familiarize yourself with modern technologies and trends, we will introduce you to technology even more closely. In order to get to know the employees better, to easily overcome possible challenges, or to learn more about yourself, we will not spare interesting trainings.",
+    "text21": "How to send CV/resume to Zoommer?",
+    "text22": "Send your CV/resume to the email indicated in the vacancy:"
+  },
+  "tradePolicy": {
+    "text1": "trade policy",
+    "text2": "Zoommer Georgia LLC trade policy",
+    "text3": "Preamble",
+    "text4": "The purpose of this trade policy document is to define the basis of the legal relationship between Zoommer Georgia LLC  and users, to promote the development of a culture of behavior based on mutual respect between Zoommer and users, as well as to respect the legitimate expectation of users that  In their relationship with Zoommer, they will be protected from illegal and unfair treatment.",
+    "text5": "This trade policy includes the rules for concluding contracts with consumers using general and remote means and outside the field, the legal bases of which are provided in the legislation of Georgia, including the Civil Code of Georgia, the Law of Georgia on the Protection of Consumer Rights and other norms",
+    "text6": "Definition of Terms",
+    "text7": "The terms in this trade policy have the following meanings:",
+    "text8": "Website - means www.zoommer.ge, through which goods are sold and/or services are offered/implemented;",
+    "text9": "goods, any movable thing, as well as property located in it and/or distributed in digital form;",
+    "text10": "Company or trader -Zoommer Georgia LLC (legal address: Tbilisi, Tsabadze St. #8; actual address: Tbilisi, Ak. Tsereteli Ave. #1; identification number: 202462717; e-mail: info@zoommer.ge; Tel: 032 260 30 60), which is registered in accordance with the legislation of Georgia and which owns the website www.zoommer.ge;",
+    "text11": "User - any natural person who acquires or further uses the goods primarily for personal consumption and not for trade, business, professional or other professional activities both in the industry and outside the industry, as well as through registration on the Zoommer website www.zoommer.ge;",
+    "text12": "Parties - means Zoommer and User;",
+    "text13": "Distance contract A contract concluded between Buzzer and the customer only using one or more means of remote communication, through an organized scheme of distance purchase or service delivery, and does not require the physical presence of the customer and the merchant. In addition, the contract is not considered a distance contract if the user and Zoomer have agreed on the terms of the contract in the industry and the contract has been concluded remotely only after that;",
+    "text14": "Personal data - any information related to an identified or identifiable natural person. A person is identifiable when it is possible to identify him directly or indirectly, in particular, with an identification number or a characteristic of a person with physical, physiological, psychological, economic, cultural or social signs;",
+    "text15": "General rules of contract signing",
+    "text16": "The buzzer provides the user with complete information about the goods he is interested in. For this, the company's technical staff has the appropriate qualifications and knowledge to provide the user with information about the product manufacturer, essential features and parameters. In addition to providing information, after the customer expresses his desire to purchase the goods, the purchased item will be inspected by the technical staff together with the customer and it will be initially inspected for visual defects. Only after that, the item is tested in the presence of the user, it is checked for technical correctness.",
+    "text17": "1. Term of delivery of goods",
+    "text18": "Zoomer is obliged to deliver the goods to the customer without delay, but no later than 14 working days after the conclusion of the contract, unless otherwise stipulated in the contract and the customer is informed and agrees to this. In the event that Zoomer has not fulfilled the obligation within the period established by the first paragraph of this article, the user has the right to set Zoomer a reasonable additional period to fulfill the obligation. After the expiration of the additional term, in case of non-fulfillment of the obligation, the customer has the right to refuse the contract and demand compensation of damages in accordance with the procedure established by the civil legislation of Georgia. Determining the additional term provided for in paragraph 2 of this article is not mandatory if it is clear that it will have no effect, or the consumer has linked the performance of the contract to receiving the goods on time. 4. If the goods are not delivered to the customer because they are not available, Zoomer is obliged to notify the customer immediately.",
+    "text19": "2. Obligation to supply goods",
+    "text20": "Zoomer is obliged to deliver to the customer the goods in accordance with the terms stipulated in the contract. The goods are considered to be in accordance with the terms of the contract: a) if they correspond to the description provided by Buzzer to the user and have the same properties as the sample of the goods presented to the user by Buzzer; b) In the absence of a description provided by Buzzer to the user, the goods are considered to be in accordance with the terms of the contract, if they are useful for the purpose for which the user informed Buzzer at the time of the conclusion of the contract and which Buzzer agreed to. c) If the customer does not inform Zoomer about the purpose for which he wants to use the goods, then the goods are considered to be in accordance with the terms of the contract if they are suitable for the purpose for which they are normally used. If the purpose of the normal use of the goods cannot be established, the goods are considered to be goods conforming to the terms of the contract if they have the characteristics of the goods of this type and function in the same way as the goods of the said type, as well as what the consumer could reasonably expect based on the nature of the goods and the public statements made by them Buzzer, the manufacturer, its representative or any other person responsible for marketing, including through advertising and/or labeling. Defects arising as a result of incorrect installation of goods by Zoomer or under his responsibility shall be equated to non-conformity (deficiency) of the goods with the conditions provided for in the contract, if the installation of the goods was part of the contract. This rule also applies to goods that the customer has to assemble or install, and which were incorrectly assembled or installed due to the lack of instructions attached to the product. For the purposes of this article, the goods are not considered to be defective if the consumer knew or should have known at the time of the conclusion of the contract that the goods were defective. Zoomer shall not be liable for any public announcement of goods or services if: a) it did not or could not have known about such announcement; b) the information given in this statement was changed before the conclusion of the contract; c) This statement could not influence the purchase of goods or services by the user.",
+    "text21": "3. User's rights in case of delivery of defective goods",
+    "text22": "If the goods are found to be defective, the customer has the right to demand the elimination of the defect from Zoomer (repair or replacement of the goods free of charge, price reduction) or withdraw from the contract. Repair and replacement of goods are the primary rights of the consumer. The customer has the right to ask Zoomer to repair or replace the goods free of charge, unless this, due to the nature of the goods, is impossible or requires a disproportionate or inappropriately high cost. The goods must be repaired or replaced within a reasonable period of time, in such a way that the customer does not face a significant delay, taking into account the nature of the goods and the purpose for which he purchased the goods. Repair or replacement of the goods free of charge means that Zoomer will bear all costs (including postage, labor and material costs) necessary to ensure that the goods conform to the terms of the contract. The customer has the right to request a reduction in the price of the goods or to refuse the contract if one of the following conditions exists: a) if the goods cannot be repaired or replaced within a reasonable time; b) Zoomer did not repair or replace the goods within a reasonable time and the consumer lost interest in the performance of the contract; c) Repair or replacement of the goods by Buzzer will cause significant disruption to the customer. The customer has the right, in case of withdrawal from the contract, to demand compensation for damages caused by non-fulfillment of the contract in accordance with the procedure established by the legislation of Georgia. The customer does not have the right to withdraw from the contract if the defect in the goods is minor. When determining how disproportionate or disproportionately large the cost is, the following conditions should be taken into account: a) the price of goods or services in case of compliance with the conditions stipulated in the contract; b) the degree of non-compliance of the goods or services with the conditions stipulated in the contract; c) an alternative possibility to eliminate the defect of the goods without creating a delay for the consumer."
+  },
+  "installment": {
+    "text1": "Installment",
+    "text2": "How to buy equipment online with installments in Zoomer?",
+    "text3": "You can use the online installments of TBC Bank, Bank of Georgia, Credo Bank and Sphei QR in the Zoomer network.",
+    "text4": "To use online installments from the Zoomer website, you first need to register or authorize on the Zoomer website. See the instructions here:",
+    "text5": "Step 1: Sign up with a Google account or phone number, complete your profile with personal information. If you are already registered, log in with your email, Google account or phone number.",
+    "text6": "Step 2: After registration, select the desired item on the Zoomer website and select the Buy button.",
+    "text7": "Step 3: After selecting the desired options and filling in the order details, click the Next button.",
+    "text8": "Step 4: In the payment types, you select installment purchase, and then the desired bank.",
+    "text9": "Step 5: You are informed of the terms and conditions, which you confirm by agreeing to the highlighted condition.",
+    "text10": "Step 6: After choosing a bank, click Next and go directly to the website of the desired bank.",
+    "text11": "Bank 1: TBC Bank In payment methods, select TBC Bank installments, press the Continue button and go to the bank's page: enter your personal number and mobile number, confirm that you are not a robot and enter the received code for security. Fill out the application form: field of employment, income, participation, address, contact person; After entering the financial information, you will be taken to the confirmation page. where you will read in detail the rules requested by the bank and if you agree, you will mark the button I agree with the given conditions, upload the income confirmation; After successful completion of all these procedures, wait for a call from our operator about the delivery/pickup of the item, he will deliver the desired item to you, or you can pick it up from the pre-specified branch.",
+    "text12": "Bank 2: Bank of Georgia After selecting Bank of Georgia in the payment methods, go to the bank's page, enter your data or register; Familiarize yourself with the terms and conditions of the Bank of Georgia and agree if you wish; Fill in your financial data in the required fields; Select the installment period; You will receive a confirmation about the installments in the form of an SMS; After successful completion of all these procedures, wait for a call from our operator about the delivery/pickup of the item, he will deliver the desired item to you, or you can pick it up from the pre-specified branch.",
+    "text13": "Bank 3: Credo Bank When choosing a Credo Bank installment plan, we go to the Credo Bank website, where the bank automatically displays the data, you choose the installment period as you wish; fill in personal data; register on the bank's website; Read the terms and, if you wish, agree to them; pass identification; After successful completion of all these procedures, wait for a call from our operator about the delivery/pickup of the item, he will deliver the desired item to you, or you can pick it up from the pre-specified branch.",
+    "text14": "Bank 4: SPACE QR installments In order to use SPACE installments, the Space Bank application is necessary. Register (if you don't already have a personal account); You select an item on our website and go to the SPACE BANK installment portal, where a QR code appears, which you scan; After scanning, the value of the selected item is displayed on our smartphone, we check the amount and continue to pay the installments; After filling in all the required fields, the status of the installment will be displayed on your smartphone, whether it is approved or not; After successful completion of all these procedures, wait for a call from our operator about the delivery/pickup of the item, he will deliver the desired item to you, or you can pick it up from the pre-specified branch."
+  },
+  "tradeIn": {
+    "text1": "Trade In",
+    "text2": "1. Definitions and Terms",
+    "text3": "Client – capable natural person. Acceptance – the client's full and unconditional consent (acceptance) to the conclusion of the agreement under the conditions specified in this agreement. Second-hand goods – equipment that has been used before and is suitable for further use in the same condition or after repair. New goods – a device that has not been used or has not been used within 14 calendar days from the date of purchase and that has no technical defect, appearance, performance, etc. Contractual value – the value of used goods, which is determined by the parties to this agreement, taking into account its technical condition. Retailer – a chain of retail trade of goods to which the client has a monetary obligation to pay the cost of new goods and the company has signed a cooperation (partnership) agreement. The names and details of the Retailer shall be set out in the Statement of Confirmation of this Public Offer Agreement (Offer).",
+    "text4": "2. Subject matter of the agreement",
+    "text5": "2.1. Pursuant to this Agreement, the Client shall sell to the Company used equipment owned by the Client (hereinafter the Used Goods) and which meets the requirements of this Agreement, and the Company shall pay the Client the contract value of the used item by transfer to the Retailer in accordance with the Statement of Confirmation of this Agreement (hereinafter the Statement), which is Annex to this Agreement. 2.2. It is considered that the client has fulfilled the obligation to the company, which is manifested in the transfer of the second-hand goods, in particular, at the time of selling the second-hand goods to the company, on whose behalf and in whose interests the retailer acts. 2.3. Before accepting used goods, the retailer is obliged to carry out diagnostics (check the compliance of used goods with the requirements of this agreement, its operability, technical condition, evaluation of appearance, equipment, performance, etc.) and not to accept used goods that do not comply with the agreement. 2.4. The company is deemed to have fulfilled its obligation to pay the value of the used goods to the client, namely, when the client receives new goods from the retailer, a partial payment of which the company transferred to the retailer on behalf of the client, which is the contractual value of the used goods. 2.5. In order to sell used goods, the customer must be of legal capacity and at least 18 years of age",
+    "text6": "3. Making an agreement",
+    "text7": "3.1. Unconditional acceptance of the terms of the agreement is made by the client by signing the statement confirming this agreement, which is an integral part of this agreement. 3.2. The date of conclusion of the agreement is the date of receipt of the signed statement by the company.",
+    "text8": "4. Purchase and sale procedure and conditions",
+    "text9": "4.1. Buying and selling of used and new goods is carried out in the following order: 4.1.1. On the basis of the acceptance of second-hand goods, the customer hands over the second-hand goods in his possession to the company in the retailer's premises along with the application signed by him, and the company, acting on behalf of the retailer and in the interests of the company, receives the second-hand goods. 4.1.2. The contract value of the second-hand goods to be paid to the client, which is agreed upon between the parties based on the technical condition of the second-hand goods, must be indicated in the application and in the act of acceptance of the second-hand goods. 4.1.3. The Client incurs a monetary obligation to pay the value of the new goods to the retailer to whom the application was submitted, for which the client instructs the Company in the application to transfer the contract value on behalf of the client to the bank account of the retailer to whom the second-hand goods were transferred. All bank charges related to this payment are paid by the company. 4.1.4. The Company shall not be liable to the Customer for any issue related to the sale / return / replacement of new goods and the quality of such new goods. 4.2. At the time of submission of the application and transfer of the second-hand goods based on the acceptance-handover act, the ownership rights and all risks of the second-hand goods are transferred from the client to the company, and the second-hand goods cannot be returned to the client. 4.3. The customer is obliged to purchase new goods only in any store of the retailer's network specified by him in the application.",
+    "text10": "5. Requirements for second-hand goods",
+    "text11": "5.1. The company will purchase only second-hand goods that meet all the following requirements: 5.1.1. is owned by the client and is not encumbered by third party rights; 5.1.2. is in working order (ie, all functions of the equipment work in accordance with the indicators and parameters established by the manufacturer of such equipment); 5.1.3. has no traces of liquid damage (traces of corrosion); 5.1.4. not broken, does not have broken connectors for charging the device; 5.1.5. not blocked by the operator; 5.1.6. not wanted; 5.1.7. The display of the device must be free of stains, cracks, vertical or horizontal stripes, dust under the glass; 5.1.8. is without passwords and codes specified on the device; 5.1.9. is without accounts; 5.1.10. be in the possession of the client. If possible, the customer must document the usability of the goods (for example, a receipt for the purchase of used goods, which includes the date of purchase and/or a customer statement or other document). 5.1.11. The display of the device should allow diagnostics. It is also possible that the display of the device is damaged, but it should be possible to diagnose it.",
+    "text12": "6. Privacy",
+    "text13": "6.1. Information that became known to the parties about the relationship during the conclusion and implementation of this agreement, as well as information related to the subject of this agreement or its conclusion or implementation, is confidential. 6.2. Confidentiality within the meaning of this Agreement means the non-disclosure of relevant information to a third party without the written consent of the other party. 6.3. The parties undertake not to use the information that became known to them in connection with the conclusion and/or implementation of this agreement to the detriment of each other.",
+    "text14": "7. Processing of personal data",
+    "text15": "7.1. By signing the application, the client gives informed and voluntary consent to the company and retailers to process his personal data specified in the application and other documents submitted by the client and signed by the parties within the framework of this agreement, i.e. Automated, non-automated and mixed processing, including collection, registration, accumulation, storage, adaptation, modification, updating, use, depersonalization, destruction and distribution (distribution, sale, transmission) of personal data (i) on public communication networks, (ii) ) exchange of information of international information and telecommunication networks, including foreign subjects of the relationship related to personal data, as well as consent to receive the client's personal data from any legal source, including himself and third parties, for the information and implementation of this agreement. 7.2. By signing the application, the client agrees to transfer his personal data to the third party - the banking institution specified in the company's details, to the extent necessary for the settlement between the parties of this agreement and their implementation, as well as transfer. Personal data of the company's affiliates (affiliates), legal entities and managers of the company to fulfill the terms of this agreement. 7.3. The processing and storage of the client's personal data is carried out during the term of the contract. 7.4. This consent may be revoked by the Client at any time by written notice of revocation sent to the Company by registered mail. 7.5. Withdrawal of this consent will be effective from the date of delivery of the relevant notice to the Company.",
+    "text16": "8. Warranties and Liability",
+    "text17": "8.1. By signing this agreement, the parties confirm that: 8.1.1. They do not conceal circumstances that are essential to this agreement; 8.1.2. The conclusion of this agreement will not violate the rights and legitimate interests of others, including minors, minors, children with disabilities and other persons, whom the parties are obliged to protect by law or contract; 8.1.3. The contract is not concluded under the influence of difficult circumstances for them; 8.1.4. They are not declared incapacitated or partially incapacitated; 8.1.5. The conclusion of the contract satisfies their interests; 8.1.6. The expression of will is free, conscious and consistent with their inner will; 8.1.7. the terms of the contract are clear and correspond to the actual agreement of the parties; 8.1.8. The contract does not hide any other transaction and aims at the actual occurrence of the results provided for in it; 8.2. When concluding this contract, the client knows the importance of his actions and can manage them, as well as understands the nature of this transaction. 8.3. In case of violation of the agreement, the party that violates is responsible according to this agreement and the current legislation of Georgia. 8.4. Violation of the contract is its non-fulfillment or untimely fulfillment, i.e. fulfillment in violation of the terms specified in this contract. 8.5. The party will not be liable for the breach of the contract if it occurred without its fault (intentional or negligent). 8.6. In case of violation by the client of the guarantees specified in this section, the client is obliged to fully compensate the company for the damage.",
+    "text18": "9. Term of the Agreement. Changes to the Agreement",
+    "text19": "9.1. This Agreement shall enter into force upon its acceptance by the Client and shall remain in effect until the parties fully fulfill their obligations under this Agreement. 9.2. The company has the right to change the terms of this agreement. If the Agreement is accepted, then the version of the Agreement in effect on the date of acceptance shall apply."
+  }
+}

@@ -8,12 +8,12 @@ import { getProducts } from "../../services/services";
 import leftSliderImg from "../../assets/icons/slider-left-btn.svg";
 import rightSliderImg from "../../assets/icons/slider-right-btn.svg";
 import SaleProducts from "../slider/SaledProducts";
-
+import { useTranslation } from "react-i18next";
 const Products = () => {
   const [smartphoneProducts, setSmartphoneProducts] = useState([]);
   const [audioProducts, setAudioProducts] = useState([]);
   const [tabletProducts, setTabletProducts] = useState([]);
-
+  const { t } = useTranslation("global");
   const fetchProducts = async (categoryName) => {
     try {
       const response = await getProducts({ categoryName });
@@ -90,7 +90,9 @@ const Products = () => {
       <SaleProducts onlySales={true} />
 
       <section className="mt-24">
-        <h1 className="font-bold text-xl text-orange-600 mb-4">სმარტფონები</h1>
+        <h1 className="font-bold text-xl text-orange-600 mb-4">
+          {t("sliderNames.smartphones")}
+        </h1>
         <div className="relative">
           <div className="flex justify-end mb-3">
             <button
@@ -115,7 +117,9 @@ const Products = () => {
       </section>
 
       <section className="mt-24">
-        <h1 className="font-bold text-xl text-orange-600 mb-4">აუდიო</h1>
+        <h1 className="font-bold text-xl text-orange-600 mb-4">
+          {t("sliderNames.audio")}
+        </h1>
         <div className="relative">
           <div className="flex justify-end mb-3">
             <button
@@ -140,7 +144,9 @@ const Products = () => {
       </section>
 
       <section className="mt-24">
-        <h1 className="font-bold text-xl text-orange-600 mb-4">ტაბები</h1>
+        <h1 className="font-bold text-xl text-orange-600 mb-4">
+          {t("sliderNames.tabs")}
+        </h1>
         <div className="relative">
           <div className="flex justify-end mb-3">
             <button

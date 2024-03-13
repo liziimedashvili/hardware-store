@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import searchIcon from "../../assets/icons/search-icon.svg";
 import { getProducts } from "../../services/services";
-
+import { useTranslation } from "react-i18next";
 export default function SearchBar() {
   const [input, setInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
-
+  const { t } = useTranslation("global");
   useEffect(() => {
     const timerId = setTimeout(() => {
       if (input.trim() !== "") {
@@ -53,7 +53,7 @@ export default function SearchBar() {
           value={input}
           onChange={handleChange}
           className="outline-none w-full h-[17px] text-sm font-medium text-gray-600"
-          placeholder="ძიება"
+          placeholder={t("header.search")}
         />
       </div>
       {searchResults.length > 0 && (

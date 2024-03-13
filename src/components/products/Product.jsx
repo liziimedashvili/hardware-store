@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { useWishlist } from "../../context/LikedProductsContext";
 import LikeIcon from "../icons/LikeIcon";
-
+import { useTranslation } from "react-i18next";
 const Product = ({ product, showDescription }) => {
   const { addToCart } = useCart();
   const navigate = useNavigate();
-
+  const { t } = useTranslation("global");
   const { addToWishlist, likedProducts, removeFromWishlist } = useWishlist();
 
   const isProductLiked = likedProducts.some(
@@ -72,7 +72,7 @@ const Product = ({ product, showDescription }) => {
           icon={<img src={CartIcon} width={14} height={14} alt="Cart Icon" />}
           onClick={() => addToCart(product)}
         >
-          დამატება
+          {t("product.addToCart")}
         </Button>
       </div>
     </div>

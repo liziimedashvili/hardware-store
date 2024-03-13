@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getFromPurchases } from "../../services/services";
 import Button from "../button";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 export default function Purchase() {
   const [purchases, setPurchases] = useState([]);
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function Purchase() {
       console.error("Error fetching data:", error);
     }
   };
-
+  const { t } = useTranslation("global");
   useEffect(() => {
     fetchData();
   }, []);
@@ -24,7 +25,7 @@ export default function Purchase() {
   return (
     <div className="mt-10 ml-5">
       <h2 className="border-b-2 text-lg font-bold w-60 border-orange-600">
-        მიმდინარე შეკვეთები
+        {t("purchases.currentOrders")}
       </h2>
 
       <div className="flex items-center  gap-4 mt-5">
@@ -33,11 +34,16 @@ export default function Purchase() {
             <div key={purchase.id} className="bg-white font-bold text-lg ">
               <p>
                 {" "}
-                <span className="text-orange-600">სულ გადახდილია: </span>
+                <span className="text-orange-600">
+                  {" "}
+                  {t("purchases.toalPrice")}{" "}
+                </span>
                 {purchase.totalPrice} ₾
               </p>
               <p>
-                <span className="text-orange-600">ნივთების რაოდენობა: </span>
+                <span className="text-orange-600">
+                  {t("purchases.totalItems")}{" "}
+                </span>
                 {purchase.totalItems}
               </p>
             </div>
@@ -46,7 +52,7 @@ export default function Purchase() {
             className="bg-orange-600 text-white px-[10px] py-2 rounded-[4px] w-full font-bold text-sm leading-5 gap-1 "
             onClick={navigateHomePageClick}
           >
-            დაიწყე ძებნა
+            {t("purchases.startSearching")}
           </Button>
         </div>
       </div>

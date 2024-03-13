@@ -7,12 +7,12 @@ import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 import NotFound from "../assets/images/NotFound.jpg";
 import ReactPaginate from "react-paginate";
-
+import { useTranslation } from "react-i18next";
 export default function ProductsPage() {
   const [productsData, setProductsData] = useState([]);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-
+  const { t } = useTranslation("global");
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(5000);
   const [page, setPage] = useState(0);
@@ -115,7 +115,7 @@ export default function ProductsPage() {
               ) : (
                 <div className="flex flex-col items-center  mt-8">
                   <p className="text-lg font-bold">
-                    გაფილტრული პროდუქტი ვერ მოიძებნა
+                    {t("product.filteredProductNotFound")}
                   </p>
                   <img src={NotFound} width={400} alt="Not Found" />
                 </div>

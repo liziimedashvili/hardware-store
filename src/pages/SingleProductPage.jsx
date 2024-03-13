@@ -14,8 +14,10 @@ import LoginModal from "../components/modals/Login";
 import SimilarProductsSlider from "../components/slider/SimilarProductsSlider";
 import { useWishlist } from "../context/LikedProductsContext";
 import LikeIcon from "../components/icons/LikeIcon";
+import { useTranslation } from "react-i18next";
 export default function SingleProductPage() {
   const { productId } = useParams();
+  const { t } = useTranslation("global");
   const [productData, setProductData] = useState(null);
   const { addToCart } = useCart();
   const navigate = useNavigate();
@@ -49,7 +51,7 @@ export default function SingleProductPage() {
   }, [productId]);
 
   const breadcrumbs = [
-    { label: "მთავარი >", path: "/" },
+    { label: t("product.buy"), path: "/" },
     {
       label: categoryName ? categoryName : "product category",
       path: `/products?categoryName=${categoryName}`,
@@ -134,14 +136,14 @@ export default function SingleProductPage() {
               <div className="flex flex-col gap-[10px]">
                 <div>
                   <Button
-                    children="ყიდვა"
+                    children={t("product.buy")}
                     className="w-full bg-orange-600 text-white px-[10px] py-2 rounded-[4px] font-bold text-sm leading-5"
                     onClick={handlePurchase}
                   />
                 </div>
 
                 <Button
-                  children="დამატება"
+                  children={t("product.addToCart")}
                   className="bg-[#f4855d] text-black px-[10px] py-3 rounded-[4px] w-full font-bold text-sm leading-5 gap-1 "
                   icon={
                     <img
@@ -163,7 +165,7 @@ export default function SingleProductPage() {
       {similarProducts.length > 0 && (
         <div className="mt-10">
           <h3 className=" text-xl text-orange-600 font-bold">
-            მსგავსი პროდუქტები{" "}
+            {t("sliderNames.similarProducts")}
           </h3>
           <div className="similar-products">
             <SimilarProductsSlider similarProducts={similarProducts} />

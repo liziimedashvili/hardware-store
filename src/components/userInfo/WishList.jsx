@@ -8,12 +8,12 @@ import Button from "../button";
 import CartIcon from "../../assets/icons/header-cart.svg";
 import { useNavigate } from "react-router-dom";
 import LikeIcon from "../icons/LikeIcon";
-
+import { useTranslation } from "react-i18next";
 export default function WishList() {
   const { likedProducts, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
   const nav = useNavigate();
-
+  const { t } = useTranslation("global");
   const handleProductClick = (productId) => {
     nav(`/product/${productId}`);
   };
@@ -60,7 +60,7 @@ export default function WishList() {
           </div>
           <div className="flex flex-row ">
             <Button
-              children="დამატება"
+              children={t("product.addToCart")}
               className="bg-orange-600 gap-2 w-full text-white rounded-md text-sm p-1"
               icon={
                 <img src={CartIcon} width={14} height={14} alt="Cart Icon" />

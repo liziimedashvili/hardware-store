@@ -4,6 +4,7 @@ import EmptyCartIcon from "../assets/icons/emptybag.svg";
 import TrashIcon from "../assets/icons/bin.svg";
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   addProductToCart,
   deleteFromCart,
@@ -11,7 +12,7 @@ import {
 } from "../services/services";
 export default function Cart() {
   const { cartProducts, setCartProducts, removeFromCart } = useCart();
-
+  const { t } = useTranslation("global");
   const navigate = useNavigate();
 
   const calculateTotalPrice = () => {
@@ -93,11 +94,12 @@ export default function Cart() {
       <div className="mt-10">
         <div className="pb-5 border-b-2 ">
           <p className="font-bold text-[28px] leading-7">
-            შენს კალათაში{" "}
-            {cartProducts.reduce((total, item) => total + item.count, 0)} ნივთია
+            {t("cart.inYourCart")}
+            {cartProducts.reduce((total, item) => total + item.count, 0)}{" "}
+            {t("cart.item")}
           </p>
         </div>
-        <div className="flex justify-between mt-[30px] lg:flex-row md:flex-col ">
+        <div className="flex justify-between mt-[30px]">
           <div className="flex flex-col gap-5">
             {cartProducts.length > 0 ? (
               cartProducts.map((product) => (
@@ -130,10 +132,10 @@ export default function Cart() {
               <img src={EmptyCartIcon} alt="emptyCartIcon" />
             )}
           </div>
-          <div className="rounded-[12px]  md:mt-4">
+          <div className="rounded-[12px] ">
             <div className="flex justify-between items-center gap-2 mb-5  ">
               <h2 className="text-orange-600 font-bold text-md">
-                გადასახდელი თანხა
+                {t("cart.toBePaid")}
               </h2>
               <span className="font-bold text-md text-black">
                 {calculateTotalPrice().toFixed(2)}₾
@@ -144,7 +146,7 @@ export default function Cart() {
                 className="w-full bg-orange-600 text-white px-[10px] py-2 rounded-[4px] font-bold text-sm leading-5"
                 onClick={handlePurchase}
               >
-                ყიდვა
+                {t("product.buy")}
               </Button>
             </div>
           </div>

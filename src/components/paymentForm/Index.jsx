@@ -8,6 +8,7 @@ import Button from "../button";
 import Success from "../modals/Success";
 import { useNavigate } from "react-router-dom";
 import { purchaseProducts } from "../../services/services";
+import { useTranslation } from "react-i18next";
 
 const PaymentForm = ({ paymentParams }) => {
   const [showLocationForm, setShowLocationForm] = useState(true);
@@ -15,7 +16,7 @@ const PaymentForm = ({ paymentParams }) => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [userLocation, setUserLocation] = useState("");
   const [userLocationError, setUserLocationError] = useState("");
-
+  const { t } = useTranslation("global");
   const [state, setState] = useState({
     number: "",
     expiry: "",
@@ -86,7 +87,6 @@ const PaymentForm = ({ paymentParams }) => {
     }
   };
 
-  // validations
   const validateForm = () => {
     const errors = {};
 
@@ -142,7 +142,7 @@ const PaymentForm = ({ paymentParams }) => {
               className="flex flex-col gap-y-[10px] items-center w-[500px] h-[37vh]"
             >
               <label htmlFor="location" className="font-bold text-[18px]">
-                გამარჯობა,გთხოვთ შეიყვანოთ მისამართის ველი!{" "}
+                {t("input.fillInput")}
               </label>
               <input
                 type="text"
@@ -159,7 +159,7 @@ const PaymentForm = ({ paymentParams }) => {
               )}
               <Button
                 type="submit"
-                children="დადასტურება"
+                children={t("input.submit")}
                 className="bg-orange-600 text-white w-full cursor-pointer rounded-lg p-2"
               />
             </form>
@@ -236,7 +236,7 @@ const PaymentForm = ({ paymentParams }) => {
                 {errors.cvc && <div className="text-red-900">{errors.cvc}</div>}
                 <Button
                   type="submit"
-                  children="დადასტურება"
+                  children={t("input.submit")}
                   className="bg-orange-600 text-white w-full p-2 rounded-lg"
                 />
               </form>
@@ -251,7 +251,7 @@ const PaymentForm = ({ paymentParams }) => {
         )}
         {showSuccessModal && (
           <Success
-            title="წარმატებული გადახდა!"
+            title={t("input.successfulPayment")}
             showModal={showSuccessModal}
             handleClose={() => setShowSuccessModal(false)}
           />

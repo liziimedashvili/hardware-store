@@ -2,7 +2,6 @@
 import React from "react";
 import PaymentForm from "../components/paymentForm/Index";
 import { useLocation } from "react-router-dom";
-import { useCart } from "../context/CartContext";
 
 export default function PaymentPage() {
   const location = useLocation();

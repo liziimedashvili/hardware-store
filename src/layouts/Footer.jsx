@@ -6,44 +6,47 @@ import youtube from "../assets/icons/youtube.svg";
 import tiktok from "../assets/icons/tiktok.svg";
 import Phone from "../assets/icons/header-phone.svg";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../components/LanguageSwitcherButtons";
 export default function Footer() {
+  const { t } = useTranslation("global");
   return (
     <div className="bg-[#f2f2f2] mt-14">
       <div className="custom-container py-5 px-0 flex justify-between">
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">
-            ნავიგაცია
+            {t("header.navigation")}
           </span>
           <Link
             to="/tradepolicy"
             className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
           >
-            სავაჭრო პოლიტიკა
+            {t("headline.tradepolicy")}
           </Link>
 
           <Link
             to="/installment"
             className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
           >
-            განვადება
+            {t("headline.installment")}
           </Link>
           <Link
             to="/career"
             className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
           >
-            კარიერა
+            {t("headline.career")}
           </Link>
           <Link
             to="/tradein"
             className="text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
           >
-            Trade In
+            {t("headline.tradein")}
           </Link>
         </div>
 
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">
-            გამოგვყევი
+            {t("footer.follow")}
           </span>
           <Link
             to="https://www.facebook.com/zoommerge/?ref=page_internal"
@@ -94,7 +97,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">
-            კონტაქტი
+            {t("footer.contact")}
           </span>
 
           <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
@@ -114,12 +117,14 @@ export default function Footer() {
         </div>
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">
-            ჩვენს შესახებ
+            {t("footer.about")}
           </span>
 
           <span className="text-black font-medium text-xs  leading-4 opacity-70 cursor-pointer hover:opacity-100">
             Zoommer
           </span>
+
+          <LanguageSwitcher />
         </div>
       </div>
     </div>

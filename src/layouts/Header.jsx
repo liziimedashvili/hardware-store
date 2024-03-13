@@ -12,7 +12,7 @@ import Success from "../components/modals/Success";
 import { useCart } from "../context/CartContext";
 import SearchBar from "../components/search";
 import useScrollDirection from "../hooks/useScrollDirection";
-
+import { useTranslation } from "react-i18next";
 // in milliseconds
 const SUCCESS_MODAL_HIDE_TIME = 3000;
 
@@ -23,7 +23,7 @@ export default function Header() {
 
   const [showModal, setShowModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState();
-
+  const { t } = useTranslation("global");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleShow = () => setShowModal(true);
@@ -50,7 +50,7 @@ export default function Header() {
       return (
         <div className="bg-white flex-row lg:w-32 md:w-28 opacity-80 rounded-lg flex items-center justify-center lg:gap-[8px] md:gap-1 p-2  cursor-pointer shadow-md">
           <img src={UserIcon} />
-          <Button children="პროფილი" onClick={handleProfilePage} />
+          <Button children={t("header.profile")} onClick={handleProfilePage} />
         </div>
       );
     } else {
@@ -60,7 +60,7 @@ export default function Header() {
           className="bg-white flex-row  opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md"
         >
           <img src={UserIcon} />
-          <Button children="შესვლა" />
+          <Button children={t("header.enter")} />
         </div>
       );
     }
@@ -86,7 +86,7 @@ export default function Header() {
             <div className="flex flex-row items-center  bg-[#EC5E2A] lg:w-[130px] md:w-[100px]   lg:rounded-[12px] md:rounded-lg lg:gap-[12px] lg:p-[10px] md:px-4 md:py-2 cursor-pointer md:mt-1 ">
               <img src={Dots} className="md:w-4 lg:w-auto" />
               <span className="font-medium lg:text-sm ml-1 md:text-[11px] text-[#fff] dark:text-black">
-                ნავიგაცია
+                {t("header.navigation")}
               </span>
             </div>
           </Link>
@@ -94,7 +94,7 @@ export default function Header() {
           <Link to="/cart">
             <div className="bg-white dark:bg-black flex-row lg:w-32 md:w-28 opacity-80 rounded-lg flex items-center justify-center lg:p-2.5 md:p-2 cursor-pointer shadow-md">
               <Button
-                children="კალათა"
+                children={t("header.cart")}
                 className="gap-[10px]"
                 icon={<img src={CartIcon} alt="Cart Icon" />}
               />
@@ -114,7 +114,7 @@ export default function Header() {
       />
 
       <Success
-        title="წარმატებული ავტორიზაცია"
+        title={t("modals.success")}
         showModal={showSuccessModal}
         handleClose={() => setShowSuccessModal(false)}
       />

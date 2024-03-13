@@ -8,10 +8,11 @@ import Product from "../products/Product";
 import leftSliderImg from "../../assets/icons/slider-left-btn.svg";
 import rightSliderImg from "../../assets/icons/slider-right-btn.svg";
 import { getProducts } from "../../services/services";
-
+import { useTranslation } from "react-i18next";
 const SaleProducts = ({ onlySales }) => {
   const [products, setProducts] = useState([]);
   const sliderRef = useRef(null);
+  const { t } = useTranslation("global");
   useEffect(() => {
     const fetchSaleProducts = async () => {
       try {
@@ -61,7 +62,7 @@ const SaleProducts = ({ onlySales }) => {
     <div>
       <section className="mt-16">
         <h1 className="font-bold text-xl text-orange-600 mb-4">
-          ფასდაკლებული პროდუქტები
+          {t("sliderNames.saleProduct")}
         </h1>
         <div className="relative">
           <div className="flex justify-end mb-3">

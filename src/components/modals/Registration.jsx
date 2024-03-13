@@ -6,7 +6,7 @@ import Modal from "./Modal";
 import Input from "../input";
 import Button from "../button";
 import { registration } from "../../services/services";
-
+import { useTranslation } from "react-i18next";
 const Registration = ({ onSuccess, showModal, handleClose }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -15,7 +15,7 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
+  const { t } = useTranslation("global");
   const handleRegistration = async () => {
     setError("");
     if (password !== confirmPassword) {
@@ -56,40 +56,42 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
   return (
     <Modal isModalOpen={showModal} onClose={handleClose}>
       <div className="flex justify-center flex-col gap-4">
-        <h2 className="text-center text-2xl font-medium">რეგისტრაცია</h2>
+        <h2 className="text-center text-2xl font-medium">
+          {t("modals.registration")}
+        </h2>
         <div className="flex gap-4 flex-col items-center">
           <Input
             type="text"
             id="firstNameInput"
-            placeholder="სახელი"
+            placeholder={t("modals.name")}
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
           <Input
             type="text"
             id="lastNameInput"
-            placeholder="გვარი"
+            placeholder={t("modals.surName")}
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
           <Input
             type="email"
             id="emailInput"
-            placeholder="ელ-ფოსტა"
+            placeholder={t("modals.email")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <Input
             type="password"
             id="passwordInput"
-            placeholder="პაროლი"
+            placeholder={t("modals.password")}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <Input
             type="password"
             id="confirmPasswordInput"
-            placeholder="გაიმეორეთ პაროლი"
+            placeholder={t("modals.repeatPassword")}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
@@ -97,7 +99,7 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
           <Input
             type="tel"
             id="phoneNumberInput"
-            placeholder="ტელეფონის ნომერი"
+            placeholder={t("modals.phoneNumber")}
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
@@ -107,7 +109,7 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
             onClick={handleRegistration}
             className="bg-orange-600 text-white w-full rounded-[12px] p-2"
           >
-            რეგისტრაცია
+            {t("modals.registration")}
           </Button>
         </div>
       </div>

@@ -9,11 +9,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Product from "../components/products/Product";
 import leftSliderImg from "../assets/icons/slider-left-btn.svg";
 import rightSliderImg from "../assets/icons/slider-right-btn.svg";
+import { useTranslation } from "react-i18next";
 export default function Navigation() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const sliderRef = useRef(null);
+  const { t } = useTranslation("global");
   const fetchCategories = async () => {
     try {
       const response = await getCategories();
@@ -74,7 +76,7 @@ export default function Navigation() {
     <div className="mt-10">
       <div className=" custom-container">
         <h1 className="text-2xl font-bold text-center mb-6 text-orange-600">
-          ნავიგაცია
+          {t("header.navigation")}
         </h1>
         <div className="flex flex-row bg-white shadow-md rounded-lg justify-between ">
           {categories.map((category) => (
@@ -87,7 +89,7 @@ export default function Navigation() {
         </div>
         <section className="mt-16">
           <h1 className="font-bold text-xl text-orange-600 mb-4">
-            იქნებ აქაც მოგეძებნა?
+            {t("navigation.findHere")}
           </h1>
           <div className="relative">
             <div className="flex justify-end mb-3">

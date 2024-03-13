@@ -2,8 +2,9 @@
 import React from "react";
 import PhoneIcon from "../assets/icons/header-phone.svg";
 import { Link } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 export default function Headline() {
+  const { t } = useTranslation("global");
   return (
     <div className="bg-[#ec5e2a] ">
       <div className="custom-container  py-[10px] flex flex-col md:flex-row justify-between">
@@ -21,28 +22,28 @@ export default function Headline() {
             to="/tradepolicy"
             className="text-white dark:text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100 md:mr-4"
           >
-            სავაჭრო პოლიტიკა
+            {t("headline.tradepolicy")}
           </Link>
 
           <Link
             to="/career"
             className="text-white dark:text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100 md:mr-4"
           >
-            კარიერა
+            {t("headline.career")}
           </Link>
 
           <Link
             to="/installment"
             className="text-white dark:text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100 md:mr-4"
           >
-            განვადება
+            {t("headline.installment")}
           </Link>
 
           <Link
             to="/tradein"
             className="text-white dark:text-black font-medium text-xs leading-4 opacity-70 cursor-pointer hover:opacity-100"
           >
-            Trade In
+            {t("headline.tradein")}
           </Link>
         </div>
       </div>
