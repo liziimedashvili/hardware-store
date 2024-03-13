@@ -23,3 +23,10 @@
 .input-range__slider-container {
   @apply bg-[#f8c2ae];
 }
+@media (max-width: 768px) {
+  .custom-container {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}

@@ -15,13 +15,34 @@ const SimpleSlider = () => {
   const sliderRef = useRef(null);
 
   const settings = {
+    arrows: false,
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          dots: false,
+        },
+      },
+    ],
   };
-
   const handlePrev = () => {
     sliderRef.current.slickPrev();
   };
@@ -31,14 +52,14 @@ const SimpleSlider = () => {
   };
 
   return (
-    <div className="relative max-w-[895px] mt-7">
+    <div className="relative lg:max-w-[800px] md:max-w-[450px] mt-7">
       <Slider ref={sliderRef} {...settings}>
         <div>
           <img
             src={main1}
             alt="Image 1"
             style={{ width: "895px", height: "350px" }}
-            className="rounded-lg"
+            className="rounded-lg md:w-[200px]"
           />
         </div>
         <div>
@@ -46,7 +67,7 @@ const SimpleSlider = () => {
             src={main2}
             alt="Image 2"
             style={{ width: "895px", height: "350px" }}
-            className="rounded-lg"
+            className="rounded-lg md:w-[200px]"
           />
         </div>
         <div>
@@ -54,7 +75,7 @@ const SimpleSlider = () => {
             src={main3}
             alt="Image 3"
             style={{ width: "895px", height: "350px" }}
-            className="rounded-lg"
+            className="rounded-lg md:w-[200px]"
           />
         </div>
         <div>
@@ -62,7 +83,7 @@ const SimpleSlider = () => {
             src={main4}
             alt="Image 4"
             style={{ width: "895px", height: "350px" }}
-            className="rounded-lg"
+            className="rounded-lg md:w-[200px]"
           />
         </div>
         <div>
@@ -70,7 +91,7 @@ const SimpleSlider = () => {
             src={main5}
             alt="Image 5"
             style={{ width: "895px", height: "350px" }}
-            className="rounded-lg"
+            className="rounded-lg md:w-[200px] md:h-[200px]"
           />
         </div>
       </Slider>

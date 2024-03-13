@@ -6,8 +6,8 @@ import Products from "../components/products/Products";
 
 export default function HomePage() {
   return (
-    <div className=" flex flex-col">
-      <div className="flex flex-row justify-between custom-container">
+    <div className="flex flex-col">
+      <div className="flex flex-row   justify-between custom-container">
         <Categories />
         <SimpleSlider />
       </div>

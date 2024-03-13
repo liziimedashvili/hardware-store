@@ -48,7 +48,7 @@ export default function Header() {
 
     if (isLogged) {
       return (
-        <div className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md">
+        <div className="bg-white flex-row lg:w-32 md:w-28 opacity-80 rounded-lg flex items-center justify-center lg:gap-[8px] md:gap-1 p-2  cursor-pointer shadow-md">
           <img src={UserIcon} />
           <Button children="პროფილი" onClick={handleProfilePage} />
         </div>
@@ -57,7 +57,7 @@ export default function Header() {
       return (
         <div
           onClick={handleShow}
-          className="bg-white flex-row w-32 opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md"
+          className="bg-white flex-row  opacity-80 rounded-lg flex items-center justify-center gap-[10px] p-2 cursor-pointer shadow-md"
         >
           <img src={UserIcon} />
           <Button children="შესვლა" />
@@ -72,36 +72,39 @@ export default function Header() {
         scrollDirection === "down" ? "-top-24" : "top-0"
       } transition-all duration-500 bg-[#F2F0F0]  z-50`}
     >
-      <div className="custom-container h-[70px] flex flex-row items-center justify-between">
+      <div className="custom-container lg:h-[70px] flex flex-row items-center justify-between">
         <div>
           <Link to="/">
-            <img src={MainLogo} className="cursor-pointer w-40 h-10" />
+            <img
+              src={MainLogo}
+              className="cursor-pointer lg:w-40 h-10  md:w-28"
+            />
           </Link>
         </div>
-        <div className="flex flex-row gap-5 ">
+        <div className="flex flex-row lg:gap-5 md:gap-2 justify-between ">
           <Link to="/navigation">
-            <div className="flex flex-row items-center bg-[#EC5E2A] w-[130px]  rounded-[12px] gap-[10px] p-[10px] cursor-pointer ">
-              <img src={Dots} />
-              <span className="font-medium text-sm text-[#fff] dark:text-black">
+            <div className="flex flex-row items-center  bg-[#EC5E2A] lg:w-[130px] md:w-[100px]   lg:rounded-[12px] md:rounded-lg lg:gap-[12px] lg:p-[10px] md:px-4 md:py-2 cursor-pointer md:mt-1 ">
+              <img src={Dots} className="md:w-4 lg:w-auto" />
+              <span className="font-medium lg:text-sm ml-1 md:text-[11px] text-[#fff] dark:text-black">
                 ნავიგაცია
               </span>
             </div>
           </Link>
           <SearchBar />
           <Link to="/cart">
-            <div className="bg-white dark:bg-black flex-row w-32 opacity-80 rounded-lg flex items-center justify-center p-2.5 cursor-pointer shadow-md">
+            <div className="bg-white dark:bg-black flex-row lg:w-32 md:w-28 opacity-80 rounded-lg flex items-center justify-center lg:p-2.5 md:p-2 cursor-pointer shadow-md">
               <Button
                 children="კალათა"
                 className="gap-[10px]"
                 icon={<img src={CartIcon} alt="Cart Icon" />}
               />
-              <span className=" text-white dark:bg-black rounded-full text-sm absolute top-[10px] bg-orange-600 right-[395px] w-[22px] h-5 flex items-center justify-center">
+              <span className=" text-white dark:bg-black rounded-full text-sm absolute lg:top-[10px] md:top-0 bg-orange-600 lg:right-[395px] md:right-[204px] w-[22px] h-5 flex items-center justify-center">
                 {cartProducts.reduce((total, item) => total + item.count, 0)}
               </span>
             </div>
           </Link>
 
-          {showProfileOrLogin()}
+          <div>{showProfileOrLogin()}</div>
         </div>
       </div>
       <Login

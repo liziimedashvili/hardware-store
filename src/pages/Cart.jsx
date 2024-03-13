@@ -97,7 +97,7 @@ export default function Cart() {
             {cartProducts.reduce((total, item) => total + item.count, 0)} ნივთია
           </p>
         </div>
-        <div className="flex justify-between mt-[30px]">
+        <div className="flex justify-between mt-[30px] lg:flex-row md:flex-col ">
           <div className="flex flex-col gap-5">
             {cartProducts.length > 0 ? (
               cartProducts.map((product) => (
@@ -130,7 +130,7 @@ export default function Cart() {
               <img src={EmptyCartIcon} alt="emptyCartIcon" />
             )}
           </div>
-          <div className="rounded-[12px] ">
+          <div className="rounded-[12px]  md:mt-4">
             <div className="flex justify-between items-center gap-2 mb-5  ">
               <h2 className="text-orange-600 font-bold text-md">
                 გადასახდელი თანხა

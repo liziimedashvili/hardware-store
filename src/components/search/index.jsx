@@ -46,7 +46,7 @@ export default function SearchBar() {
 
   return (
     <div className="relative">
-      <div className="items-center border border-orange-500 border-opacity-50 rounded-lg shadow-md p-3 cursor-pointer flex gap-4 w-[440px] h-[44px] bg-[#fff]">
+      <div className="items-center border border-orange-500 border-opacity-50 rounded-lg shadow-md p-3 cursor-pointer flex gap-4 lg:w-[440px] lg:h-[44px] md:w-[250px] md:h-[40px] bg-[#fff]">
         <img src={searchIcon} alt="Search" />
         <input
           type="text"
@@ -57,7 +57,7 @@ export default function SearchBar() {
         />
       </div>
       {searchResults.length > 0 && (
-        <ul className="absolute z-10 left-0 mt-1 w-[440px] bg-white border  border-gray-200 rounded-md shadow-lg">
+        <ul className="absolute z-10 lg:left-0 md:left-[-20] mt-1 lg:w-[440px] md:w-[250px] bg-white border  border-gray-200 rounded-md shadow-lg">
           {searchResults.map((result) => (
             <li
               key={result.id}
