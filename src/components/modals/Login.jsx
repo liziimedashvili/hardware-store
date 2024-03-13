@@ -48,7 +48,7 @@ const Login = ({ showModal, handleClose, onLoggedIn }) => {
       <div className="flex justify-center flex-col gap-4">
         <h2 className="text-center text-2xl font-medium">
           {" "}
-          {t("modals.autheticationn")}
+          {t("modals.authentication")}
         </h2>
         <div className="flex gap-4 flex-col items-center">
           <Input

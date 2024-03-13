@@ -72,9 +72,7 @@ export const LikedProductsProvider = ({ children }) => {
     removeLikedProduct(productId)
       .then(() => {
         setLikedProducts((prevProducts) =>
-          prevProducts.filter(
-            (product) => product.likedProduct.id !== productId
-          )
+          prevProducts.filter((product) => product.id !== productId)
         );
 
         toast.success("პროდუქტი წაიშალა ვიშლისტიდან", {

@@ -154,5 +154,12 @@
     "text17": "8.1. By signing this agreement, the parties confirm that: 8.1.1. They do not conceal circumstances that are essential to this agreement; 8.1.2. The conclusion of this agreement will not violate the rights and legitimate interests of others, including minors, minors, children with disabilities and other persons, whom the parties are obliged to protect by law or contract; 8.1.3. The contract is not concluded under the influence of difficult circumstances for them; 8.1.4. They are not declared incapacitated or partially incapacitated; 8.1.5. The conclusion of the contract satisfies their interests; 8.1.6. The expression of will is free, conscious and consistent with their inner will; 8.1.7. the terms of the contract are clear and correspond to the actual agreement of the parties; 8.1.8. The contract does not hide any other transaction and aims at the actual occurrence of the results provided for in it; 8.2. When concluding this contract, the client knows the importance of his actions and can manage them, as well as understands the nature of this transaction. 8.3. In case of violation of the agreement, the party that violates is responsible according to this agreement and the current legislation of Georgia. 8.4. Violation of the contract is its non-fulfillment or untimely fulfillment, i.e. fulfillment in violation of the terms specified in this contract. 8.5. The party will not be liable for the breach of the contract if it occurred without its fault (intentional or negligent). 8.6. In case of violation by the client of the guarantees specified in this section, the client is obliged to fully compensate the company for the damage.",
     "text18": "9. Term of the Agreement. Changes to the Agreement",
     "text19": "9.1. This Agreement shall enter into force upon its acceptance by the Client and shall remain in effect until the parties fully fulfill their obligations under this Agreement. 9.2. The company has the right to change the terms of this agreement. If the Agreement is accepted, then the version of the Agreement in effect on the date of acceptance shall apply."
+  },
+  "validation": {
+    "location": "Enter your location",
+    "phoneValidation": "Phone number must be 9 digits long",
+    "passwordDoNotMech": "Password does not match",
+    "passwordValidation": "Password must be greater than or equal to 8 characters",
+    "emailValidation": "Email must be a valid email address"
   }
 }

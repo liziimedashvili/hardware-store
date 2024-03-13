@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 
 export default function PaymentPage() {
   const location = useLocation();
+  console.log(location);
   const productData = location.state ? location.state.productData : null;
 
   const { totalPrice, totalItems } = calculateTotal(productData);
@@ -13,22 +14,25 @@ export default function PaymentPage() {
     let totalPrice = 0;
     let totalItems = 0;
 
-    if (productData) {
+    if (productData?.id) {
       totalPrice = productData.salePrice
         ? productData.salePrice
         : productData.price;
       totalItems = 1;
-    }
 
-    return { totalPrice, totalItems };
+      return { totalPrice, totalItems };
+    } else {
+      const { totalPrice, totalItems } = productData;
+      return { totalPrice, totalItems };
+    }
   }
 
   return (
     <div>
       <PaymentForm
         paymentParams={{
-          totalPrice: productData ? totalPrice : 0,
-          totalItems: productData ? totalItems : 0,
+          totalPrice: productData ? totalPrice : productData?.totalPrice,
+          totalItems: productData ? totalItems : productData?.totalItems,
         }}
       />
     </div>

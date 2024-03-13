@@ -38,12 +38,12 @@ export default function Cart() {
   };
   const handlePurchase = async () => {
     try {
-      const response = await purchaseProducts({
+      const productData = {
         totalPrice: calculateTotalPrice(),
         totalItems: cartProducts.reduce((total, item) => total + item.count, 0),
-      });
+      };
 
-      navigate("/payment");
+      navigate(`/payment`, { state: { productData } });
     } catch (error) {
       console.error(error);
     }
@@ -99,7 +99,7 @@ export default function Cart() {
             {t("cart.item")}
           </p>
         </div>
-        <div className="flex justify-between mt-[30px]">
+        <div className="flex justify-between mt-[30px] md:flex-col lg:flex-row ">
           <div className="flex flex-col gap-5">
             {cartProducts.length > 0 ? (
               cartProducts.map((product) => (

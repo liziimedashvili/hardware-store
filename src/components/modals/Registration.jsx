@@ -19,7 +19,7 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
   const handleRegistration = async () => {
     setError("");
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("პაროლი არ ემთხვევა");
       return;
     }
     if (phoneNumber.length !== 9) {
