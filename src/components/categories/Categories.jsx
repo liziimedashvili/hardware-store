@@ -22,7 +22,7 @@ export default function Categories() {
   };
   return (
     <div className="mt-[50px] mb-11">
-      <div className="flex flex-col bg-white shadow-xl rounded-lg w-[240px] ">
+      <div className="flex flex-col bg-white shadow-xl rounded-lg w-[240px]  ">
         {categories.map((category) => (
           <Category
             key={category.id}

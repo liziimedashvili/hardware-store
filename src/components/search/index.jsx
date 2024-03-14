@@ -46,7 +46,7 @@ export default function SearchBar() {
 
   return (
     <div className="relative">
-      <div className="items-center border border-orange-500 border-opacity-50 rounded-lg shadow-md p-3 cursor-pointer flex gap-4 lg:w-[440px] lg:h-[44px] md:w-[250px] md:h-[40px] bg-[#fff]">
+      <div className="items-center border border-orange-500 border-opacity-50 rounded-lg shadow-md p-3 cursor-pointer flex gap-4 lg:w-[440px] lg:h-[44px] sm:w-[200px] md:w-[250px] md:h-[40px] sm:h-[35px] bg-[#fff]">
         <img src={searchIcon} alt="Search" />
         <input
           type="text"

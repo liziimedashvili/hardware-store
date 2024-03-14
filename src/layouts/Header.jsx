@@ -48,7 +48,7 @@ export default function Header() {
 
     if (isLogged) {
       return (
-        <div className="bg-white flex-row lg:w-32 md:w-28 opacity-80 rounded-lg flex items-center justify-center lg:gap-[8px] md:gap-1 p-2  cursor-pointer shadow-md">
+        <div className="bg-white flex-row lg:w-32 md:w-28 sm:w-24 opacity-80 lg:text-sm sm:text-[11px] rounded-lg flex items-center justify-center lg:gap-[8px] md:gap-1 p-2   cursor-pointer shadow-md">
           <img src={UserIcon} />
           <Button children={t("header.profile")} onClick={handleProfilePage} />
         </div>
@@ -57,7 +57,7 @@ export default function Header() {
       return (
         <div
           onClick={handleShow}
-          className="bg-white flex-row  md:w-28 opacity-80 rounded-lg flex items-center justify-center  p-2 cursor-pointer shadow-md"
+          className="bg-white flex-row  sm:w-24 md:w-28  opacity-80 rounded-lg flex items-center justify-center sm:p-1 p-2 cursor-pointer shadow-md"
         >
           <img src={UserIcon} />
           <Button children={t("header.enter")} />
@@ -72,33 +72,33 @@ export default function Header() {
         scrollDirection === "down" ? "-top-24" : "top-0"
       } transition-all duration-500 bg-[#F2F0F0]  z-50`}
     >
-      <div className="custom-container lg:h-[70px] flex flex-row items-center justify-between">
+      <div className="custom-container lg:h-[70px] flex flex-row items-center sm:items-center justify-between">
         <div>
           <Link to="/">
             <img
               src={MainLogo}
-              className="cursor-pointer lg:w-40 h-10  md:w-28"
+              className="cursor-pointer lg:w-40 h-10  sm:w-20 md:w-28"
             />
           </Link>
         </div>
-        <div className="flex flex-row lg:gap-5 md:gap-2 justify-between ">
+        <div className="flex flex-row lg:gap-5 md:gap-2 sm:gap-1 items-center justify-between ">
           <Link to="/navigation">
-            <div className="flex flex-row items-center  bg-[#EC5E2A] lg:w-[130px] md:w-[100px]   lg:rounded-[12px] md:rounded-lg lg:gap-[12px] lg:p-[10px] md:px-4 md:py-2 cursor-pointer md:mt-1 ">
-              <img src={Dots} className="md:w-4 lg:w-auto" />
-              <span className="font-medium lg:text-sm ml-1 md:text-[11px] text-[#fff] ">
+            <div className="flex flex-row items-center  bg-[#EC5E2A] lg:w-[130px] md:w-[100px]   lg:rounded-[12px] md:rounded-lg lg:gap-[12px] lg:p-[10px] md:px-4 md:py-2 sm:p-2 sm:rounded-lg  cursor-pointer md:mt-1 ">
+              <img src={Dots} className="md:w-4 sm:w-3 lg:w-auto" />
+              <span className="font-medium sm:hidden lg:block lg:text-sm ml-1 md:text-[11px] sm:text-[10px] text-[#fff] ">
                 {t("header.navigation")}
               </span>
             </div>
           </Link>
           <SearchBar />
           <Link to="/cart">
-            <div className="bg-white  flex-row lg:w-32 md:w-28 opacity-80 rounded-lg flex items-center justify-center lg:p-2.5 md:p-2 cursor-pointer shadow-md">
+            <div className="bg-white  flex-row lg:w-28 md:w-28 sm:py-2 opacity-80 rounded-lg flex items-center justify-center lg:p-2.5 md:p-2  cursor-pointer shadow-md">
               <Button
                 children={t("header.cart")}
                 className="gap-[10px]"
                 icon={<img src={CartIcon} alt="Cart Icon" />}
               />
-              <span className=" text-white  rounded-full text-sm absolute lg:top-[10px] md:top-0 bg-orange-600 lg:right-[390px] md:right-[204px] w-[22px] h-5 flex items-center justify-center">
+              <span className=" text-white  rounded-full text-sm absolute lg:top-[10px] md:top-0 bg-orange-600 lg:right-[390px] md:right-[204px] sm:right-[180px] sm:top-0 w-[22px] h-5 flex items-center justify-center">
                 {cartProducts.reduce((total, item) => total + item.count, 0)}
               </span>
             </div>

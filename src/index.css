@@ -30,3 +30,10 @@
     margin: 0 auto;
   }
 }
+@media (max-width: 640px) {
+  .custom-container {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+}

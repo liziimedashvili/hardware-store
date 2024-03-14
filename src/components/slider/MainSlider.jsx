@@ -52,14 +52,14 @@ const SimpleSlider = () => {
   };
 
   return (
-    <div className="relative lg:max-w-[800px] md:max-w-[450px] mt-7">
+    <div className="relative lg:max-w-[800px] md:max-w-[450px] sm:max-w-[350px] mt-7">
       <Slider ref={sliderRef} {...settings}>
         <div>
           <img
             src={main1}
             alt="Image 1"
             style={{ width: "895px", height: "350px" }}
-            className="rounded-lg md:w-[200px]"
+            className="rounded-lg md:w-[200px] "
           />
         </div>
         <div>

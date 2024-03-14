@@ -99,13 +99,13 @@ export default function Cart() {
             {t("cart.item")}
           </p>
         </div>
-        <div className="flex justify-between mt-[30px] md:flex-col lg:flex-row ">
+        <div className="flex justify-between mt-[30px] md:flex-col lg:flex-row sm:flex-col ">
           <div className="flex flex-col gap-5">
             {cartProducts.length > 0 ? (
               cartProducts.map((product) => (
                 <div
                   key={product?.cartProduct.id}
-                  className=" h-[100px] p-[12px] rounded-[12px] justify-between bg-[#f2f2f2] flex items-center w-[700px]"
+                  className=" h-[100px] p-[12px] rounded-[12px] justify-between bg-[#f2f2f2] flex items-center w-[700px] sm:w-[600px]"
                 >
                   <div className="flex flex-row justify-start items-center">
                     <div>
