@@ -15,24 +15,26 @@ export default function ProfilePage() {
     localStorage.setItem("selectedPage", selectedPage);
   }, [selectedPage]);
   return (
-    <div className="custom-container">
-      <div className="mt-10 flex flex-col">
-        <div className="flex flex-row items-center gap-1 border-b border-gray-200 pb-4">
-          <img src={ProfileIcon} alt="profile photo" />
-          <h1 className="text-black font-bold text-2xl ">
-            {" "}
-            {t("modals.hello")}{" "}
-          </h1>
-        </div>
-        <div className="flex flex-row justify-between">
-          <div>
-            <ProfileSidebar onItemClick={setSelectedPage} />
+    <div className="dark:bg-white  bg-[#060814] dark:text-black text-white">
+      <div className="custom-container">
+        <div className="flex flex-col">
+          <div className="flex flex-row items-center gap-1 border-b border-gray-200 pb-4">
+            <img src={ProfileIcon} alt="profile photo" />
+            <h1 className="dark:text-black text-white font-bold text-2xl ">
+              {" "}
+              {t("modals.hello")}{" "}
+            </h1>
           </div>
-          <div className="w-full h-full">
-            {selectedPage === "Profile" && <Profile />}
-            {selectedPage === "Purchase" && <Purchase />}
-            {selectedPage === "Wishlist" && <WishList />}
-            {selectedPage === "Logout" && <Logout />}
+          <div className="flex flex-row justify-between">
+            <div>
+              <ProfileSidebar onItemClick={setSelectedPage} />
+            </div>
+            <div className="w-full h-full">
+              {selectedPage === "Profile" && <Profile />}
+              {selectedPage === "Purchase" && <Purchase />}
+              {selectedPage === "Wishlist" && <WishList />}
+              {selectedPage === "Logout" && <Logout />}
+            </div>
           </div>
         </div>
       </div>

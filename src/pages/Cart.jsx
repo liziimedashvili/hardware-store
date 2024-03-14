@@ -90,8 +90,8 @@ export default function Cart() {
   };
 
   return (
-    <div className="custom-container  ">
-      <div className="mt-10">
+    <div className="dark:bg-white  bg-[#060814] dark:text-black text-white">
+      <div className="custom-container py-10 ">
         <div className="pb-5 border-b-2 ">
           <p className="font-bold text-[28px] leading-7">
             {t("cart.inYourCart")}
@@ -119,7 +119,7 @@ export default function Cart() {
                       <h1 className="text-gray-600 text-md">
                         {product?.cartProduct.title}
                       </h1>
-                      <span className="font-bold">
+                      <span className="font-bold dark:text-black text-black">
                         {" "}
                         {product?.cartProduct.price}
                       </span>
@@ -134,10 +134,10 @@ export default function Cart() {
           </div>
           <div className="rounded-[12px] ">
             <div className="flex justify-between items-center gap-2 mb-5  ">
-              <h2 className="text-orange-600 font-bold text-md">
+              <h2 className="text-orange-600  font-bold text-md">
                 {t("cart.toBePaid")}
               </h2>
-              <span className="font-bold text-md text-black">
+              <span className="font-bold text-md dark:text-black text-white">
                 {calculateTotalPrice().toFixed(2)}₾
               </span>
             </div>

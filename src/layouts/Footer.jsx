@@ -11,7 +11,7 @@ import LanguageSwitcher from "../components/LanguageSwitcherButtons";
 export default function Footer() {
   const { t } = useTranslation("global");
   return (
-    <div className="bg-[#f2f2f2] mt-14">
+    <div className="dark:bg-[#f2f2f2] bg-gray-300 ">
       <div className="custom-container py-5 px-0 flex justify-between">
         <div className="flex flex-col  gap-5">
           <span className="text-black font-bold text-sm leading-5 pb-[15px] mb-[5px] border-b border-orange-600 ">

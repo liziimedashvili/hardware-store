@@ -61,7 +61,7 @@ const SaleProducts = ({ onlySales }) => {
   return (
     <div>
       <section className="mt-16">
-        <h1 className="font-bold text-xl text-orange-600 mb-4">
+        <h1 className="font-bold text-xl text-white dark:text-orange-600 mb-4">
           {t("sliderNames.saleProduct")}
         </h1>
         <div className="relative">

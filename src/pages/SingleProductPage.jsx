@@ -51,7 +51,7 @@ export default function SingleProductPage() {
   }, [productId]);
 
   const breadcrumbs = [
-    { label: t("product.buy"), path: "/" },
+    { label: t("product.main"), path: "/" },
     {
       label: categoryName ? categoryName : "product category",
       path: `/products?categoryName=${categoryName}`,
@@ -77,10 +77,10 @@ export default function SingleProductPage() {
   );
 
   return (
-    <div className="custom-container">
-      <div className="mt-10">
+    <div className="bg-[#060814] dark:bg-white p-10">
+      <div className="custom-container">
         <nav>
-          <ul className="flex flex-row gap-5  text-lg font-bold">
+          <ul className="flex flex-row gap-5 dark:text-black text-white pt-16  text-lg font-bold">
             {breadcrumbs.map((breadcrumb, index) => (
               <li key={index}>
                 <Link to={breadcrumb.path}>{breadcrumb.label}</Link>
@@ -91,7 +91,7 @@ export default function SingleProductPage() {
 
         {productData ? (
           <div className="flex flex-row justify-between p-6 items-center">
-            <div className=" flex flex-col gap-2 w-[400px] cursor-pointer rounded-md h-[400px] items-start justify-between bg-white mr">
+            <div className=" flex flex-col gap-2 w-[400px] cursor-pointer rounded-md h-[400px] items-center justify-between bg-[#060814]   dark:bg-white mr">
               <div
                 className="relative m-2"
                 style={{ left: 250, top: 70 }}
@@ -104,7 +104,7 @@ export default function SingleProductPage() {
                 <LikeIcon color={isProductLiked ? "red" : "grey"} />
               </div>
 
-              <div className="rounded-lg bg-white overflow-hidden mt-16  flex items-center">
+              <div className="rounded-lg  overflow-hidden mt-16  flex items-center">
                 <img
                   src={productData.image}
                   className="w-full h-full object-contain"
@@ -112,15 +112,17 @@ export default function SingleProductPage() {
                 />
               </div>
               <div className="flex flex-col items-start ">
-                <h2 className="font-bold text-2xl ">{productData.title}</h2>
-                <p className="text-sm text-gray-700 mt-2 ">
+                <h2 className="font-bold text-2xl dark:text-dark text-white ">
+                  {productData.title}
+                </h2>
+                <p className="text-sm dark:text-gray-700 text-white mt-2 ">
                   {productData.description}
                 </p>
               </div>
             </div>
             <div className="flex flex-col w-[350px] p-6">
               <div>
-                <p className="text-black  mt-2 text-lg font-bold ">
+                <p className="dark:text-black text-white mt-2 text-lg font-bold ">
                   {productData.salePrice ? (
                     <>
                       <span className="line-through mr-2 text-orange-500">
@@ -161,23 +163,24 @@ export default function SingleProductPage() {
         ) : (
           <div>Loading...</div>
         )}
-      </div>
-      {similarProducts.length > 0 && (
-        <div className="mt-10">
-          <h3 className=" text-xl text-orange-600 font-bold">
-            {t("sliderNames.similarProducts")}
-          </h3>
-          <div className="similar-products">
-            <SimilarProductsSlider similarProducts={similarProducts} />
+
+        {similarProducts.length > 0 && (
+          <div className="mt-10">
+            <h3 className=" text-xl text-orange-600 font-bold">
+              {t("sliderNames.similarProducts")}
+            </h3>
+            <div className="similar-products">
+              <SimilarProductsSlider similarProducts={similarProducts} />
+            </div>
           </div>
-        </div>
-      )}
-      {showLoginModal && (
-        <LoginModal
-          showModal={showLoginModal}
-          handleClose={() => setShowLoginModal(false)}
-        />
-      )}
+        )}
+        {showLoginModal && (
+          <LoginModal
+            showModal={showLoginModal}
+            handleClose={() => setShowLoginModal(false)}
+          />
+        )}
+      </div>
     </div>
   );
 }

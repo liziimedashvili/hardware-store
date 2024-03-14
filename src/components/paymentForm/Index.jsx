@@ -133,8 +133,8 @@ const PaymentForm = ({ paymentParams }) => {
     return errors;
   };
   return (
-    <div className="custom-container">
-      <div className="mt-14">
+    <div className="dark:bg-white  bg-[#060814] dark:text-black text-white">
+      <div className="custom-container py-10">
         <div className="flex items-center justify-center">
           {showLocationForm && (
             <form
@@ -152,7 +152,7 @@ const PaymentForm = ({ paymentParams }) => {
                   setUserLocation(e.target.value);
                   setUserLocationError("");
                 }}
-                className="focus:outline-none font-bold text-base w-full bg-gray-300 px-[16px] py-[16px] rounded-[16px]"
+                className="focus:outline-none font-bold text-base w-full bg-gray-300 dark:text-white text-gray-500 px-[16px] py-[16px] rounded-[16px]"
               />
               {userLocationError && (
                 <div className="border-red-600">{userLocationError}</div>
@@ -177,7 +177,7 @@ const PaymentForm = ({ paymentParams }) => {
               />
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-y-[10px] w-[400px]"
+                className="flex flex-col gap-y-[10px] w-[400px] dark:text-white text-gray-500"
               >
                 <input
                   type="number"

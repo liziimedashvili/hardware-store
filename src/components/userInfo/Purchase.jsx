@@ -31,7 +31,10 @@ export default function Purchase() {
       <div className="flex items-center  gap-4 mt-5">
         <div className="flex flex-wrap gap-[40px]">
           {purchases.map((purchase) => (
-            <div key={purchase.id} className="bg-white font-bold text-lg ">
+            <div
+              key={purchase.id}
+              className="dark:bg-white bg-[#060814]  font-bold text-lg "
+            >
               <p>
                 {" "}
                 <span className="text-orange-600">

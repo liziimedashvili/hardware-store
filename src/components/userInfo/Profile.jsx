@@ -55,7 +55,7 @@ export default function Profile() {
           {" "}
           {t("profile.profileUpdate")}
         </h2>
-        <form className="flex flex-col gap-y-[20px]  ">
+        <form className="flex flex-col gap-y-[20px]  dark:text-gray-600 text-black ">
           <input
             type="text"
             name="phone_number"

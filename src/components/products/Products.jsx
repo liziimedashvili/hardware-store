@@ -86,11 +86,11 @@ const Products = () => {
   };
 
   return (
-    <div className="mt-[100px]">
+    <div className="mt-[100px] mb-10">
       <SaleProducts onlySales={true} />
 
       <section className="mt-24">
-        <h1 className="font-bold text-xl text-orange-600 mb-4">
+        <h1 className="font-bold text-xl dark:text-orange-600  text-white mb-4">
           {t("sliderNames.smartphones")}
         </h1>
         <div className="relative">
@@ -117,7 +117,7 @@ const Products = () => {
       </section>
 
       <section className="mt-24">
-        <h1 className="font-bold text-xl text-orange-600 mb-4">
+        <h1 className="font-bold text-xl dark:text-orange-600  text-white mb-4">
           {t("sliderNames.audio")}
         </h1>
         <div className="relative">
@@ -144,7 +144,7 @@ const Products = () => {
       </section>
 
       <section className="mt-24">
-        <h1 className="font-bold text-xl text-orange-600 mb-4">
+        <h1 className="font-bold text-xl dark:text-orange-600  text-white mb-4">
           {t("sliderNames.tabs")}
         </h1>
         <div className="relative">

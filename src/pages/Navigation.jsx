@@ -73,9 +73,9 @@ export default function Navigation() {
     ],
   };
   return (
-    <div className="mt-10">
-      <div className=" custom-container">
-        <h1 className="text-2xl font-bold text-center mb-6 text-orange-600">
+    <div className="dark:bg-white  bg-[#060814] dark:text-black text-white ">
+      <div className=" custom-container py-10">
+        <h1 className="text-2xl font-bold text-center mb-6 dark:text-orange-600 text-white">
           {t("header.navigation")}
         </h1>
         <div className="flex flex-row bg-white shadow-md rounded-lg justify-between ">
@@ -88,7 +88,7 @@ export default function Navigation() {
           ))}
         </div>
         <section className="mt-16">
-          <h1 className="font-bold text-xl text-orange-600 mb-4">
+          <h1 className="font-bold text-xl dark:text-orange-600  text-white mb-4">
             {t("navigation.findHere")}
           </h1>
           <div className="relative">

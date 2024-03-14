@@ -60,8 +60,8 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="mt-10">
-      <div className="custom-container">
+    <div className="dark:bg-white  bg-[#060814] dark:text-black text-white">
+      <div className="custom-container p-10">
         <nav>
           <ul className="flex flex-row gap-2 text-xl font-mono font-bold">
             {breadcrumbs.map((breadcrumb, index) => (
@@ -71,8 +71,8 @@ export default function ProductsPage() {
             ))}
           </ul>
         </nav>
-        <div className="flex flex-row mt-10 gap-10">
-          <div className="w-1/4 pr-4 mt-10">
+        <div className="flex flex-row mt-10 gap-10 ">
+          <div className="w-1/4 pr-4 mt-10 text-white">
             <InputRange
               minValue={0}
               maxValue={5000}
@@ -86,7 +86,7 @@ export default function ProductsPage() {
               <div className="mb-4">
                 <label htmlFor="minPrice">Min Price:</label>
                 <input
-                  className="w-24 border border-orange-600"
+                  className="w-24 border dark:text-black text-black border-orange-600"
                   type="number"
                   id="minPrice"
                   value={minPrice}
@@ -96,7 +96,7 @@ export default function ProductsPage() {
               <div className="mb-4">
                 <label htmlFor="maxPrice">Max Price:</label>
                 <input
-                  className="w-24 border border-orange-600"
+                  className="w-24 border dark:text-black text-black border-orange-600"
                   type="number"
                   id="maxPrice"
                   value={maxPrice}
@@ -131,7 +131,7 @@ export default function ProductsPage() {
                   onPageChange={handlePageClick}
                   containerClassName="flex"
                   pageClassName="px-4 py-2 mx-1"
-                  activeClassName="bg-gray-300"
+                  activeClassName="dark:bg-gray-300 bg-gray-500"
                   previousClassName="px-4 py-2 border border-grey-300"
                   nextClassName="px-4 py-2 border border-grey-300"
                 />

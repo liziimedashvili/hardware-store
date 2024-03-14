@@ -57,7 +57,7 @@ export default function Header() {
       return (
         <div
           onClick={handleShow}
-          className="bg-white flex-row  sm:w-24 md:w-28  opacity-80 rounded-lg flex items-center justify-center sm:p-1 p-2 cursor-pointer shadow-md"
+          className="bg-white flex-row  sm:w-24 md:w-28  opacity-80 rounded-lg flex items-center justify-center sm:p-1 lg:py-2 cursor-pointer shadow-md"
         >
           <img src={UserIcon} />
           <Button children={t("header.enter")} />
@@ -70,7 +70,7 @@ export default function Header() {
     <header
       className={`sticky ${
         scrollDirection === "down" ? "-top-24" : "top-0"
-      } transition-all duration-500 bg-[#F2F0F0]  z-50`}
+      } transition-all duration-500 dark:bg-white bg-[#060814]  z-50`}
     >
       <div className="custom-container lg:h-[70px] flex flex-row items-center sm:items-center justify-between">
         <div>
@@ -98,7 +98,7 @@ export default function Header() {
                 className="gap-[10px]"
                 icon={<img src={CartIcon} alt="Cart Icon" />}
               />
-              <span className=" text-white  rounded-full text-sm absolute lg:top-[10px] md:top-0 bg-orange-600 lg:right-[390px] md:right-[204px] sm:right-[180px] sm:top-0 w-[22px] h-5 flex items-center justify-center">
+              <span className=" text-white  rounded-full text-sm absolute lg:top-[10px] md:top-0 bg-orange-600 lg:right-[372px] md:right-[204px] sm:right-[180px] sm:top-0 w-[22px] h-5 flex items-center justify-center">
                 {cartProducts.reduce((total, item) => total + item.count, 0)}
               </span>
             </div>

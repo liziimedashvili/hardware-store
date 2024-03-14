@@ -36,7 +36,7 @@ const Product = ({ product, showDescription }) => {
       >
         <LikeIcon color={isProductLiked ? "red" : "grey"} />
       </div>
-      <div className="flex flex-col gap-2 max-w-40 cursor-pointer rounded-md h-[303px] justify-around bg-white">
+      <div className="flex flex-col gap-2 max-w-40 cursor-pointer rounded-md h-[303px] justify-around  dark:bg-white">
         <div onClick={handleProductClick}>
           <div className="rounded-lg bg-white overflow-hidden">
             <img

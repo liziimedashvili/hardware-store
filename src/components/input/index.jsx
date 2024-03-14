@@ -17,7 +17,7 @@ const Input = ({ type, id, value, placeholder, onChange }) => {
       id={id}
       value={value}
       placeholder={placeholder}
-      className="focus:outline-none font-bold text-base w-full bg-light-grey px-[16px] py-[16px] rounded-[16px]"
+      className="focus:outline-none font-bold text-base w-full bg-gray-200 px-[16px] py-[16px] rounded-[16px]"
       onChange={handleInputChange}
     />
   );

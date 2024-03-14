@@ -19,7 +19,7 @@ export default function WishList() {
   };
 
   return (
-    <div className="flex flex-wrap ml-9 mt-5 justify-between">
+    <div className="flex flex-wrap ml-9 py-10 justify-between">
       {likedProducts.map((product) => (
         <div key={product?.likedProduct.id} className="relative">
           <button

@@ -28,7 +28,7 @@ export default function PaymentPage() {
   }
 
   return (
-    <div>
+    <div className="dark:bg-white  bg-[#060814] dark:text-black text-white">
       <PaymentForm
         paymentParams={{
           totalPrice: productData ? totalPrice : productData?.totalPrice,

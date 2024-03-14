@@ -7,7 +7,7 @@ export default function Category({ category, onSelectCategory }) {
   return (
     <div onClick={handleClick}>
       <div className=" cursor-pointer py-[9px] px-[7px] border-b hover:bg-gray-200 shadow-md border-gray-300">
-        <span className="font-medium text-xs leading-[14px] text-gray-500 ">
+        <span className=" text-xs leading-[14px] text-gray-500 font-bold ">
           {category.name}
         </span>
       </div>
