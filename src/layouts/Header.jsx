@@ -48,7 +48,7 @@ export default function Header() {
 
     if (isLogged) {
       return (
-        <div className="bg-white flex-row lg:w-28 md:w-24 opacity-80 rounded-lg flex items-center justify-center lg:gap-[8px] md:gap-1 p-2  cursor-pointer shadow-md">
+        <div className="bg-white flex-row lg:w-32 md:w-28 opacity-80 rounded-lg flex items-center justify-center lg:gap-[8px] md:gap-1 p-2  cursor-pointer shadow-md">
           <img src={UserIcon} />
           <Button children={t("header.profile")} onClick={handleProfilePage} />
         </div>
@@ -98,7 +98,7 @@ export default function Header() {
                 className="gap-[10px]"
                 icon={<img src={CartIcon} alt="Cart Icon" />}
               />
-              <span className=" text-white  rounded-full text-sm absolute lg:top-[10px] md:top-0 bg-orange-600 lg:right-[370px] md:right-[204px] w-[22px] h-5 flex items-center justify-center">
+              <span className=" text-white  rounded-full text-sm absolute lg:top-[10px] md:top-0 bg-orange-600 lg:right-[390px] md:right-[204px] w-[22px] h-5 flex items-center justify-center">
                 {cartProducts.reduce((total, item) => total + item.count, 0)}
               </span>
             </div>

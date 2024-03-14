@@ -3,10 +3,11 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import Modal from "./Modal";
-import Input from "../input";
-import Button from "../button";
+import Input from "../input/index";
+import Button from "../button/index";
 import { registration } from "../../services/services";
 import { useTranslation } from "react-i18next";
+
 const Registration = ({ onSuccess, showModal, handleClose }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -16,23 +17,24 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
   const [error, setError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { t } = useTranslation("global");
+
   const handleRegistration = async () => {
     setError("");
     if (password !== confirmPassword) {
-      setError("პაროლი არ ემთხვევა");
+      setError("Passwords do not match");
       return;
     }
     if (phoneNumber.length !== 9) {
-      setError("ტელეფონის ნომერი უნდა იყოს 9 ციფრიანი");
+      setError("Phone number should be 9 digits long");
       return;
     }
     if (password.length < 8) {
-      setError("პაროლი უნდა იყოს 8 სიმბოლოზე მეტი ან ტოლი");
+      setError("Password should be at least 8 characters long");
       return;
     }
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-      setError("ელფოსტა უნდა იყოს მოქმედი ელფოსტის მისამართი");
+      setError("Invalid email address");
       return;
     }
 
@@ -65,35 +67,35 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
             id="firstNameInput"
             placeholder={t("modals.name")}
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => setFirstName(e)}
           />
           <Input
             type="text"
             id="lastNameInput"
-            placeholder={t("modals.surName")}
+            placeholder={t("modals.surname")}
             value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => setLastName(e)}
           />
           <Input
             type="email"
             id="emailInput"
             placeholder={t("modals.email")}
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e)}
           />
           <Input
             type="password"
             id="passwordInput"
             placeholder={t("modals.password")}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e)}
           />
           <Input
             type="password"
             id="confirmPasswordInput"
             placeholder={t("modals.repeatPassword")}
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e)}
           />
           {error && <p className="text-red-500">{error}</p>}
           <Input
@@ -101,7 +103,7 @@ const Registration = ({ onSuccess, showModal, handleClose }) => {
             id="phoneNumberInput"
             placeholder={t("modals.phoneNumber")}
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e) => setPhoneNumber(e)}
           />
         </div>
         <div className="flex justify-center">
