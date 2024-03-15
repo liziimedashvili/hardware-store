@@ -152,10 +152,12 @@ const PaymentForm = ({ paymentParams }) => {
                   setUserLocation(e.target.value);
                   setUserLocationError("");
                 }}
-                className="focus:outline-none font-bold text-base w-full bg-gray-300 dark:text-white text-gray-500 px-[16px] py-[16px] rounded-[16px]"
+                className="focus:outline-none font-bold text-base w-full bg-gray-300 dark:text-gray-300 text-gray-500 px-[16px] py-[16px] rounded-[16px]"
               />
               {userLocationError && (
-                <div className="border-red-600">{userLocationError}</div>
+                <div className="border-red-600 dark:text-red-900 font-bold text-white">
+                  {userLocationError}!
+                </div>
               )}
               <Button
                 type="submit"
@@ -177,7 +179,7 @@ const PaymentForm = ({ paymentParams }) => {
               />
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-y-[10px] w-[400px] dark:text-white text-gray-500"
+                className="flex flex-col gap-y-[10px] w-[400px] dark:text-gray-500 text-gray-500"
               >
                 <input
                   type="number"
@@ -187,12 +189,16 @@ const PaymentForm = ({ paymentParams }) => {
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
                   className={`border ${
-                    errors.number ? "border-red-500" : "border-gray-500"
-                  } px-4 py-2 rounded-md`}
+                    errors.number
+                      ? "border-red-500 dark:text-red-950 text-white"
+                      : "border-gray-500"
+                  } px-4 py-2 rounded-md dark:text-gray-800 text-gray-500`}
                 />
 
                 {errors.number && (
-                  <div className="border-red-600">{errors.number}</div>
+                  <div className="border-red-600 dark:text-red-950 text-white">
+                    {errors.number}
+                  </div>
                 )}
                 <input
                   type="text"
@@ -202,11 +208,15 @@ const PaymentForm = ({ paymentParams }) => {
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
                   className={`border ${
-                    errors.number ? "border-red-500" : "border-gray-500"
-                  } px-4 py-2 rounded-md`}
+                    errors.number
+                      ? "border-red-500 dark:text-red-950 text-white"
+                      : "border-gray-500"
+                  } px-4 py-2 rounded-md dark:text-gray-800 text-gray-500`}
                 />
                 {errors.name && (
-                  <div className="border-red-600">{errors.name}</div>
+                  <div className="border-red-600 dark:text-red-950 text-white">
+                    {errors.name}
+                  </div>
                 )}
                 <input
                   type="text"
@@ -216,11 +226,15 @@ const PaymentForm = ({ paymentParams }) => {
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
                   className={`border ${
-                    errors.number ? "border-red-500" : "border-gray-500"
-                  } px-4 py-2 rounded-md`}
+                    errors.number
+                      ? "border-red-500 dark:text-red-950 text-white"
+                      : "border-gray-500"
+                  } px-4 py-2 rounded-md dark:text-gray-800 text-gray-500`}
                 />
                 {errors.expiry && (
-                  <div className="border-red-600">{errors.expiry}</div>
+                  <div className="border-red-600 dark:text-red-950 text-white">
+                    {errors.expiry}
+                  </div>
                 )}
                 <input
                   type="number"
@@ -230,10 +244,16 @@ const PaymentForm = ({ paymentParams }) => {
                   onChange={handleInputChange}
                   onFocus={handleInputFocus}
                   className={`border ${
-                    errors.number ? "border-red-500" : "border-gray-500"
-                  } px-4 py-2 rounded-md`}
+                    errors.number
+                      ? "border-red-500 dark:text-red-950 text-white"
+                      : "border-gray-500"
+                  } px-4 py-2 rounded-md dark:text-gray-800 text-gray-500`}
                 />
-                {errors.cvc && <div className="text-red-900">{errors.cvc}</div>}
+                {errors.cvc && (
+                  <div className="dark:text-red-950 text-white">
+                    {errors.cvc}
+                  </div>
+                )}
                 <Button
                   type="submit"
                   children={t("input.submit")}

@@ -13,7 +13,7 @@ export default function HomePage() {
       className={`flex flex-col $
         isDarkMode ?  bg-[#060814] dark:bg-white`}
     >
-      <div className="flex flex-row justify-between  custom-container">
+      <div className="flex flex-row justify-between items-center custom-container">
         <Categories />
         <SimpleSlider />
       </div>

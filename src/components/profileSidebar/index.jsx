@@ -10,7 +10,7 @@ const ProfileSidebar = ({ onItemClick }) => {
   };
   const { t } = useTranslation("global");
   return (
-    <div className="py-10">
+    <div className="py-20">
       <ul className="ext-grey-600 flex flex-col border-r-2 h-full gap-5 p-4 cursor-pointer">
         <li
           onClick={() => handleItemClick("Profile")}

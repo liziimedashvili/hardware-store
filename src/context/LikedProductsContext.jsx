@@ -7,14 +7,14 @@ import {
   addLikedProduct,
 } from "../services/services";
 import { toast } from "react-toastify";
-
+import Login from "../components/modals/Login";
 const WishlistContext = createContext();
 
 export const LikedProductsProvider = ({ children }) => {
   const [likedProducts, setLikedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const fetchLikedItems = () => {
     setLoading(true);
 
@@ -43,6 +43,12 @@ export const LikedProductsProvider = ({ children }) => {
   }, []);
 
   const addToWishlist = async (product) => {
+    const isAuthenticated = localStorage.getItem("accessToken");
+
+    if (!isAuthenticated) {
+      setShowLoginModal(true);
+      return;
+    }
     try {
       const isProductInLikedProducts = likedProducts.some(
         (likedProduct) => likedProduct.likedProduct.id === product.id
@@ -103,6 +109,12 @@ export const LikedProductsProvider = ({ children }) => {
       }}
     >
       {children}
+      {showLoginModal && (
+        <Login
+          showModal={showLoginModal}
+          handleClose={() => setShowLoginModal(false)}
+        />
+      )}
     </WishlistContext.Provider>
   );
 };

@@ -15,7 +15,7 @@ export default function ProfilePage() {
     localStorage.setItem("selectedPage", selectedPage);
   }, [selectedPage]);
   return (
-    <div className="dark:bg-white  bg-[#060814] dark:text-black text-white">
+    <div className="dark:bg-white  bg-[#060814] dark:text-black text-white py-10">
       <div className="custom-container">
         <div className="flex flex-col">
           <div className="flex flex-row items-center gap-1 border-b border-gray-200 pb-4">

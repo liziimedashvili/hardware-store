@@ -23,7 +23,7 @@ export default function Purchase() {
   };
 
   return (
-    <div className="mt-10 ml-5">
+    <div className="py-10 ml-5">
       <h2 className="border-b-2 text-lg font-bold w-60 border-orange-600">
         {t("purchases.currentOrders")}
       </h2>

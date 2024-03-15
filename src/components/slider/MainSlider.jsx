@@ -52,46 +52,41 @@ const SimpleSlider = () => {
   };
 
   return (
-    <div className="relative lg:max-w-[800px] md:max-w-[450px] sm:max-w-[350px] mt-7">
+    <div className="relative lg:w-[800px] md:w-[470px]  sm:w-[350px] mt-7 ">
       <Slider ref={sliderRef} {...settings}>
         <div>
           <img
             src={main1}
             alt="Image 1"
-            style={{ width: "895px", height: "350px" }}
-            className="rounded-lg md:w-[200px] "
+            className="lg:width-[895px] lg:h-[350px] sm:h-[200px] md:h-[250px] rounded-lg"
           />
         </div>
         <div>
           <img
             src={main2}
             alt="Image 2"
-            style={{ width: "895px", height: "350px" }}
-            className="rounded-lg md:w-[200px]"
+            className="lg:width-[895px] lg:h-[350px] sm:h-[200px] md:h-[250px] rounded-lg"
           />
         </div>
         <div>
           <img
             src={main3}
             alt="Image 3"
-            style={{ width: "895px", height: "350px" }}
-            className="rounded-lg md:w-[200px]"
+            className="lg:width-[895px] lg:h-[350px] sm:h-[200px] md:h-[250px] rounded-lg"
           />
         </div>
         <div>
           <img
             src={main4}
             alt="Image 4"
-            style={{ width: "895px", height: "350px" }}
-            className="rounded-lg md:w-[200px]"
+            className="lg:width-[895px] lg:h-[350px] sm:h-[200px] md:h-[250px] rounded-lg"
           />
         </div>
         <div>
           <img
             src={main5}
             alt="Image 5"
-            style={{ width: "895px", height: "350px" }}
-            className="rounded-lg md:w-[200px] md:h-[200px]"
+            className="lg:width-[895px] lg:h-[350px] sm:h-[200px] md:h-[250px] rounded-lg"
           />
         </div>
       </Slider>

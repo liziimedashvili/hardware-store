@@ -57,7 +57,7 @@ export default function Header() {
       return (
         <div
           onClick={handleShow}
-          className="bg-white flex-row  sm:w-24 md:w-28  opacity-80 rounded-lg flex items-center justify-center sm:p-1 lg:py-2 cursor-pointer shadow-md"
+          className="bg-white flex-row sm:w-24 opacity-80 rounded-lg flex items-center justify-center sm:p-1 lg:py-2 cursor-pointer shadow-md"
         >
           <img src={UserIcon} />
           <Button children={t("header.enter")} />
@@ -70,7 +70,7 @@ export default function Header() {
     <header
       className={`sticky ${
         scrollDirection === "down" ? "-top-24" : "top-0"
-      } transition-all duration-500 dark:bg-white bg-[#060814]  z-50`}
+      } transition-all duration-500 dark:bg-gray-100 bg-[#060814]  z-50`}
     >
       <div className="custom-container lg:h-[70px] flex flex-row items-center sm:items-center justify-between">
         <div>
@@ -83,16 +83,16 @@ export default function Header() {
         </div>
         <div className="flex flex-row lg:gap-5 md:gap-2 sm:gap-1 items-center justify-between ">
           <Link to="/navigation">
-            <div className="flex flex-row items-center  bg-[#EC5E2A] lg:w-[130px] md:w-[100px]   lg:rounded-[12px] md:rounded-lg lg:gap-[12px] lg:p-[10px] md:px-4 md:py-2 sm:p-2 sm:rounded-lg  cursor-pointer md:mt-1 ">
+            <div className="flex flex-row items-center  bg-[#EC5E2A] lg:w-[130px] md:w-[30px]   lg:rounded-[12px] md:rounded-lg lg:gap-[12px] lg:p-[10px]   sm:p-2 sm:rounded-lg  cursor-pointer md:mt-1 ">
               <img src={Dots} className="md:w-4 sm:w-3 lg:w-auto" />
-              <span className="font-medium sm:hidden lg:block lg:text-sm ml-1 md:text-[11px] sm:text-[10px] text-[#fff] ">
+              <span className="font-medium sm:hidden  lg:block lg:text-sm ml-1 md:hidden  text-[#fff] ">
                 {t("header.navigation")}
               </span>
             </div>
           </Link>
           <SearchBar />
           <Link to="/cart">
-            <div className="bg-white  flex-row lg:w-28 md:w-28 sm:py-2 opacity-80 rounded-lg flex items-center justify-center lg:p-2.5 md:p-2  cursor-pointer shadow-md">
+            <div className="bg-white  flex-row lg:w-28  sm:py-1.5 opacity-80 rounded-lg flex items-center justify-center lg:p-2.5   cursor-pointer shadow-md">
               <Button
                 children={t("header.cart")}
                 className="gap-[10px]"

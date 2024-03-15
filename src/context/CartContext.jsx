@@ -8,14 +8,14 @@ import {
   deleteFromCart,
 } from "../services/services";
 import { toast } from "react-toastify";
-
+import Login from "../components/modals/Login";
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const fetchCartItems = () => {
     setLoading(true);
 
@@ -45,6 +45,12 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     setLoading(true);
+    const isAuthenticated = localStorage.getItem("accessToken");
+
+    if (!isAuthenticated) {
+      setShowLoginModal(true);
+      return;
+    }
 
     addProductToCart({ product_id: product.id })
       .then(() => {
@@ -100,6 +106,12 @@ export const CartProvider = ({ children }) => {
       }}
     >
       {children}
+      {showLoginModal && (
+        <Login
+          showModal={showLoginModal}
+          handleClose={() => setShowLoginModal(false)}
+        />
+      )}
     </CartContext.Provider>
   );
 };
